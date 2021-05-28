@@ -3,7 +3,7 @@ ACT Data by Belal Elsiesy
 An app to help students improve their ACT math score, using score data.
 
 
-______________________________________________ PAGES ___________________________________________
+PAGES      _____________________________________________________
 
 
 Navbar: Home, Data, Analyze, Resources Login/Account
@@ -22,3 +22,9 @@ Resources: Links to various resources by me and others for each question type, a
 Login: If not logged in, show in navbar; login with email, google, facebook, or apple
 
 Account: Manage email, password, name, etc
+
+RESOURCES _____________________________________________________
+
+- Github
+- Bootstrap
+- Something for Charts
