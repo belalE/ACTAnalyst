@@ -1,4 +1,4 @@
-ACT Data by Belal Elsiesy
+ACT Analyst by Belal Elsiesy
 
 An app to help students improve their ACT math score, using score data.
 
@@ -22,6 +22,50 @@ Resources: Links to various resources by me and others for each question type, a
 Login: If not logged in, show in navbar; login with email, google, facebook, or apple
 
 Account: Manage email, password, name, etc
+
+Data Models _____________________________________________________
+
+User: 
+    - id
+    - name
+    - email
+    - username
+    - password
+    - attempts
+
+Test (constant): 
+    - id
+    - form
+    - date
+    - questions:
+
+Question: 
+- number
+- answers: 
+    - tags (correct, hustle)
+    - explanations 
+- type: "General.Specific"
+
+
+Attempt (user): 
+    - id 
+    - form
+    - dateTaken
+    - answers: 
+        - choice
+        - tags (time, skip, guess, corrected, etc)
+
+Question Type:
+- general_field (Algebra, Geometry, Trig, etc)
+- resources
+    - videos
+    - articles
+    - text_explanations
+    - formulas
+- questions
+    -> We can derive % based on this
+
+
 
 RESOURCES _____________________________________________________
 
