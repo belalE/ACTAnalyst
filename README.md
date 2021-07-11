@@ -71,4 +71,4 @@ RESOURCES _____________________________________________________
 
 - Github
 - Bootstrap
-- Something for Charts
+- HighCharts
