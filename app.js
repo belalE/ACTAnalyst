@@ -5,6 +5,8 @@ const methodOverride = require("method-override");
 const Test = require("./models/test");
 const ejsMate = require("ejs-mate");
 
+const tests = require("./routes/tests");
+
 mongoose.connect("mongodb://localhost:27017/act-analyst", {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -29,46 +31,7 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/tests", async (req, res) => {
-  const tests = await Test.find({});
-  res.render("tests/index", { tests });
-});
-
-app.get("/tests/new", async (req, res) => {
-  res.render("tests/new");
-});
-
-app.post("/tests", async (req, res) => {
-  res.send(req.body);
-  // const test = new Test(req.body.test);
-  // await test.save();
-  // res.redirect(`/tests/${test._id}`);
-});
-
-app.get("/tests/:id", async (req, res) => {
-  const { id } = req.params;
-  const test = await Test.findById(id);
-  res.render("tests/show", { test });
-});
-
-app.get("/tests/:id/edit", async (req, res) => {
-  const { id } = req.params;
-  const test = await Test.findById(id);
-  res.render("tests/edit", { test });
-});
-
-app.put("/tests/:id", async (req, res) => {
-  const { id } = req.params;
-  console.log("id:", id);
-  const test = await Test.findByIdAndUpdate(id, req.body.test);
-  res.redirect(`/tests/${test._id}`);
-});
-
-app.delete("/tests/:id", async (req, res) => {
-  const { id } = req.params;
-  await Test.findByIdAndDelete(id);
-  res.redirect("/tests");
-});
+app.use("/tests", tests);
 
 app.listen(3000, () => {
   console.log("Serving on port 3000");
