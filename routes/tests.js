@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Test = require("../models/test");
+const Question = require("../models/question");
+const { QuestionType, topics } = require("../models/questionType");
 
 router.get("/", async (req, res) => {
   const tests = await Test.find({});
@@ -8,7 +10,9 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/new", async (req, res) => {
-  res.render("tests/new");
+  const types = await QuestionType.find({});
+  console.log(types);
+  res.render("tests/new", { topics, types });
 });
 
 router.post("/", async (req, res) => {

@@ -18,7 +18,7 @@ const readingTopics = [
   "Line & No Line",
   "Purpose",
   "Main Idea",
-  "Word/Ohrase in Context",
+  "Word/Phrase in Context",
   "Synthesis",
 ];
 const scienceTopics = ["Detail", "Compare", "Purpose", "Inference"]; // Might be changed
@@ -52,4 +52,14 @@ const QuestionTypeSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("QuestionType", QuestionTypeSchema);
+module.exports.QuestionType = mongoose.model(
+  "QuestionType",
+  QuestionTypeSchema
+);
+
+module.exports.topics = {
+  english: englishTopics,
+  math: mathTopics,
+  reading: readingTopics,
+  science: scienceTopics,
+};

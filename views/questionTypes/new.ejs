@@ -1,3 +1,39 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- Admin action, add question type -->
+<h1>Add Question Type</h1>
+<form action="/types" method="POST">
+  <div class="mb-3">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="questionType[name]"
+    />
+  </div>
+  <div class="row">
+    <div class="col">
+      <select name="questionType[section]" id="section" class="form-select">
+        <option value="" selected disabled>Select section</option>
+        <option value="English">English</option>
+        <option value="Math">Math</option>
+        <option value="Reading">Reading</option>
+        <option value="Science">Science</option>
+      </select>
+    </div>
+    <div class="col">
+      <select name="questionType[general]" id="general" class="form-select">
+        <option value="" selected disabled>Select general topic</option>
+        <% for (let topic of topicsArr) { %>
+        <option value="<%= topic %>"><%= topic %></option>
+        <% } %>
+      </select>
+    </div>
+  </div>
+</form>
+
+<script>
+  const topics = <%- JSON.stringify(topics) %>
+</script>
+<script src="/javascripts/topicSelector.js"></script>

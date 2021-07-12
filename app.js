@@ -6,6 +6,7 @@ const Test = require("./models/test");
 const ejsMate = require("ejs-mate");
 
 const tests = require("./routes/tests");
+const questionTypes = require("./routes/questionTypes");
 
 mongoose.connect("mongodb://localhost:27017/act-analyst", {
   useNewUrlParser: true,
@@ -23,6 +24,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
+app.use(express.static("public"));
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -32,6 +34,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/tests", tests);
+app.use("/types", questionTypes);
 
 app.listen(3000, () => {
   console.log("Serving on port 3000");
