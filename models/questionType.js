@@ -2,6 +2,27 @@ const mongoose = require("mongoose");
 require("mongoose-type-url");
 const Schema = mongoose.Schema;
 
+const englishTopics = [
+  "Punctuation",
+  "Usage",
+  "Organization, Unity, & Cohesion",
+  "Knowledge of Language",
+];
+const mathTopics = [
+  "Gaps, Skills, and Knowledge",
+  "Algebra",
+  "Geometry",
+  "Other",
+];
+const readingTopics = [
+  "Line & No Line",
+  "Purpose",
+  "Main Idea",
+  "Word/Ohrase in Context",
+  "Synthesis",
+];
+const scienceTopics = ["Detail", "Compare", "Purpose", "Inference"]; // Might be changed
+
 const QuestionTypeSchema = new Schema({
   questions: [
     {
@@ -12,7 +33,7 @@ const QuestionTypeSchema = new Schema({
   name: String,
   general: {
     type: String,
-    enum: ["Algebra", "Geometry", ""],
+    enum: [...englishTopics, ...mathTopics, ...readingTopics, ...scienceTopics],
   },
   section: {
     type: String,

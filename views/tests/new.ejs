@@ -1,28 +1,301 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Test</title>
-  </head>
-  <body>
-    <h1>New Test</h1>
-    <form action="/tests" method="POST">
+<% layout('layouts/boilerplate') %>
+<h1>New Test</h1>
+<form action="/tests" method="POST">
+  <div class="form-floating mb-3">
+    <input
+      class="form-control"
+      type="text"
+      id="form"
+      name="test[form]"
+      placeholder="Form Number"
+    />
+    <label for="form">Form</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      class="form-control"
+      type="text"
+      id="date"
+      name="test[date]"
+      placeholder="MM/DD/YYYY"
+    />
+    <label for="date">Date (mm/dd/yyyy)</label>
+  </div>
+  <h2 class="text-center mb-3">Answers</h2>
+  <div class="row mb-3">
+    <div class="col">
+      <h3>English</h3>
+      <% for(let i=1;i<76;i++) { %>
       <div>
-        <label for="form">Form</label>
-        <input type="text" id="form" name="test[form]" />
+        <span class="fw-bold">Q<%= i %></span>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="test[questions][english][<%= i %> ]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="test[questions][english][<%= i %> ]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="test[questions][english][<%= i %> ]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="test[questions][english][<%= i %> ]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
       </div>
+      <% } %>
+    </div>
+    <div class="col-4 bg-secondary">
+      <h3>Math</h3>
+      <% for(let i=1;i<61;i++) { %>
       <div>
-        <label for="type">Type</label>
-        <input type="text" id="type" name="test[type]" />
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="test[questions][math][<%= i %> ]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="test[questions][math][<%= i %> ]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="test[questions][math][<%= i %> ]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="test[questions][math][<%= i %> ]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>E"
+            name="test[questions][math][<%= i %> ]"
+            value="E"
+          />
+          <label class="form-check-label" for="q<%= i %>E">E</label>
+        </div>
       </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <h3>Reading</h3>
+      <% for(let i=1;i<41;i++) { %>
       <div>
-        <label for="description">Description</label>
-        <input type="text" id="description" name="test[description]" />
+        <span class="fw-bold">Q<%= i %></span>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="test[questions][reading][<%= i %> ]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="test[questions][reading][<%= i %> ]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="test[questions][reading][<%= i %> ]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="test[questions][reading][<%= i %> ]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
       </div>
-      <button>Submit</button>
-    </form>
-    <a href="/tests">All Tests</a>
-  </body>
-</html>
+      <% } %>
+    </div>
+    <div class="col bg-secondary">
+      <h3>Science</h3>
+      <% for(let i=1;i<41;i++) { %>
+      <div>
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="test[questions][science][<%= i %> ]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="test[questions][science][<%= i %> ]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="test[questions][science][<%= i %> ]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="test[questions][science][<%= i %> ]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <h2 class="text-center">Scale</h2>
+  <div class="row">
+    <div class="col">
+      <% for(let i =0;i<76;i++) {%>
+      <div>
+        <label for="scaleEng<%= i %>"><%= i %>/75</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleEng<%= i %>"
+          class="form-control"
+          name="test[scales][english][<%= i %> ]"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<61;i++) {%>
+      <div>
+        <label for="scaleMath<%= i %>"><%= i %>/60</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleMath<%= i %>"
+          class="form-control"
+          name="test[scales][math][<%= i %> ]"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<41;i++) {%>
+      <div>
+        <label for="scaleRead<%= i %>"><%= i %>/40</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleRead<%= i %>"
+          class="form-control"
+          name="test[scales][read][<%= i %> ]"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<41;i++) {%>
+      <div>
+        <label for="scaleSci<%= i %>"><%= i %>/40</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleSci<%= i %>"
+          class="form-control"
+          name="test[scales][science][<%= i %> ]"
+        />
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <button>Submit</button>
+</form>
+<a href="/tests">All Tests</a>
