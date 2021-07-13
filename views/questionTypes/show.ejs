@@ -1,3 +1,20 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- User page, see question types for resources -->
+<h1><%= type.name %></h1>
+<h2><%= type.general %></h2>
+<h2><%= type.section %></h2>
+<p><%= type.description %></p>
+<h3>Questions</h3>
+<ul>
+  <% for (let question of type.questions) { %>
+  <li><a href="/questions/<%= question %>"><%= question.name %></a></li>
+  <% } %>
+</ul>
+<h3>Resources</h3>
+<ul>
+  <% for (let resource of type.resources) { %>
+  <li><a href="<%= resource.link %> "><%= resource.name %></a></li>
+  <% } %>
+</ul>
+<a href="/types">Back to All Question Types</a>

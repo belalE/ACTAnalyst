@@ -21,7 +21,7 @@ counter.addEventListener("change", (e) => {
       <hr/>
       </div>`;
     resourcesDiv.innerHTML = resourcesDiv.innerHTML + resourceInput;
-  } else {
+  } else if (value != 0) {
     const resourceInputs = document.querySelectorAll(".resourceInput");
     const last = resourceInputs[resourceInputs.length - 1];
     last.remove();

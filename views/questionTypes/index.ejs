@@ -1,2 +1,9 @@
 <% layout('layouts/boilerplate') %>
 <!-- User: see page for all question types -->
+<h1>Question Types</h1>
+<a href="/types/new">Add Question Type</a>
+<ul>
+  <% for(let type of types) { %>
+  <li><a href="/types/<%= type._id %>"><%= type.name %> </a></li>
+  <% } %>
+</ul>
