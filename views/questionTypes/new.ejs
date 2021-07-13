@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- Admin action, add question type -->
-<h1>Add Question Type</h1>
+<h1 class="mb-3 text-center">Add Question Type</h1>
 <form action="/types" method="POST">
   <div class="mb-3">
     <label for="name">Name</label>
@@ -12,7 +12,7 @@
       name="questionType[name]"
     />
   </div>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
       <select name="questionType[section]" id="section" class="form-select">
         <option value="" selected disabled>Select section</option>
@@ -31,9 +31,22 @@
       </select>
     </div>
   </div>
+  <h2 class="mb-3">Add Resources</h2>
+  <div class="mb-3">
+    <input
+      type="number"
+      class="form-control"
+      min="0"
+      step="1"
+      id="resourceCount"
+    />
+  </div>
+  <div class="mb-3" id="resourcesDiv"></div>
+  <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
 <script>
   const topics = <%- JSON.stringify(topics) %>
 </script>
 <script src="/javascripts/topicSelector.js"></script>
+<script src="/javascripts/resources.js"></script>
