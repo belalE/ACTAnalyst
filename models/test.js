@@ -36,10 +36,26 @@ const TestSchema = new Schema({
     ],
   },
   scales: {
-    english: [ScaleSchema],
-    math: [ScaleSchema],
-    reading: [ScaleSchema],
-    science: [ScaleSchema],
+    english: [
+      {
+        scaled: Number,
+      },
+    ],
+    math: [
+      {
+        scaled: Number,
+      },
+    ],
+    reading: [
+      {
+        scaled: Number,
+      },
+    ],
+    science: [
+      {
+        scaled: Number,
+      },
+    ],
   },
 });
 

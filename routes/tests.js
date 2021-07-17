@@ -11,13 +11,25 @@ router.get("/", async (req, res) => {
 
 router.get("/new", async (req, res) => {
   const types = await QuestionType.find({});
-  console.log(types);
   res.render("tests/new", { topics, types });
 });
 
 router.post("/", async (req, res) => {
   const test = new Test(req.body.test);
+  for (section in req.body.questions) {
+    for (let i = 1; i < Object.keys(req.body.questions[section]).length; i++) {
+      const question = new Question({
+        test: test._id,
+        index: i,
+        answer: req.body.questions[section][i.toString()].answer,
+        type: req.body.questions[section][i.toString()].type,
+      });
+      await question.save();
+      test.questions[section].push(question);
+    }
+  }
   await test.save();
+  console.log(test);
   res.redirect(`/tests/${test._id}`);
 });
 

@@ -34,7 +34,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>A"
-        name="questions[english][<%= i %> ]"
+        name="questions[english][<%= i %>][answer]"
         value="A"
         checked
       />
@@ -45,7 +45,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>B"
-        name="questions[english][<%= i %> ]"
+        name="questions[english][<%= i %>][answer]"
         value="B"
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
@@ -55,7 +55,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>C"
-        name="questions[english][<%= i %> ]"
+        name="questions[english][<%= i %>][answer]"
         value="C"
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
@@ -65,7 +65,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>D"
-        name="questions[english][<%= i %> ]"
+        name="questions[english][<%= i %>][answer]"
         value="D"
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -76,8 +76,8 @@
       id="englishTopicSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
-      name="types[english]"
     >
+      <option value="" selected disabled>Select topic</option>
       <% for(let topic of topics.english) { %>
       <option value="<%= topic %>"><%= topic %></option>
       <% } %>
@@ -86,9 +86,11 @@
       id="englishTypeSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
+      name="questions[english][<%= i %>][type]"
     >
-      <% for(let type of types) { %>
-      <option value="<%= topic %>"><%= topic %></option>
+      <option value="" selected disabled>Select question type</option>
+      <% for(let type of types.filter(type => type.section === 'English')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
       <% } %>
     </select>
   </div>
@@ -103,7 +105,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>A"
-        name="questions[math][<%= i %> ]"
+        name="questions[math][<%= i %>][answer]"
         value="A"
         checked
       />
@@ -114,7 +116,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>B"
-        name="questions[math][<%= i %> ]"
+        name="questions[math][<%= i %>][answer]"
         value="B"
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
@@ -124,7 +126,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>C"
-        name="questions[math][<%= i %> ]"
+        name="questions[math][<%= i %>][answer]"
         value="C"
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
@@ -134,7 +136,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>D"
-        name="questions[math][<%= i %> ]"
+        name="questions[math][<%= i %>][answer]"
         value="D"
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -144,7 +146,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>E"
-        name="questions[math][<%= i %> ]"
+        name="questions[math][<%= i %>][answer]"
         value="E"
       />
       <label class="form-check-label" for="q<%= i %>E">E</label>
@@ -155,8 +157,8 @@
       id="mathTopicSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
-      name="types[math]"
     >
+      <option value="" selected disabled>Select topic</option>
       <% for(let topic of topics.math) { %>
       <option value="<%= topic %>"><%= topic %></option>
       <% } %>
@@ -165,9 +167,12 @@
       id="mathTypeSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
+      name="questions[math][<%= i %>][type]"
     >
-      <% for(let type of types) { %>
-      <option value="<%= topic %>"><%= topic %></option>
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Math')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
       <% } %>
     </select>
   </div>
@@ -183,7 +188,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>A"
-        name="questions[reading][<%= i %> ]"
+        name="questions[reading][<%= i %>][answer]"
         value="A"
         checked
       />
@@ -195,7 +200,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>B"
-        name="questions[reading][<%= i %> ]"
+        name="questions[reading][<%= i %>][answer]"
         value="B"
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
@@ -206,7 +211,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>C"
-        name="questions[reading][<%= i %> ]"
+        name="questions[reading][<%= i %>][answer]"
         value="C"
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
@@ -217,7 +222,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>D"
-        name="questions[reading][<%= i %> ]"
+        name="questions[reading][<%= i %>][answer]"
         value="D"
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -228,8 +233,9 @@
       id="readingTopicSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
-      name="types[reading]"
     >
+      <option value="" selected disabled>Select topic</option>
+
       <% for(let topic of topics.reading) { %>
       <option value="<%= topic %>"><%= topic %></option>
       <% } %>
@@ -238,9 +244,12 @@
       id="readingTypeSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
+      name="questions[reading][<%= i %>][type]"
     >
-      <% for(let type of types) { %>
-      <option value="<%= topic %>"><%= topic %></option>
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Reading')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
       <% } %>
     </select>
   </div>
@@ -255,7 +264,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>A"
-        name="questions[science][<%= i %> ]"
+        name="questions[science][<%= i %>][answer]"
         value="A"
         checked
       />
@@ -266,7 +275,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>B"
-        name="questions[science][<%= i %> ]"
+        name="questions[science][<%= i %>][answer]"
         value="B"
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
@@ -277,7 +286,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>C"
-        name="questions[science][<%= i %> ]"
+        name="questions[science][<%= i %>][answer]"
         value="C"
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
@@ -288,7 +297,7 @@
         type="radio"
         class="form-check-input"
         id="q<%= i %>D"
-        name="questions[science][<%= i %> ]"
+        name="questions[science][<%= i %>][answer]"
         value="D"
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -299,8 +308,9 @@
       id="scienceTopicSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
-      name="types[science]"
     >
+      <option value="" selected disabled>Select topic</option>
+
       <% for(let topic of topics.science) { %>
       <option value="<%= topic %>"><%= topic %></option>
       <% } %>
@@ -309,9 +319,12 @@
       id="scienceTypeSelector<%= i %>"
       class="form-select"
       aria-label="Question Topic"
+      name="questions[science][<%= i %>][type]"
     >
-      <% for(let type of types) { %>
-      <option value="<%= topic %>"><%= topic %></option>
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Science')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
       <% } %>
     </select>
   </div>
@@ -328,7 +341,8 @@
           placeholder="__/36"
           id="scaleEng<%= i %>"
           class="form-control"
-          name="test[scales][english][<%= i %> ]"
+          name="test[scales][english][<%= i %>][scaled]"
+          value="1"
         />
       </div>
       <% } %>
@@ -342,7 +356,8 @@
           placeholder="__/36"
           id="scaleMath<%= i %>"
           class="form-control"
-          name="test[scales][math][<%= i %> ]"
+          name="test[scales][math][<%= i %>][scaled]"
+          value="1"
         />
       </div>
       <% } %>
@@ -356,7 +371,8 @@
           placeholder="__/36"
           id="scaleRead<%= i %>"
           class="form-control"
-          name="test[scales][read][<%= i %> ]"
+          name="test[scales][read][<%= i %>][scaled]"
+          value="1"
         />
       </div>
       <% } %>
@@ -370,7 +386,8 @@
           placeholder="__/36"
           id="scaleSci<%= i %>"
           class="form-control"
-          name="test[scales][science][<%= i %> ]"
+          name="test[scales][science][<%= i %>][scaled]"
+          value="1"
         />
       </div>
       <% } %>
