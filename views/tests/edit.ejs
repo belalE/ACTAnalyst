@@ -1,24 +1,331 @@
 <% layout('layouts/boilerplate') %>
-<!-- Admin page, edit test (questions, scale, questiontypes) -->
 <h1>Edit Test</h1>
-<form action="/tests/<%= test.id %>?_method=PUT" method="POST">
-  <div>
-    <label for="form">Form</label>
-    <input type="text" id="form" name="test[form]" value="<%= test.form %> " />
-  </div>
-  <div>
-    <label for="type">Type</label>
-    <input type="text" id="type" name="test[type]" value="<%= test.type %> " />
-  </div>
-  <div>
-    <label for="description">Description</label>
+<form action="/tests" method="POST">
+  <div class="form-floating mb-3">
     <input
+      class="form-control"
       type="text"
-      id="description"
-      name="test[description]"
-      value="<%= test.description %> "
+      id="form"
+      name="test[form]"
+      placeholder="Form Number"
+      value="<%= test.form %>"
     />
+    <label for="form">Form</label>
   </div>
-  <button>Update</button>
+  <div class="form-floating mb-3">
+    <input
+      class="form-control"
+      type="text"
+      id="date"
+      name="test[date]"
+      placeholder="MM/DD/YYYY"
+      form="<%= test.date %>"
+    />
+    <label for="date">Date (mm/dd/yyyy)</label>
+  </div>
+  <h2 class="text-center mb-3">Answers</h2>
+
+  <h3>English</h3>
+  <% for(let i=1;i<76;i++) { %>
+  <div>
+    <span class="fw-bold">Q<%= i %></span>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      name="questions[english][<%= i %>][answer]" value="A" <% if
+      (test.questions.english[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>A">A</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      name="questions[english][<%= i %>][answer]" value="B" <% if
+      (test.questions.english[i].answer == "B") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>B">B</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      name="questions[english][<%= i %>][answer]" value="C" <% if
+      (test.questions.english[i].answer === "C") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>C">C</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      name="questions[english][<%= i %>][answer]" value="D" <% if
+      (test.questions.english[i].answer === "D") { %> checked <% }%> />
+      <label class="form-check-label" for="q<%= i %>D">D</label>
+    </div>
+  </div>
+  <div>
+    <select
+      id="englishTopicSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+    >
+      <option value="" selected disabled>Select topic</option>
+      <% for(let topic of topics.english) { %>
+      <option value="<%= topic %>"><%= topic %></option>
+      <% } %>
+    </select>
+    <select
+      id="englishTypeSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+      name="questions[english][<%= i %>][type]"
+    >
+      <option value="" selected disabled>Select question type</option>
+      <% for(let type of types.filter(type => type.section === 'English')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
+      <% } %>
+    </select>
+  </div>
+  <% } %>
+
+  <h3>Math</h3>
+  <% for(let i=1;i<61;i++) { %>
+  <div>
+    <span class="fw-bold">Q<%= i %></span>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      name="questions[math][<%= i %>][answer]" value="A" <% if
+      (test.questions.math[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>A">A</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      name="questions[math][<%= i %>][answer]" value="B" <% if
+      (test.questions.math[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>B">B</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      name="questions[math][<%= i %>][answer]" value="C" <% if
+      (test.questions.math[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>C">C</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      name="questions[math][<%= i %>][answer]" value="D" <% if
+      (test.questions.math[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>D">D</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>E"
+      name="questions[math][<%= i %>][answer]" value="E" <% if
+      (test.questions.math[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>E">E</label>
+    </div>
+  </div>
+  <div>
+    <select
+      id="mathTopicSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+    >
+      <option value="" selected disabled>Select topic</option>
+      <% for(let topic of topics.math) { %>
+      <option value="<%= topic %>"><%= topic %></option>
+      <% } %>
+    </select>
+    <select
+      id="mathTypeSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+      name="questions[math][<%= i %>][type]"
+    >
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Math')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
+      <% } %>
+    </select>
+  </div>
+  <% } %>
+
+  <h3>Reading</h3>
+  <% for(let i=1;i<41;i++) { %>
+  <div>
+    <span class="fw-bold">Q<%= i %></span>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      name="questions[reading][<%= i %>][answer]" value="A" <% if
+      (test.questions.reading[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>A">A</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      name="questions[reading][<%= i %>][answer]" value="B" <% if
+      (test.questions.reading[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>B">B</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      name="questions[reading][<%= i %>][answer]" value="C" <% if
+      (test.questions.reading[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>C">C</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      name="questions[reading][<%= i %>][answer]" value="D" <% if
+      (test.questions.reading[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>D">D</label>
+    </div>
+  </div>
+  <div>
+    <select
+      id="readingTopicSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+    >
+      <option value="" selected disabled>Select topic</option>
+
+      <% for(let topic of topics.reading) { %>
+      <option value="<%= topic %>"><%= topic %></option>
+      <% } %>
+    </select>
+    <select
+      id="readingTypeSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+      name="questions[reading][<%= i %>][type]"
+    >
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Reading')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
+      <% } %>
+    </select>
+  </div>
+  <% } %>
+
+  <h3>Science</h3>
+  <% for(let i=1;i<41;i++) { %>
+  <div>
+    <span class="fw-bold">Q<%= i %></span>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      name="questions[science][<%= i %>][answer]" value="A" <% if
+      (test.questions.science[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>A">A</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      name="questions[science][<%= i %>][answer]" value="B" <% if
+      (test.questions.science[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>B">B</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      name="questions[science][<%= i %>][answer]" value="C" <% if
+      (test.questions.science[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>C">C</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      name="questions[science][<%= i %>][answer]" value="D" <% if
+      (test.questions.science[i].answer == "A") { %> checked <% } %> />
+      <label class="form-check-label" for="q<%= i %>D">D</label>
+    </div>
+  </div>
+  <div>
+    <select
+      id="scienceTopicSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+    >
+      <option value="" selected disabled>Select topic</option>
+
+      <% for(let topic of topics.science) { %>
+      <option value="<%= topic %>"><%= topic %></option>
+      <% } %>
+    </select>
+    <select
+      id="scienceTypeSelector<%= i %>"
+      class="form-select"
+      aria-label="Question Topic"
+      name="questions[science][<%= i %>][type]"
+    >
+      <option value="" selected disabled>Select question type</option>
+
+      <% for(let type of types.filter(type => type.section === 'Science')) { %>
+      <option value="<%= type._id %>"><%= type.name %></option>
+      <% } %>
+    </select>
+  </div>
+  <% } %>
+
+  <h2 class="text-center">Scale</h2>
+  <div class="row">
+    <div class="col">
+      <% for(let i =0;i<76;i++) {%>
+      <div>
+        <label for="scaleEng<%= i %>"><%= i %>/75</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleEng<%= i %>"
+          class="form-control"
+          name="test[scales][english][<%= i %>][scaled]"
+          value="<%= test.scales.english[i].scaled%>"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<61;i++) {%>
+      <div>
+        <label for="scaleMath<%= i %>"><%= i %>/60</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleMath<%= i %>"
+          class="form-control"
+          name="test[scales][math][<%= i %>][scaled]"
+          value="<%= test.scales.math[i].scaled%>"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<41;i++) {%>
+      <div>
+        <label for="scaleRead<%= i %>"><%= i %>/40</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleRead<%= i %>"
+          class="form-control"
+          name="test[scales][reading][<%= i %>][scaled]"
+          value="<%= test.scales.reading[i].scaled%>"
+        />
+      </div>
+      <% } %>
+    </div>
+    <div class="col">
+      <% for(let i =0;i<41;i++) {%>
+      <div>
+        <label for="scaleSci<%= i %>"><%= i %>/40</label>
+        <input
+          type="text"
+          placeholder="__/36"
+          id="scaleSci<%= i %>"
+          class="form-control"
+          name="test[scales][science][<%= i %>][scaled]"
+          value="<%= test.scales.science[i].scaled%>"
+        />
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <button>Edit</button>
 </form>
-<a href="/tests/<%= test._id %>">Back to Test</a>
+<a href="/tests">All Tests</a>
+
+<script>
+  const types = <%- JSON.stringify(types) %>;
+</script>
+<script type="module" src="/javascripts/typeSelector.js"></script>

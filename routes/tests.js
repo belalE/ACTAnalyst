@@ -17,7 +17,12 @@ router.get("/new", async (req, res) => {
 router.post("/", async (req, res) => {
   const test = new Test(req.body.test);
   for (section in req.body.questions) {
-    for (let i = 1; i < Object.keys(req.body.questions[section]).length; i++) {
+    for (
+      let i = 1;
+      i < Object.keys(req.body.questions[section]).length + 1;
+      i++
+    ) {
+      console.log("length", i);
       const question = new Question({
         test: test._id,
         index: i,
@@ -42,7 +47,14 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
   const test = await Test.findById(id);
-  res.render("tests/edit", { test });
+  console.log(test.questions.english.length);
+  // .populate("questions.english")
+  // .populate("questions.math")
+  // .populate("questions.reading")
+  // .populate("questions.science");
+  console.log(test.questions.english.length);
+  const types = await QuestionType.find({});
+  res.render("tests/edit", { test, topics, types });
 });
 
 router.put("/:id", async (req, res) => {
