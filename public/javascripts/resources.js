@@ -1,6 +1,6 @@
 const resourcesDiv = document.querySelector("#resourcesDiv");
 const counter = document.querySelector("#resourceCount");
-var value = 0;
+var value = document.querySelectorAll(".resourceInput").length || 0;
 counter.addEventListener("change", (e) => {
   if (e.target.value > value) {
     value += 1;

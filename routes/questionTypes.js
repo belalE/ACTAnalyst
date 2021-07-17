@@ -29,4 +29,24 @@ router.post("/", async (req, res) => {
   res.redirect(`/types/${questionType._id}`);
 });
 
+router.get("/:id/edit", async (req, res) => {
+  var topicsArr = [
+    ...topics.english,
+    ...topics.math,
+    ...topics.reading,
+    ...topics.science,
+  ];
+  const { id } = req.params;
+  const type = await QuestionType.findById(id).populate("questions");
+  res.render("questionTypes/edit", { type, topicsArr, topics });
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const type = await QuestionType.findByIdAndUpdate(id, {
+    ...req.body.questionType,
+  });
+  res.redirect(`/types/${type._id}`);
+});
+
 module.exports = router;
