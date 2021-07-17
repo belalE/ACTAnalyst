@@ -19,3 +19,6 @@
 </ul>
 <a href="/types/<%= type._id %>/edit">Edit</a>
 <a href="/types">Back to All Question Types</a>
+<form action="/types/<%= type._id %>/?_method=DELETE" method="POST">
+  <button class="btn btn-sm btn-danger">Delete</button>
+</form>

@@ -49,4 +49,10 @@ router.put("/:id", async (req, res) => {
   res.redirect(`/types/${type._id}`);
 });
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  const type = await QuestionType.findByIdAndDelete(id);
+  res.redirect(`/types`);
+});
+
 module.exports = router;
