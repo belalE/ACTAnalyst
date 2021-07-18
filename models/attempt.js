@@ -17,7 +17,7 @@ const AttemptSchema = new Schema({
         tags: [
           {
             type: String,
-            enum: ["Skip", "NoTime", "Guess", "Revised"],
+            enum: ["skip", "noTime", "guess", "revised"],
           },
         ],
       },
@@ -31,7 +31,7 @@ const AttemptSchema = new Schema({
         tags: [
           {
             type: String,
-            enum: ["Skip", "NoTime", "Guess", "Revised"],
+            enum: ["skip", "noTime", "guess", "revised"],
           },
         ],
       },
@@ -45,7 +45,7 @@ const AttemptSchema = new Schema({
         tags: [
           {
             type: String,
-            enum: ["Skip", "NoTime", "Guess", "Revised"],
+            enum: ["skip", "noTime", "guess", "revised"],
           },
         ],
       },
@@ -59,7 +59,7 @@ const AttemptSchema = new Schema({
         tags: [
           {
             type: String,
-            enum: ["Skip", "NoTime", "Guess", "Revised"],
+            enum: ["skip", "noTime", "guess", "revised"],
           },
         ],
       },

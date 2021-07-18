@@ -14,7 +14,7 @@
     <label for="date">Date (mm/dd/yyyy)</label>
   </div>
   <div class="mb-3">
-    <select name="test" class="form-select" id="testSelector">
+    <select name="attempt[test]" class="form-select" id="testSelector">
       <option value="" <% if (!selectedTest) { %>
         selected <% } %> disabled>Select test
       </option>
@@ -78,7 +78,7 @@
           class="form-check-input"
           type="checkbox"
           id="skipCheckbox<%= i %>"
-          name="attempt[answers][english][<%= i %>][tags][skip]"
+          name="attempt[answers][english][<%= i %>][tags][0]"
           value="skip"
         />
         <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
@@ -88,7 +88,7 @@
           class="form-check-input"
           type="checkbox"
           id="guessCheckbox<%= i %>"
-          name="attempt[answers][english][<%= i %>][tags][guess]"
+          name="attempt[answers][english][<%= i %>][tags][1]"
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
@@ -97,14 +97,265 @@
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
-        %>" name="attempt[answers][english][<%= i %>][tags][doubt]" value="doubt" />
+        %>" name="attempt[answers][english][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="doubtCheckbox<%= i %>"
-          >Doubt</label
+          >No Time</label
         >
       </div>
     </div>
   </div>
-
+  <% } %>
+  <div class="mx-3">
+    <h2>Math</h2>
+  </div>
+  <% for(let i=1;i<61;i++) { %>
+  <div class="row">
+    <div class="col">
+      <div>
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="attempt[answers][math][<%= i %>][choice]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="attempt[answers][math][<%= i %>][choice]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="attempt[answers][math][<%= i %>][choice]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="attempt[answers][math][<%= i %>][choice]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="skipCheckbox<%= i %>"
+          name="attempt[answers][math][<%= i %>][tags][0]"
+          value="skip"
+        />
+        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="guessCheckbox<%= i %>"
+          name="attempt[answers][math][<%= i %>][tags][1]"
+          value="guess"
+        />
+        <label class="form-check-label" for="guessCheckbox<%= i %>"
+          >Guess</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
+        %>" name="attempt[answers][math][<%= i %>][tags][2]" value="noTime" />
+        <label class="form-check-label" for="doubtCheckbox<%= i %>"
+          >No Time</label
+        >
+      </div>
+    </div>
+  </div>
+  <% } %>
+  <div class="mx-3">
+    <h2>Reading</h2>
+  </div>
+  <% for(let i=1;i<41;i++) { %>
+  <div class="row">
+    <div class="col">
+      <div>
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="attempt[answers][reading][<%= i %>][choice]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="attempt[answers][reading][<%= i %>][choice]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="attempt[answers][reading][<%= i %>][choice]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="attempt[answers][reading][<%= i %>][choice]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="skipCheckbox<%= i %>"
+          name="attempt[answers][reading][<%= i %>][tags][0]"
+          value="skip"
+        />
+        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="guessCheckbox<%= i %>"
+          name="attempt[answers][reading][<%= i %>][tags][1]"
+          value="guess"
+        />
+        <label class="form-check-label" for="guessCheckbox<%= i %>"
+          >Guess</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
+        %>" name="attempt[answers][reading][<%= i %>][tags][2]" value="noTime" />
+        <label class="form-check-label" for="doubtCheckbox<%= i %>"
+          >No Time</label
+        >
+      </div>
+    </div>
+  </div>
+  <% } %>
+  <div class="mx-3">
+    <h2>Science</h2>
+  </div>
+  <% for(let i=1;i<41;i++) { %>
+  <div class="row">
+    <div class="col">
+      <div>
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name="attempt[answers][science][<%= i %>][choice]"
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name="attempt[answers][science][<%= i %>][choice]"
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name="attempt[answers][science][<%= i %>][choice]"
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name="attempt[answers][science][<%= i %>][choice]"
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="skipCheckbox<%= i %>"
+          name="attempt[answers][science][<%= i %>][tags][0]"
+          value="skip"
+        />
+        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="guessCheckbox<%= i %>"
+          name="attempt[answers][science][<%= i %>][tags][1]"
+          value="guess"
+        />
+        <label class="form-check-label" for="guessCheckbox<%= i %>"
+          >Guess</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
+        %>" name="attempt[answers][science][<%= i %>][tags][2]" value="noTime" />
+        <label class="form-check-label" for="doubtCheckbox<%= i %>"
+          >No Time</label
+        >
+      </div>
+    </div>
+  </div>
   <% } %>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>

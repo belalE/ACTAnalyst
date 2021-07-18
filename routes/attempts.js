@@ -15,8 +15,10 @@ router.get("/new", async (req, res) => {
   res.render("attempts/new", { selectedTest, tests });
 });
 
-router.post("/", (req, res) => {
-  res.send(req.body);
+router.post("/", async (req, res) => {
+  const attempt = new Attempt(req.body.attempt);
+  await attempt.save();
+  res.redirect(`/attempts/${attempt._id}`);
 });
 
 module.exports = router;
