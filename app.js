@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost:27017/act-analyst", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;

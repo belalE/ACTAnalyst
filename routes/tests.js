@@ -22,19 +22,17 @@ router.post("/", async (req, res) => {
       i < Object.keys(req.body.questions[section]).length + 1;
       i++
     ) {
-      console.log("length", i);
       const question = new Question({
         test: test._id,
         index: i,
-        answer: req.body.questions[section][i.toString()].answer,
-        type: req.body.questions[section][i.toString()].type,
+        answer: req.body.questions[section][i.toString() - 1].answer,
+        type: req.body.questions[section][i.toString() - 1].type,
       });
       await question.save();
       test.questions[section].push(question);
     }
   }
   await test.save();
-  console.log(test);
   res.redirect(`/tests/${test._id}`);
 });
 
@@ -46,22 +44,40 @@ router.get("/:id", async (req, res) => {
 
 router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
-  const test = await Test.findById(id);
-  console.log(test.questions.english.length);
-  // .populate("questions.english")
-  // .populate("questions.math")
-  // .populate("questions.reading")
-  // .populate("questions.science");
-  console.log(test.questions.english.length);
+  const test = await Test.findById(id)
+    .populate("questions.english")
+    .populate("questions.math")
+    .populate("questions.reading")
+    .populate("questions.science");
   const types = await QuestionType.find({});
   res.render("tests/edit", { test, topics, types });
 });
 
 router.put("/:id", async (req, res) => {
-  const { id } = req.params;
-  console.log("id:", id);
-  const test = await Test.findByIdAndUpdate(id, req.body.test);
-  res.redirect(`/tests/${test._id}`);
+  try {
+    const { id } = req.params;
+    const test = await Test.findByIdAndUpdate(id, req.body.test);
+    for (section in req.body.questions) {
+      for (
+        let i = 1;
+        i < Object.keys(req.body.questions[section]).length + 1;
+        i++
+      ) {
+        const question = await Question.findByIdAndUpdate(
+          test.questions[section][i - 1],
+          {
+            answer: req.body.questions[section][i.toString() - 1].answer,
+            type: req.body.questions[section][i.toString() - 1].type,
+          }
+        );
+        await question.save();
+      }
+    }
+    await test.save();
+    res.redirect(`/tests/${test._id}`);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.delete("/:id", async (req, res) => {
