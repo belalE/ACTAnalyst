@@ -7,21 +7,64 @@ const AttemptSchema = new Schema({
     ref: "Test",
   },
   dateTaken: Date,
-  answers: [
-    {
-      index: Number,
-      choice: {
-        type: String,
-        enum: ["A", "B", "C", "D", "E"],
-      },
-      tags: [
-        {
+  answers: {
+    english: [
+      {
+        choice: {
           type: String,
-          enum: ["Skip", "NoTime", "Guess", "Revised"],
+          enum: ["A", "B", "C", "D", "E"],
         },
-      ],
-    },
-  ],
+        tags: [
+          {
+            type: String,
+            enum: ["Skip", "NoTime", "Guess", "Revised"],
+          },
+        ],
+      },
+    ],
+    math: [
+      {
+        choice: {
+          type: String,
+          enum: ["A", "B", "C", "D", "E"],
+        },
+        tags: [
+          {
+            type: String,
+            enum: ["Skip", "NoTime", "Guess", "Revised"],
+          },
+        ],
+      },
+    ],
+    reading: [
+      {
+        choice: {
+          type: String,
+          enum: ["A", "B", "C", "D", "E"],
+        },
+        tags: [
+          {
+            type: String,
+            enum: ["Skip", "NoTime", "Guess", "Revised"],
+          },
+        ],
+      },
+    ],
+    science: [
+      {
+        choice: {
+          type: String,
+          enum: ["A", "B", "C", "D", "E"],
+        },
+        tags: [
+          {
+            type: String,
+            enum: ["Skip", "NoTime", "Guess", "Revised"],
+          },
+        ],
+      },
+    ],
+  },
 });
 
 module.exports = mongoose.model("Attempt", AttemptSchema);

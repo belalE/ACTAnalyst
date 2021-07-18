@@ -15,12 +15,11 @@
   </div>
   <div class="mb-3">
     <select name="test" class="form-select" id="testSelector">
-        <!-- TODO: Fix selection of test from query string -->
       <option value="" <% if (!selectedTest) { %>
         selected <% } %> disabled>Select test
       </option>
       <% for(test of tests) { %>
-      <option <% if (selectedTest && selectedTest._id === test._id ) { %> selected <% } %> value="<%= test._id %>"><%= test.form %>
+      <option <% if (selectedTest && selectedTest == test._id ) { %> selected <% } %> value="<%= test._id %>"><%= test.form %>
       </option>
       <% } %>
     </select>
@@ -35,7 +34,7 @@
             type="radio"
             class="form-check-input"
             id="q<%= i %>A"
-            name=""
+            name="attempt[answers][english][<%= i %>][choice]"
             value="A"
             checked
           />
@@ -46,7 +45,7 @@
             type="radio"
             class="form-check-input"
             id="q<%= i %>B"
-            name=""
+            name="attempt[answers][english][<%= i %>][choice]"
             value="B"
           />
           <label class="form-check-label" for="q<%= i %>B">B</label>
@@ -56,7 +55,7 @@
             type="radio"
             class="form-check-input"
             id="q<%= i %>C"
-            name=""
+            name="attempt[answers][english][<%= i %>][choice]"
             value="C"
           />
           <label class="form-check-label" for="q<%= i %>C">C</label>
@@ -66,7 +65,7 @@
             type="radio"
             class="form-check-input"
             id="q<%= i %>D"
-            name=""
+            name="attempt[answers][english][<%= i %>][choice]"
             value="D"
           />
           <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -79,6 +78,7 @@
           class="form-check-input"
           type="checkbox"
           id="skipCheckbox<%= i %>"
+          name="attempt[answers][english][<%= i %>][tags][skip]"
           value="skip"
         />
         <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
@@ -88,6 +88,7 @@
           class="form-check-input"
           type="checkbox"
           id="guessCheckbox<%= i %>"
+          name="attempt[answers][english][<%= i %>][tags][guess]"
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
@@ -96,7 +97,7 @@
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
-        %>" value="doubt" = />
+        %>" name="attempt[answers][english][<%= i %>][tags][doubt]" value="doubt" />
         <label class="form-check-label" for="doubtCheckbox<%= i %>"
           >Doubt</label
         >
