@@ -1,2 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <!-- Show score, graphs + analysis for attempt -->
+<h1>Attempt: <%= attempt.test.form %></h1>
+<h2 class="text-muted">Date: <%= attempt.dateTaken %></h2>
+<a href="/attempts">Back to all attempts</a>
+<a href="/attempts/<%= attempt._id %>/edit">Edit</a>

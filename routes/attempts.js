@@ -21,4 +21,23 @@ router.post("/", async (req, res) => {
   res.redirect(`/attempts/${attempt._id}`);
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const attempt = await Attempt.findById(id).populate("test", "form");
+  res.render("attempts/show", { attempt });
+});
+
+router.get("/:id/edit", async (req, res) => {
+  const { id } = req.params;
+  const attempt = await Attempt.findById(id).populate("test", "form");
+  res.render("attempts/edit", { attempt });
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const attempt = await Attempt.findByIdAndUpdate(id, req.body.attempt);
+  await attempt.save();
+  res.redirect(`/attempts/${attempt._id}`);
+});
+
 module.exports = router;
