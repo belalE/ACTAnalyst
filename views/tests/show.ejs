@@ -1,13 +1,13 @@
 <% layout('layouts/boilerplate') %>
 <!-- User: If taken, show all questions; else, show log button -->
 <h1><%= test.form %></h1>
-<p>Type: <%= test.type %></p>
-<p><%= test.description %></p>
+<p>Date: <%= test.date %></p>
 <p>
     <form action="/tests/<%= test.id %>?_method=DELETE" method="POST">
         <button>Delete</button>
     </form>
 </p>
 <a href="/tests/<%=test._id%>/edit">Edit</a>
+<a href="/attempts/new?test=<%= test._id %>">Make New Attempt</a>
 <a href="/tests">All Tests</a>
 

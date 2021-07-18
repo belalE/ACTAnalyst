@@ -1,2 +1,109 @@
 <% layout('layouts/boilerplate') %>
 <!-- Log Page, bubble in answer sheet -->
+<h1>Attempt</h1>
+<form action="/attempts/" method="POST">
+  <div class="mb-3"></div>
+  <div class="form-floating mb-3">
+    <input
+      class="form-control"
+      type="text"
+      id="date"
+      name="attempt[dateTaken]"
+      placeholder="MM/DD/YYYY"
+    />
+    <label for="date">Date (mm/dd/yyyy)</label>
+  </div>
+  <div class="mb-3">
+    <select name="test" class="form-select" id="testSelector">
+        <!-- TODO: Fix selection of test from query string -->
+      <option value="" <% if (!selectedTest) { %>
+        selected <% } %> disabled>Select test
+      </option>
+      <% for(test of tests) { %>
+      <option <% if (selectedTest && selectedTest._id === test._id ) { %> selected <% } %> value="<%= test._id %>"><%= test.form %>
+      </option>
+      <% } %>
+    </select>
+  </div>
+  <% for(let i=1;i<76;i++) { %>
+  <div class="row">
+    <div class="col">
+      <div>
+        <span class="fw-bold">Q<%= i %></span>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>A"
+            name=""
+            value="A"
+            checked
+          />
+          <label class="form-check-label" for="q<%= i %>A">A</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>B"
+            name=""
+            value="B"
+          />
+          <label class="form-check-label" for="q<%= i %>B">B</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>C"
+            name=""
+            value="C"
+          />
+          <label class="form-check-label" for="q<%= i %>C">C</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>D"
+            name=""
+            value="D"
+          />
+          <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="skipCheckbox<%= i %>"
+          value="skip"
+        />
+        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="guessCheckbox<%= i %>"
+          value="guess"
+        />
+        <label class="form-check-label" for="guessCheckbox<%= i %>"
+          >Guess</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="doubtCheckbox<%= i
+        %>" value="doubt" = />
+        <label class="form-check-label" for="doubtCheckbox<%= i %>"
+          >Doubt</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>

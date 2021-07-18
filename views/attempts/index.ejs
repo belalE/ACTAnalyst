@@ -1,2 +1,12 @@
 <% layout('layouts/boilerplate') %>
 <!-- Show all previous attempts(data page) w/ graphs + analysis -->
+<h1>All Attempts</h1>
+<ul>
+  <% for (attempt of attempts) { %>
+  <ul>
+    <a href="/attempts/<%= attempt._id %>"
+      ><%= attempt.test.form %> - <%= attempt.dateTaken %>
+    </a>
+  </ul>
+  <% } %>
+</ul>

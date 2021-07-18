@@ -8,6 +8,7 @@ const ExpressError = require("./utils/ExpressError");
 
 const tests = require("./routes/tests");
 const questionTypes = require("./routes/questionTypes");
+const attempts = require("./routes/attempts");
 
 mongoose.connect("mongodb://localhost:27017/act-analyst", {
   useNewUrlParser: true,
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.use("/tests", tests);
 app.use("/types", questionTypes);
+app.use("/attempts", attempts);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));

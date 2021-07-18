@@ -5,7 +5,7 @@ const Question = require("../models/question");
 const { QuestionType, topics } = require("../models/questionType");
 const { catchAsync } = require("../utils/catchAsync");
 
-router.get(async (req, res) => {
+router.get("/", async (req, res) => {
   const tests = await Test.find({});
   res.render("tests/index", { tests });
 });
