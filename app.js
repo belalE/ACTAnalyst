@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const Test = require("./models/test");
 const ejsMate = require("ejs-mate");
+const ExpressError = require("./utils/ExpressError");
 
 const tests = require("./routes/tests");
 const questionTypes = require("./routes/questionTypes");
@@ -36,6 +37,10 @@ app.get("/", (req, res) => {
 
 app.use("/tests", tests);
 app.use("/types", questionTypes);
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page Not Found", 404));
+});
 
 app.listen(3000, () => {
   console.log("Serving on port 3000");
