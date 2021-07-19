@@ -4,3 +4,6 @@
 <h2 class="text-muted">Date: <%= attempt.dateTaken %></h2>
 <a href="/attempts">Back to all attempts</a>
 <a href="/attempts/<%= attempt._id %>/edit">Edit</a>
+<form action="/attempts/<%= attempt.id %>?_method=DELETE" method="POST">
+  <button>Delete</button>
+</form>

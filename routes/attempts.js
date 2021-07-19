@@ -40,4 +40,10 @@ router.put("/:id", async (req, res) => {
   res.redirect(`/attempts/${attempt._id}`);
 });
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  await Attempt.findByIdAndDelete(id);
+  res.redirect("/attempts");
+});
+
 module.exports = router;
