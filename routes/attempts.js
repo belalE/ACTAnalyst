@@ -30,6 +30,7 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
   const attempt = await Attempt.findById(id).populate("test", "form");
+  console.log(attempt.dateTaken.toISOString().slice(0, 10));
   res.render("attempts/edit", { attempt });
 });
 

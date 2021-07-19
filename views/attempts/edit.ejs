@@ -9,7 +9,7 @@
       id="date"
       name="attempt[dateTaken]"
       placeholder="MM/DD/YYYY"
-      value="<%= attempt.date %>"
+      value="<%= attempt.dateTaken.toISOString().slice(0, 10) %>"
     />
     <label for="date">Date</label>
   </div>

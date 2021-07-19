@@ -19,7 +19,7 @@
       id="date"
       name="test[date]"
       placeholder="MM/DD/YYYY"
-      value="<%= test.date %>"
+      value="<%= test.date.toISOString().slice(0, 10) %>"
     />
     <label for="date">Date (mm/dd/yyyy)</label>
   </div>
