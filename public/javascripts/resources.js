@@ -6,12 +6,12 @@ counter.addEventListener("change", (e) => {
     value += 1;
     const resourceInput = `<div class='form-group resourceInput'>
     <label for="resource${value}Name">Name</label>
-    <input type="text" id="resource${value}Name" name="questionType[resources][${value}][name]" class="form-control mb-3">
+    <input type="text" id="resource${value}Name" name="questionType[resources][${value}][name]" class="form-control mb-3" required>
     <label for="resource${value}Link">Link</label>
-    <input type="text" id="resource${value}Link" name="questionType[resources][${value}][link]" class="form-control mb-3">
+    <input type="text" id="resource${value}Link" name="questionType[resources][${value}][link]" class="form-control mb-3" required>
     <label for="resource${value}Description">Description</label>
-    <input type="text" id="resource${value}Description" name="questionType[resources][${value}][description]" class="form-control mb-3">
-    <select name="questionType[resources][${value}][format]" id="resource${value}Format" class="form-select">
+    <input type="text" id="resource${value}Description" name="questionType[resources][${value}][description]" class="form-control mb-3" required>
+    <select name="questionType[resources][${value}][format]" id="resource${value}Format" class="form-select" required>
         <option value="" selected disabled>Select section</option>
         <option value="Video">Video</option>
         <option value="Article">Article</option>

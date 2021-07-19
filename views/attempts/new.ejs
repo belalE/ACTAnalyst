@@ -1,20 +1,8 @@
 <% layout('layouts/boilerplate') %>
 <!-- Log Page, bubble in answer sheet -->
 <h1>New Attempt</h1>
-<form action="/attempts/" method="POST">
-  <div class="mb-3"></div>
-  <div class="form-floating mb-3">
-    <input
-      class="form-control"
-      type="date"
-      id="date"
-      name="attempt[dateTaken]"
-      
-    />
-    <label for="date">Date Taken</label>
-  </div>
-  <div class="mb-3">
-    <select name="attempt[test]" class="form-select" id="testSelector">
+<div class="mb-3">
+    <select name="attempt[test]" class="form-select" id="testSelector" required>
       <option value="" <% if (!selectedTest) { %>
         selected <% } %> disabled>Select test
       </option>
@@ -24,6 +12,19 @@
       <% } %>
     </select>
   </div>
+<form action="/attempts/" method="POST" novalidate class="validated-form">
+  <div class="mb-3"></div>
+  <div class="form-floating mb-3">
+    <input
+      class="form-control"
+      type="date"
+      id="date"
+      name="attempt[dateTaken]"
+      required
+    />
+    <label for="date">Date Taken</label>
+  </div>
+  
   <% for(let i=1;i<76;i++) { %>
   <div class="row">
     <div class="col">
@@ -37,6 +38,7 @@
             name="attempt[answers][english][<%= i %>][choice]"
             value="A"
             checked
+            required
           />
           <label class="form-check-label" for="q<%= i %>A">A</label>
         </div>
@@ -46,7 +48,7 @@
             class="form-check-input"
             id="q<%= i %>B"
             name="attempt[answers][english][<%= i %>][choice]"
-            value="B"
+            value="B"required
           />
           <label class="form-check-label" for="q<%= i %>B">B</label>
         </div>
@@ -56,7 +58,7 @@
             class="form-check-input"
             id="q<%= i %>C"
             name="attempt[answers][english][<%= i %>][choice]"
-            value="C"
+            value="C"required
           />
           <label class="form-check-label" for="q<%= i %>C">C</label>
         </div>
@@ -66,7 +68,7 @@
             class="form-check-input"
             id="q<%= i %>D"
             name="attempt[answers][english][<%= i %>][choice]"
-            value="D"
+            value="D"required
           />
           <label class="form-check-label" for="q<%= i %>D">D</label>
         </div>
@@ -127,7 +129,7 @@
             id="q<%= i %>A"
             name="attempt[answers][math][<%= i %>][choice]"
             value="A"
-            checked
+            checked required
           />
           <label class="form-check-label" for="q<%= i %>A">A</label>
         </div>
@@ -137,7 +139,7 @@
             class="form-check-input"
             id="q<%= i %>B"
             name="attempt[answers][math][<%= i %>][choice]"
-            value="B"
+            value="B"required
           />
           <label class="form-check-label" for="q<%= i %>B">B</label>
         </div>
@@ -147,7 +149,7 @@
             class="form-check-input"
             id="q<%= i %>C"
             name="attempt[answers][math][<%= i %>][choice]"
-            value="C"
+            value="C"required
           />
           <label class="form-check-label" for="q<%= i %>C">C</label>
         </div>
@@ -157,9 +159,19 @@
             class="form-check-input"
             id="q<%= i %>D"
             name="attempt[answers][math][<%= i %>][choice]"
-            value="D"
+            value="D"required
           />
           <label class="form-check-label" for="q<%= i %>D">D</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="q<%= i %>E"
+            name="attempt[answers][math][<%= i %>][choice]"
+            value="E"required
+          />
+          <label class="form-check-label" for="q<%= i %>E">E</label>
         </div>
       </div>
     </div>
@@ -218,7 +230,7 @@
             id="q<%= i %>A"
             name="attempt[answers][reading][<%= i %>][choice]"
             value="A"
-            checked
+            checked required
           />
           <label class="form-check-label" for="q<%= i %>A">A</label>
         </div>
@@ -228,7 +240,7 @@
             class="form-check-input"
             id="q<%= i %>B"
             name="attempt[answers][reading][<%= i %>][choice]"
-            value="B"
+            value="B"required
           />
           <label class="form-check-label" for="q<%= i %>B">B</label>
         </div>
@@ -238,7 +250,7 @@
             class="form-check-input"
             id="q<%= i %>C"
             name="attempt[answers][reading][<%= i %>][choice]"
-            value="C"
+            value="C"required
           />
           <label class="form-check-label" for="q<%= i %>C">C</label>
         </div>
@@ -248,7 +260,7 @@
             class="form-check-input"
             id="q<%= i %>D"
             name="attempt[answers][reading][<%= i %>][choice]"
-            value="D"
+            value="D"required
           />
           <label class="form-check-label" for="q<%= i %>D">D</label>
         </div>
@@ -309,7 +321,7 @@
             id="q<%= i %>A"
             name="attempt[answers][science][<%= i %>][choice]"
             value="A"
-            checked
+            checked required
           />
           <label class="form-check-label" for="q<%= i %>A">A</label>
         </div>
@@ -319,7 +331,7 @@
             class="form-check-input"
             id="q<%= i %>B"
             name="attempt[answers][science][<%= i %>][choice]"
-            value="B"
+            value="B" required
           />
           <label class="form-check-label" for="q<%= i %>B">B</label>
         </div>
@@ -329,7 +341,7 @@
             class="form-check-input"
             id="q<%= i %>C"
             name="attempt[answers][science][<%= i %>][choice]"
-            value="C"
+            value="C" required
           />
           <label class="form-check-label" for="q<%= i %>C">C</label>
         </div>
@@ -339,7 +351,7 @@
             class="form-check-input"
             id="q<%= i %>D"
             name="attempt[answers][science][<%= i %>][choice]"
-            value="D"
+            value="D" required
           />
           <label class="form-check-label" for="q<%= i %>D">D</label>
         </div>

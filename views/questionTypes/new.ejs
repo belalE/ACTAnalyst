@@ -2,7 +2,7 @@
 
 <!-- Admin action, add question type -->
 <h1 class="mb-3 text-center">Add Question Type</h1>
-<form action="/types" method="POST">
+<form action="/types" method="POST" novalidate class="validated-form">
   <div class="mb-3">
     <label for="name">Name</label>
     <input
@@ -10,11 +10,17 @@
       class="form-control"
       id="name"
       name="questionType[name]"
+      required
     />
   </div>
   <div class="row mb-3">
     <div class="col">
-      <select name="questionType[section]" id="section" class="form-select">
+      <select
+        name="questionType[section]"
+        id="section"
+        class="form-select"
+        required
+      >
         <option value="" selected disabled>Select section</option>
         <option value="English">English</option>
         <option value="Math">Math</option>
@@ -23,7 +29,12 @@
       </select>
     </div>
     <div class="col">
-      <select name="questionType[general]" id="general" class="form-select">
+      <select
+        name="questionType[general]"
+        id="general"
+        class="form-select"
+        required
+      >
         <option value="" selected disabled>Select general topic</option>
         <% for (let topic of topicsArr) { %>
         <option value="<%= topic %>"><%= topic %></option>

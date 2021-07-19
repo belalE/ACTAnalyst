@@ -1,6 +1,11 @@
 <% layout('layouts/boilerplate') %>
 <h1>Edit Test</h1>
-<form action="/tests/<%= test._id %>?_method=PUT" method="POST">
+<form
+  action="/tests/<%= test._id %>?_method=PUT"
+  method="POST"
+  novalidate
+  class="validated-form"
+>
   <div class="form-floating mb-3">
     <input
       class="form-control"
@@ -9,6 +14,7 @@
       name="test[form]"
       placeholder="Form Number"
       value="<%= test.form %>"
+      required
     />
     <label for="form">Form</label>
   </div>
@@ -20,6 +26,7 @@
       name="test[date]"
       placeholder="MM/DD/YYYY"
       value="<%= test.date.toISOString().slice(0, 10) %>"
+      required
     />
     <label for="date">Date (mm/dd/yyyy)</label>
   </div>
@@ -31,25 +38,25 @@
     <span class="fw-bold">Q<%= i %></span>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      <input type="radio" class="form-check-input" required id="q<%= i %>A"
       name="questions[english][<%= i %>][answer]" value="A" <% if
       (test.questions.english[i - 1].answer == "A") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      <input type="radio" class="form-check-input" required id="q<%= i %>B"
       name="questions[english][<%= i %>][answer]" value="B" <% if
       (test.questions.english[i - 1].answer == "B") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      <input type="radio" class="form-check-input" required id="q<%= i %>C"
       name="questions[english][<%= i %>][answer]" value="C" <% if
       (test.questions.english[i - 1].answer === "C") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      <input type="radio" class="form-check-input" required id="q<%= i %>D"
       name="questions[english][<%= i %>][answer]" value="D" <% if
       (test.questions.english[i - 1].answer === "D") { %> checked <% }%> />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -85,31 +92,31 @@
   <div>
     <span class="fw-bold">Q<%= i %></span>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      <input type="radio" class="form-check-input" required id="q<%= i %>A"
       name="questions[math][<%= i %>][answer]" value="A" <% if
       (test.questions.math[i - 1].answer == "A") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      <input type="radio" class="form-check-input" required id="q<%= i %>B"
       name="questions[math][<%= i %>][answer]" value="B" <% if
       (test.questions.math[i - 1].answer == "B") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      <input type="radio" class="form-check-input" required id="q<%= i %>C"
       name="questions[math][<%= i %>][answer]" value="C" <% if
       (test.questions.math[i - 1].answer == "C") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      <input type="radio" class="form-check-input" required id="q<%= i %>D"
       name="questions[math][<%= i %>][answer]" value="D" <% if
       (test.questions.math[i - 1].answer == "D") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>D">D</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>E"
+      <input type="radio" class="form-check-input" required id="q<%= i %>E"
       name="questions[math][<%= i %>][answer]" value="E" <% if
       (test.questions.math[i - 1].answer == "E") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>E">E</label>
@@ -146,28 +153,28 @@
   <div>
     <span class="fw-bold">Q<%= i %></span>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      <input type="radio" class="form-check-input" required id="q<%= i %>A"
       name="questions[reading][<%= i %>][answer]" value="A" <% if
       (test.questions.reading[i - 1].answer == "A") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      <input type="radio" class="form-check-input" required id="q<%= i %>B"
       name="questions[reading][<%= i %>][answer]" value="B" <% if
       (test.questions.reading[i - 1].answer == "B") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      <input type="radio" class="form-check-input" required id="q<%= i %>C"
       name="questions[reading][<%= i %>][answer]" value="C" <% if
       (test.questions.reading[i - 1].answer == "C") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      <input type="radio" class="form-check-input" required id="q<%= i %>D"
       name="questions[reading][<%= i %>][answer]" value="D" <% if
       (test.questions.reading[i - 1].answer == "D") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -205,27 +212,27 @@
   <div>
     <span class="fw-bold">Q<%= i %></span>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>A"
+      <input type="radio" class="form-check-input" required id="q<%= i %>A"
       name="questions[science][<%= i %>][answer]" value="A" <% if
       (test.questions.science[i - 1].answer == "A") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>B"
+      <input type="radio" class="form-check-input" required id="q<%= i %>B"
       name="questions[science][<%= i %>][answer]" value="B" <% if
       (test.questions.science[i - 1].answer == "B") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>C"
+      <input type="radio" class="form-check-input" required id="q<%= i %>C"
       name="questions[science][<%= i %>][answer]" value="C" <% if
       (test.questions.science[i - 1].answer == "C") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
 
     <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" id="q<%= i %>D"
+      <input type="radio" class="form-check-input" required id="q<%= i %>D"
       name="questions[science][<%= i %>][answer]" value="D" <% if
       (test.questions.science[i - 1].answer == "D") { %> checked <% } %> />
       <label class="form-check-label" for="q<%= i %>D">D</label>
@@ -270,6 +277,7 @@
           id="scaleEng<%= i %>"
           class="form-control"
           name="test[scales][english][<%= i %>][scaled]"
+          required
           value="<%= test.scales.english[i - 1].scaled%>"
         />
       </div>
@@ -285,6 +293,7 @@
           id="scaleMath<%= i %>"
           class="form-control"
           name="test[scales][math][<%= i %>][scaled]"
+          required
           value="<%= test.scales.math[i - 1].scaled%>"
         />
       </div>
@@ -300,6 +309,7 @@
           id="scaleRead<%= i %>"
           class="form-control"
           name="test[scales][reading][<%= i %>][scaled]"
+          required
           value="<%= test.scales.reading[i - 1].scaled%>"
         />
       </div>
@@ -315,6 +325,7 @@
           id="scaleSci<%= i %>"
           class="form-control"
           name="test[scales][science][<%= i %>][scaled]"
+          required
           value="<%= test.scales.science[i - 1].scaled%>"
         />
       </div>

@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <!-- Admin page: add new test for users -->
 <h1>New Test</h1>
-<form action="/tests" method="POST">
+<form action="/tests" method="POST" novalidate class="validated-form">
   <div class="form-floating mb-3">
     <input
       class="form-control"
@@ -9,11 +9,18 @@
       id="form"
       name="test[form]"
       placeholder="Form Number"
+      required
     />
     <label for="form">Form</label>
   </div>
   <div class="form-floating mb-3">
-    <input class="form-control" type="date" id="date" name="test[date]" />
+    <input
+      class="form-control"
+      type="date"
+      id="date"
+      name="test[date]"
+      required
+    />
     <label for="date">Date</label>
   </div>
   <h2 class="text-center mb-3">Answers</h2>
@@ -31,6 +38,7 @@
         name="questions[english][<%= i %>][answer]"
         value="A"
         checked
+        required
       />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
@@ -41,6 +49,7 @@
         id="q<%= i %>B"
         name="questions[english][<%= i %>][answer]"
         value="B"
+        required
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
@@ -51,6 +60,7 @@
         id="q<%= i %>C"
         name="questions[english][<%= i %>][answer]"
         value="C"
+        required
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
@@ -61,6 +71,7 @@
         id="q<%= i %>D"
         name="questions[english][<%= i %>][answer]"
         value="D"
+        required
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
     </div>
@@ -79,7 +90,7 @@
     <select
       id="englishTypeSelector<%= i %>"
       class="form-select"
-      aria-label="Question Topic"
+      aria-label="Question Type"
       name="questions[english][<%= i %>][type]"
     >
       <option value="" selected disabled>Select question type</option>
@@ -102,6 +113,7 @@
         name="questions[math][<%= i %>][answer]"
         value="A"
         checked
+        required
       />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
@@ -112,6 +124,7 @@
         id="q<%= i %>B"
         name="questions[math][<%= i %>][answer]"
         value="B"
+        required
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
@@ -122,6 +135,7 @@
         id="q<%= i %>C"
         name="questions[math][<%= i %>][answer]"
         value="C"
+        required
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
@@ -132,6 +146,7 @@
         id="q<%= i %>D"
         name="questions[math][<%= i %>][answer]"
         value="D"
+        required
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
     </div>
@@ -142,6 +157,7 @@
         id="q<%= i %>E"
         name="questions[math][<%= i %>][answer]"
         value="E"
+        required
       />
       <label class="form-check-label" for="q<%= i %>E">E</label>
     </div>
@@ -160,7 +176,7 @@
     <select
       id="mathTypeSelector<%= i %>"
       class="form-select"
-      aria-label="Question Topic"
+      aria-label="Question Type"
       name="questions[math][<%= i %>][type]"
     >
       <option value="" selected disabled>Select question type</option>
@@ -185,6 +201,7 @@
         name="questions[reading][<%= i %>][answer]"
         value="A"
         checked
+        required
       />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
@@ -196,6 +213,7 @@
         id="q<%= i %>B"
         name="questions[reading][<%= i %>][answer]"
         value="B"
+        required
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
@@ -207,6 +225,7 @@
         id="q<%= i %>C"
         name="questions[reading][<%= i %>][answer]"
         value="C"
+        required
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
@@ -218,6 +237,7 @@
         id="q<%= i %>D"
         name="questions[reading][<%= i %>][answer]"
         value="D"
+        required
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
     </div>
@@ -237,7 +257,7 @@
     <select
       id="readingTypeSelector<%= i %>"
       class="form-select"
-      aria-label="Question Topic"
+      aria-label="Question Type"
       name="questions[reading][<%= i %>][type]"
     >
       <option value="" selected disabled>Select question type</option>
@@ -261,6 +281,7 @@
         name="questions[science][<%= i %>][answer]"
         value="A"
         checked
+        required
       />
       <label class="form-check-label" for="q<%= i %>A">A</label>
     </div>
@@ -271,6 +292,7 @@
         id="q<%= i %>B"
         name="questions[science][<%= i %>][answer]"
         value="B"
+        required
       />
       <label class="form-check-label" for="q<%= i %>B">B</label>
     </div>
@@ -282,6 +304,7 @@
         id="q<%= i %>C"
         name="questions[science][<%= i %>][answer]"
         value="C"
+        required
       />
       <label class="form-check-label" for="q<%= i %>C">C</label>
     </div>
@@ -293,6 +316,7 @@
         id="q<%= i %>D"
         name="questions[science][<%= i %>][answer]"
         value="D"
+        required
       />
       <label class="form-check-label" for="q<%= i %>D">D</label>
     </div>
@@ -312,7 +336,7 @@
     <select
       id="scienceTypeSelector<%= i %>"
       class="form-select"
-      aria-label="Question Topic"
+      aria-label="Question Type"
       name="questions[science][<%= i %>][type]"
     >
       <option value="" selected disabled>Select question type</option>
@@ -337,6 +361,7 @@
           class="form-control"
           name="test[scales][english][<%= i %>][scaled]"
           value="1"
+          required
         />
       </div>
       <% } %>
@@ -352,6 +377,7 @@
           class="form-control"
           name="test[scales][math][<%= i %>][scaled]"
           value="1"
+          required
         />
       </div>
       <% } %>
@@ -367,6 +393,7 @@
           class="form-control"
           name="test[scales][reading][<%= i %>][scaled]"
           value="1"
+          required
         />
       </div>
       <% } %>
@@ -382,6 +409,7 @@
           class="form-control"
           name="test[scales][science][<%= i %>][scaled]"
           value="1"
+          required
         />
       </div>
       <% } %>
