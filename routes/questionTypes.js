@@ -1,4 +1,5 @@
 const express = require("express");
+const { validateQuestionType } = require("../middleware");
 const router = express.Router();
 const { QuestionType, topics } = require("../models/questionType");
 const catchAsync = require("../utils/catchAsync");
@@ -32,6 +33,7 @@ router.get(
 
 router.post(
   "/",
+  validateQuestionType,
   catchAsync(async (req, res) => {
     const questionType = new QuestionType(req.body.questionType);
     await questionType.save();
@@ -56,6 +58,7 @@ router.get(
 
 router.put(
   "/:id",
+  validateQuestionType,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const type = await QuestionType.findByIdAndUpdate(id, {

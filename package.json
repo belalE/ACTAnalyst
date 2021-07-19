@@ -15,6 +15,7 @@
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.1",
+    "joi-oid": "^1.1.2",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.13",
     "mongoose-type-url": "^2.1.0",

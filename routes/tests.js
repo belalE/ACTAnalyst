@@ -4,6 +4,7 @@ const Test = require("../models/test");
 const Question = require("../models/question");
 const { QuestionType, topics } = require("../models/questionType");
 const catchAsync = require("../utils/catchAsync");
+const { validateTest } = require("../middleware");
 
 router.get("/", async (req, res) => {
   const tests = await Test.find({});
@@ -17,6 +18,7 @@ router.get("/new", async (req, res) => {
 
 router.post(
   "/",
+  validateTest,
   catchAsync(async (req, res, next) => {
     const test = new Test(req.body.test);
     for (section in req.body.questions) {
@@ -65,6 +67,7 @@ router.get(
 
 router.put(
   "/:id",
+  validateTest,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const test = await Test.findByIdAndUpdate(id, req.body.test);

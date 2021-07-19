@@ -3,6 +3,7 @@ const router = express.Router();
 const Test = require("../models/test");
 const Attempt = require("../models/attempt");
 const catchAsync = require("../utils/catchAsync");
+const { validateAttempt } = require("../middleware");
 
 router.get(
   "/",
@@ -23,6 +24,7 @@ router.get(
 
 router.post(
   "/",
+  validateAttempt,
   catchAsync(async (req, res) => {
     const attempt = new Attempt(req.body.attempt);
     await attempt.save();
@@ -51,6 +53,7 @@ router.get(
 
 router.put(
   "/:id",
+  validateAttempt,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findByIdAndUpdate(id, req.body.attempt);
