@@ -4,6 +4,7 @@ const Test = require("../models/test");
 const Attempt = require("../models/attempt");
 const catchAsync = require("../utils/catchAsync");
 const { validateAttempt } = require("../middleware");
+const { isLoggedIn } = require("../middleware");
 
 router.get(
   "/",
@@ -15,6 +16,7 @@ router.get(
 
 router.get(
   "/new",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const tests = await Test.find({});
     const selectedTest = req.query.test;
@@ -24,6 +26,7 @@ router.get(
 
 router.post(
   "/",
+  isLoggedIn,
   validateAttempt,
   catchAsync(async (req, res) => {
     const attempt = new Attempt(req.body.attempt);
@@ -48,6 +51,7 @@ router.get(
 
 router.get(
   "/:id/edit",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
@@ -62,6 +66,7 @@ router.get(
 
 router.put(
   "/:id",
+  isLoggedIn,
   validateAttempt,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -75,6 +80,7 @@ router.put(
 
 router.delete(
   "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Attempt.findByIdAndDelete(id);
