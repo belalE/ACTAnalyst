@@ -1,7 +1,8 @@
 <% layout('layouts/boilerplate') %>
 <!-- Log Page, bubble in answer sheet -->
 <h1>New Attempt</h1>
-<div class="mb-3">
+<form action="/attempts/" method="POST" novalidate class="validated-form">
+  <div class="mb-3">
     <select name="attempt[test]" class="form-select" id="testSelector" required>
       <option value="" <% if (!selectedTest) { %>
         selected <% } %> disabled>Select test
@@ -12,8 +13,6 @@
       <% } %>
     </select>
   </div>
-<form action="/attempts/" method="POST" novalidate class="validated-form">
-  <div class="mb-3"></div>
   <div class="form-floating mb-3">
     <input
       class="form-control"

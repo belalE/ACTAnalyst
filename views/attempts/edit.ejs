@@ -7,7 +7,19 @@
   novalidate
   class="validated-form"
 >
-  <h3 class="text-muted">Form: <% attempt.test.form %></h3>
+  <h3 class="text-muted">Form: <%= attempt.test.form %></h3>
+  <div class="mb-3">
+    <select
+      name="attempt[test]"
+      class="form-select d-none"
+      id="testSelector"
+      required
+    >
+      <option selected value="<%= attempt.test._id %>">
+        <%= attempt.test.form %>
+      </option>
+    </select>
+  </div>
   <div class="form-floating mb-3">
     <input
       class="form-control"

@@ -38,6 +38,7 @@ router.post(
       }
     }
     await test.save();
+    req.flash("success", "Successfully added test!");
     res.redirect(`/tests/${test._id}`);
   })
 );
@@ -47,6 +48,10 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const test = await Test.findById(id);
+    if (!test) {
+      req.flash("error", "Cannot find that type!");
+      return res.redirect("/tests");
+    }
     res.render("tests/show", { test });
   })
 );
@@ -60,6 +65,10 @@ router.get(
       .populate("questions.math")
       .populate("questions.reading")
       .populate("questions.science");
+    if (!test) {
+      req.flash("error", "Cannot find that test!");
+      return res.redirect("/tests");
+    }
     const types = await QuestionType.find({});
     res.render("tests/edit", { test, topics, types });
   })
@@ -88,6 +97,7 @@ router.put(
       }
     }
     await test.save();
+    req.flash("success", "Successfully updated test!");
     res.redirect(`/tests/${test._id}`);
   })
 );
@@ -97,6 +107,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Test.findByIdAndDelete(id);
+    req.flash("success", "Successfully deleted test!");
     res.redirect("/tests");
   })
 );

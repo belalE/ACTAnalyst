@@ -28,6 +28,7 @@ router.post(
   catchAsync(async (req, res) => {
     const attempt = new Attempt(req.body.attempt);
     await attempt.save();
+    req.flash("success", "Successfully made a new attempt!");
     res.redirect(`/attempts/${attempt._id}`);
   })
 );
@@ -37,6 +38,10 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
+    if (!attempt) {
+      req.flash("error", "Cannot find that attempt!");
+      return res.redirect("/attempts");
+    }
     res.render("attempts/show", { attempt });
   })
 );
@@ -46,6 +51,10 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
+    if (!attempt) {
+      req.flash("error", "Cannot find that attempt!");
+      return res.redirect("/attempts");
+    }
     console.log(attempt.dateTaken.toISOString().slice(0, 10));
     res.render("attempts/edit", { attempt });
   })
@@ -58,6 +67,8 @@ router.put(
     const { id } = req.params;
     const attempt = await Attempt.findByIdAndUpdate(id, req.body.attempt);
     await attempt.save();
+    req.flash("success", "Successfully updated attempt!");
+
     res.redirect(`/attempts/${attempt._id}`);
   })
 );
@@ -67,6 +78,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Attempt.findByIdAndDelete(id);
+    req.flash("success", "Successfully deleted attempt!");
     res.redirect("/attempts");
   })
 );

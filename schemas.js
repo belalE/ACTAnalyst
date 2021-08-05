@@ -66,50 +66,52 @@ module.exports.testSchema = Joi.object({
 }).required();
 
 module.exports.attemptSchema = Joi.object({
-  test: Joi.objectId().required(),
-  dateTaken: Joi.date().required(),
-  answers: Joi.object({
-    english: Joi.array()
-      .required()
-      .items(
-        Joi.object({
-          choice: Joi.string().valid("A", "B", "C", "D", "E"),
-          tags: Joi.array().items(
-            Joi.string().valid("skip", "noTime", "guess", "revised")
-          ),
-        }).required()
-      ),
-    math: Joi.array()
-      .required()
-      .items(
-        Joi.object({
-          choice: Joi.string().valid("A", "B", "C", "D", "E"),
-          tags: Joi.array().items(
-            Joi.string().valid("skip", "noTime", "guess", "revised")
-          ),
-        }).required()
-      ),
-    reading: Joi.array()
-      .required()
-      .items(
-        Joi.object({
-          choice: Joi.string().valid("A", "B", "C", "D", "E"),
-          tags: Joi.array().items(
-            Joi.string().valid("skip", "noTime", "guess", "revised")
-          ),
-        }).required()
-      ),
-    science: Joi.array()
-      .required()
-      .items(
-        Joi.object({
-          choice: Joi.string().valid("A", "B", "C", "D", "E"),
-          tags: Joi.array().items(
-            Joi.string().valid("skip", "noTime", "guess", "revised")
-          ),
-        }).required()
-      ),
-  }).required(),
+  attempt: Joi.object({
+    test: Joi.objectId().required(),
+    dateTaken: Joi.date().required(),
+    answers: Joi.object({
+      english: Joi.array()
+        .required()
+        .items(
+          Joi.object({
+            choice: Joi.string().valid("A", "B", "C", "D", "E"),
+            tags: Joi.array().items(
+              Joi.string().valid("skip", "noTime", "guess", "revised")
+            ),
+          }).required()
+        ),
+      math: Joi.array()
+        .required()
+        .items(
+          Joi.object({
+            choice: Joi.string().valid("A", "B", "C", "D", "E"),
+            tags: Joi.array().items(
+              Joi.string().valid("skip", "noTime", "guess", "revised")
+            ),
+          }).required()
+        ),
+      reading: Joi.array()
+        .required()
+        .items(
+          Joi.object({
+            choice: Joi.string().valid("A", "B", "C", "D", "E"),
+            tags: Joi.array().items(
+              Joi.string().valid("skip", "noTime", "guess", "revised")
+            ),
+          }).required()
+        ),
+      science: Joi.array()
+        .required()
+        .items(
+          Joi.object({
+            choice: Joi.string().valid("A", "B", "C", "D", "E"),
+            tags: Joi.array().items(
+              Joi.string().valid("skip", "noTime", "guess", "revised")
+            ),
+          }).required()
+        ),
+    }).required(),
+  }),
 }).required();
 
 module.exports.questionTypeSchema = Joi.object({

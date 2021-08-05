@@ -19,6 +19,8 @@ module.exports.validateTest = (req, res, next) => {
 };
 
 module.exports.validateAttempt = (req, res, next) => {
+  // console.log(req.body);
+  console.log(req.body.attempt);
   const { error } = attemptSchema.validate(req.body, { convert: true });
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
