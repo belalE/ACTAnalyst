@@ -30,9 +30,12 @@
   </div>
   <% for(let i=1;i<76;i++) { %>
   <div class="row">
-    <div class="<% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <span class="fw-bold">Q<%= i %></span>
+    </div>
+    <div class=" col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
-        <span class="fw-bold">Q<%= i %></span>
+        
         <div class="form-check form-check-inline">
           <input
             type="radio"
@@ -121,9 +124,11 @@
   </div>
   <% for(let i=1;i<61;i++) { %>
   <div class="row">
-    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <span class="fw-bold">Q<%= i %></span>
+    </div>
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
-        <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
             type="radio"
@@ -221,9 +226,11 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
-      <div class="d-inline">
+    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
         <span class="fw-bold">Q<%= i %></span>
+    </div>
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <div class="d-inline">
         <div class="form-check form-check-inline">
           <input
             type="radio"
@@ -311,9 +318,11 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <span class="fw-bold">Q<%= i %></span>
+    </div>
+    <div class=" col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
-        <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
             type="radio"
