@@ -30,6 +30,8 @@ module.exports.showAttempt = async (req, res) => {
     req.flash("error", "Cannot find that attempt!");
     return res.redirect("/attempts");
   }
+  console.log(await attempt.scaledScores);
+
   res.render("attempts/show", { attempt });
 };
 
