@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     unique: true,
   },
   username: String,
+  isAdmin: Boolean,
   attempts: [
     {
       type: Schema.Types.ObjectId,

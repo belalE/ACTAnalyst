@@ -58,6 +58,9 @@ module.exports.isOwner = async (req, res, next) => {
 };
 
 module.exports.isAdmin = async (req, res, next) => {
-  console.log(req.user);
+  if (req.user.is_admin === 0) {
+    req.flash("error", "You do not have permission to do that!");
+    return res.redirect(`/tests`);
+  }
   next();
 };
