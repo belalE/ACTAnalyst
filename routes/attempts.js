@@ -8,6 +8,7 @@ const { isLoggedIn } = require("../middleware");
 
 router.get(
   "/",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const attempts = await Attempt.find({}).populate("test", "form");
     res.render("attempts/index", { attempts });
@@ -38,6 +39,7 @@ router.post(
 
 router.get(
   "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
@@ -59,7 +61,6 @@ router.get(
       req.flash("error", "Cannot find that attempt!");
       return res.redirect("/attempts");
     }
-    console.log(attempt.dateTaken.toISOString().slice(0, 10));
     res.render("attempts/edit", { attempt });
   })
 );

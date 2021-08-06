@@ -19,8 +19,6 @@ module.exports.validateTest = (req, res, next) => {
 };
 
 module.exports.validateAttempt = (req, res, next) => {
-  // console.log(req.body);
-  console.log(req.body.attempt);
   const { error } = attemptSchema.validate(req.body, { convert: true });
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
@@ -41,7 +39,6 @@ module.exports.validateQuestionType = (req, res, next) => {
 };
 
 module.exports.isLoggedIn = (req, res, next) => {
-  console.log("REQ.USER: ", req.user);
   if (!req.isAuthenticated()) {
     req.session.returnTo = req.originalUrl;
     req.flash("error", "You must be signed in first!");

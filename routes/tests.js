@@ -4,20 +4,21 @@ const Test = require("../models/test");
 const Question = require("../models/question");
 const { QuestionType, topics } = require("../models/questionType");
 const catchAsync = require("../utils/catchAsync");
-const { validateTest } = require("../middleware");
+const { validateTest, isLoggedIn } = require("../middleware");
 
 router.get("/", async (req, res) => {
   const tests = await Test.find({});
   res.render("tests/index", { tests });
 });
 
-router.get("/new", async (req, res) => {
+router.get("/new", isLoggedIn, async (req, res) => {
   const types = await QuestionType.find({});
   res.render("tests/new", { topics, types });
 });
 
 router.post(
   "/",
+  isLoggedIn,
   validateTest,
   catchAsync(async (req, res, next) => {
     const test = new Test(req.body.test);
@@ -58,6 +59,7 @@ router.get(
 
 router.get(
   "/:id/edit",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const test = await Test.findById(id)
@@ -76,6 +78,7 @@ router.get(
 
 router.put(
   "/:id",
+  isLoggedIn,
   validateTest,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -104,6 +107,7 @@ router.put(
 
 router.delete(
   "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Test.findByIdAndDelete(id);
