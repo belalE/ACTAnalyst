@@ -1,5 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <!-- Log Page, bubble in answer sheet -->
+
+<link rel="stylesheet" href="/stylesheets/new-attempt.css">
 <h1>New Attempt</h1>
 <form action="/attempts/" method="POST" novalidate class="validated-form">
   <div class="mb-3">
@@ -23,7 +25,9 @@
     />
     <label for="date">Date Taken</label>
   </div>
-  
+  <div class="mx-3">
+    <h2>English</h2>
+  </div>
   <% for(let i=1;i<76;i++) { %>
   <div class="row">
     <div class="col">
@@ -82,7 +86,7 @@
           name="attempt[answers][english][<%= i %>][tags][0]"
           value="skip"
         />
-        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+        <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
       </div>
       <div class="form-check form-check-inline">
         <input
@@ -93,21 +97,21 @@
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
-          >Guess</label
+          ><img src="/assets/guess.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
         %>" name="attempt[answers][english][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="timeCheckbox<%= i %>"
-          >No Time</label
+          ><img src="/assets/late.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
         %>" name="attempt[answers][english][<%= i %>][tags][3]" value="revised" />
         <label class="form-check-label" for="reviseCheckbox<%= i %>"
-          >Revised</label
+          ><img src="/assets/revise.png" alt=""></label
         >
       </div>
     </div>
@@ -183,7 +187,7 @@
           name="attempt[answers][math][<%= i %>][tags][0]"
           value="skip"
         />
-        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+        <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
       </div>
       <div class="form-check form-check-inline">
         <input
@@ -194,21 +198,21 @@
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
-          >Guess</label
+          ><img src="/assets/guess.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
         %>" name="attempt[answers][math][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="timeCheckbox<%= i %>"
-          >No Time</label
+          ><img src="/assets/late.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
         %>" name="attempt[answers][math][<%= i %>][tags][3]" value="revised" />
         <label class="form-check-label" for="reviseCheckbox<%= i %>"
-          >Revised</label
+          ><img src="/assets/revise.png" alt=""></label
         >
       </div>
     </div>
@@ -274,7 +278,7 @@
           name="attempt[answers][reading][<%= i %>][tags][0]"
           value="skip"
         />
-        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+        <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
       </div>
       <div class="form-check form-check-inline">
         <input
@@ -285,21 +289,21 @@
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
-          >Guess</label
+          ><img src="/assets/guess.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
         %>" name="attempt[answers][reading][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="timeCheckbox<%= i %>"
-          >No Time</label
+          ><img src="/assets/late.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
         %>" name="attempt[answers][reading][<%= i %>][tags][3]" value="revised" />
         <label class="form-check-label" for="reviseCheckbox<%= i %>"
-          >Revised</label
+          ><img src="/assets/revise.png" alt=""></label
         >
       </div>
     </div>
@@ -365,7 +369,7 @@
           name="attempt[answers][science][<%= i %>][tags][0]"
           value="skip"
         />
-        <label class="form-check-label" for="skipCheckbox<%= i %>">Skip</label>
+        <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
       </div>
       <div class="form-check form-check-inline">
         <input
@@ -376,21 +380,21 @@
           value="guess"
         />
         <label class="form-check-label" for="guessCheckbox<%= i %>"
-          >Guess</label
+          ><img src="/assets/guess.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
         %>" name="attempt[answers][science][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="timeCheckbox<%= i %>"
-          >No Time</label
+          ><img src="/assets/late.png" alt=""></label
         >
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
         %>" name="attempt[answers][science][<%= i %>][tags][3]" value="revised" />
         <label class="form-check-label" for="reviseCheckbox<%= i %>"
-          >Revised</label
+          ><img src="/assets/revise.png" alt=""></label
         >
       </div>
     </div>
