@@ -1,6 +1,8 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- User page, see question types for resources -->
+
+<link rel="stylesheet" href="/stylesheets/styles.css" />
 <a class="btn btn-sm btn-outline-secondary mb-3" href="/types"
   >&laquo; All Question Types</a
 >
@@ -12,14 +14,22 @@
   <% for (let question of questions) { %>
   <li>
     <!-- TODO: setup questions routes to add video for each vid -->
-    <a href=""><%= question.test.form %> - <%= question.index %> </a>
+    <a href="">Test <%= question.test.form %> - Q<%= question.index %> </a>
   </li>
   <% } %>
 </ul>
 <h3>Resources</h3>
 <ul>
   <% for (let resource of type.resources) { %>
-  <li><a href="<%= resource.link %> "><%= resource.name %></a></li>
+  <li>
+    <span
+      ><img
+        class="thumbnail"
+        src="/assets/<%= resource.format.toLowerCase() %>.png"
+        alt=""
+    /></span>
+    <a href="<%= resource.link %>"> <%= resource.name %></a>
+  </li>
   <% } %>
 </ul>
 <% if (currentUser && currentUser.isAdmin) { %>

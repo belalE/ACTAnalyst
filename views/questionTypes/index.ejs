@@ -51,7 +51,7 @@
                   <% for(let type of types.filter((type) => type.section == "English" && type.general ==
                   topics.english[i])) { %>
                   <li>
-                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                    <a class="text-dark" href="/types/<%= type._id %>"><%= type.name %> </a>
                   </li>
                   <% } %>
                 </ul>
@@ -109,7 +109,7 @@
                   <% for(let type of types.filter((type) => type.section == "Math" && type.general ==
                   topics.math[i])) { %>
                   <li>
-                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                    <a class="text-dark" href="/types/<%= type._id %>"><%= type.name %> </a>
                   </li>
                   <% } %>
                 </ul>
@@ -168,7 +168,7 @@
                   <% for(let type of types.filter((type) => type.section == "Reading" && type.general ==
                   topics.reading[i])) { %>
                   <li>
-                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                    <a class="text-dark" href="/types/<%= type._id %>"><%= type.name %> </a>
                   </li>
                   <% } %>
                 </ul>
@@ -227,7 +227,7 @@
                   <% for(let type of types.filter((type) => type.section == "Science" && type.general ==
                   topics.science[i])) { %>
                   <li>
-                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                    <a class="text-dark" href="/types/<%= type._id %>"><%= type.name %> </a>
                   </li>
                   <% } %>
                 </ul>
