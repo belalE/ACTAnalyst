@@ -27,7 +27,7 @@
 
   <h3>English</h3>
   <% for(let i=1;i<76;i++) { %>
-  <div>
+  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
     <span class="fw-bold">Q<%= i %></span>
 
     <div class="form-check form-check-inline">
@@ -103,7 +103,7 @@
 
   <h3>Math</h3>
   <% for(let i=1;i<61;i++) { %>
-  <div>
+  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
     <span class="fw-bold">Q<%= i %></span>
     <div class="form-check form-check-inline">
       <input
@@ -190,7 +190,7 @@
 
   <h3>Reading</h3>
   <% for(let i=1;i<41;i++) { %>
-  <div>
+  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
     <span class="fw-bold">Q<%= i %></span>
 
     <div class="form-check form-check-inline">
@@ -271,7 +271,7 @@
 
   <h3>Science</h3>
   <% for(let i=1;i<41;i++) { %>
-  <div>
+  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
     <span class="fw-bold">Q<%= i %></span>
     <div class="form-check form-check-inline">
       <input
@@ -352,7 +352,7 @@
   <div class="row">
     <div class="col">
       <% for(let i =0;i<76;i++) {%>
-      <div>
+      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
         <label for="scaleEng<%= i %>"><%= i %>/75</label>
         <input
           type="text"
@@ -368,7 +368,7 @@
     </div>
     <div class="col">
       <% for(let i =0;i<61;i++) {%>
-      <div>
+      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
         <label for="scaleMath<%= i %>"><%= i %>/60</label>
         <input
           type="text"
@@ -384,7 +384,7 @@
     </div>
     <div class="col">
       <% for(let i =0;i<41;i++) {%>
-      <div>
+      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
         <label for="scaleRead<%= i %>"><%= i %>/40</label>
         <input
           type="text"
@@ -400,7 +400,7 @@
     </div>
     <div class="col">
       <% for(let i =0;i<41;i++) {%>
-      <div>
+      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
         <label for="scaleSci<%= i %>"><%= i %>/40</label>
         <input
           type="text"

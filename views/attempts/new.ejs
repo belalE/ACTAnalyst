@@ -30,7 +30,7 @@
   </div>
   <% for(let i=1;i<76;i++) { %>
   <div class="row">
-    <div class="col">
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div>
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
@@ -122,7 +122,7 @@
   </div>
   <% for(let i=1;i<61;i++) { %>
   <div class="row">
-    <div class="col">
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div>
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
@@ -201,7 +201,7 @@
           ><img src="/assets/guess.png" alt=""></label
         >
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check form-check-inline ">
         <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
         %>" name="attempt[answers][math][<%= i %>][tags][2]" value="noTime" />
         <label class="form-check-label" for="timeCheckbox<%= i %>"
@@ -223,7 +223,7 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class="col">
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div>
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
@@ -314,7 +314,7 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class="col">
+    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div>
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
