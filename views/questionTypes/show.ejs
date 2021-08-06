@@ -1,12 +1,15 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- User page, see question types for resources -->
+<a class="btn btn-sm btn-outline-secondary mb-3" href="/types"
+  >&laquo; All Question Types</a
+>
 <h1><%= type.name %></h1>
-<h2><%= type.general %></h2>
-<h2><%= type.section %></h2>
+<h2 class="text-muted"><%= type.section %> - <%= type.general %></h2>
 <p><%= type.description %></p>
 <h3>Questions</h3>
 <ul>
+  <!-- TODO: remove questions from type model + replace with query -->
   <% for (let question of type.questions) { %>
   <li><a href="/questions/<%= question %>"><%= question.name %></a></li>
   <% } %>
@@ -17,8 +20,13 @@
   <li><a href="<%= resource.link %> "><%= resource.name %></a></li>
   <% } %>
 </ul>
-<a href="/types/<%= type._id %>/edit">Edit</a>
-<a href="/types">Back to All Question Types</a>
-<form action="/types/<%= type._id %>/?_method=DELETE" method="POST">
+<% if (currentUser && currentUser.isAdmin) { %>
+<a class="btn btn-sm btn-success" href="/types/<%= type._id %>/edit">Edit</a>
+<form
+  class="d-inline"
+  action="/types/<%= type._id %>/?_method=DELETE"
+  method="POST"
+>
   <button class="btn btn-sm btn-danger">Delete</button>
 </form>
+<% } %>

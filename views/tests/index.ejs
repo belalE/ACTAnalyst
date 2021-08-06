@@ -1,7 +1,9 @@
 <% layout('layouts/boilerplate') %>
 <!-- User page: see all tests to choose for test -->
 <h1>All Tests</h1>
-<div><a href="/tests/new">Add Test</a></div>
+<% if (currentUser && currentUser.isAdmin) { %>
+<div><a class="btn btn-success btn-sm mb-3" href="/tests/new">Add Test</a></div>
+<% } %>
 <ul>
   <% for(test of tests) { %>
   <li><a href="/tests/<%= test._id %>"><%= test.form %> </a></li>

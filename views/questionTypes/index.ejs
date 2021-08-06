@@ -1,8 +1,10 @@
 <% layout('layouts/boilerplate') %>
 <!-- User: see page for all question types -->
 <h1>Question Types</h1>
-<a href="/types/new">Add Question Type</a>
-<div class="accordion " id="parentAccordion">
+<% if (currentUser && currentUser.isAdmin) { %> 
+  <a class="btn btn-success btn-sm mb-3" href="/types/new">Add Question Type</a>
+<% } %> 
+<div class="accordion" id="parentAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button
@@ -239,3 +241,4 @@
     </div>
   </div>
 </div>
+

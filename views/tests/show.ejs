@@ -1,13 +1,25 @@
 <% layout('layouts/boilerplate') %>
 <!-- User: If taken, show all questions; else, show log button -->
+<a class="btn btn-sm btn-outline-secondary mb-3" href="/tests"
+  >&laquo; All Tests</a
+>
 <h1><%= test.form %></h1>
 <p>Date: <%= test.date %></p>
-<p>
-    <form action="/tests/<%= test.id %>?_method=DELETE" method="POST">
-        <button>Delete</button>
-    </form>
-</p>
-<a href="/tests/<%=test._id%>/edit">Edit</a>
-<a href="/attempts/new?test=<%= test._id %>">Make New Attempt</a>
-<a href="/tests">All Tests</a>
+<% if (currentUser && currentUser.isAdmin) { %>
+<form
+  class="d-inline"
+  action="/tests/<%= test.id %>?_method=DELETE"
+  method="POST"
+>
+  <button class="btn btn-danger mb-2">Delete</button>
+</form>
 
+<a class="btn btn-success mb-2" href="/tests/<%=test._id%>/edit">Edit</a>
+<br />
+<% }%>
+<a class="btn btn-primary" href="/attempts/new?test=<%= test._id %>"
+  >Make New Attempt</a
+>
+
+<!-- TODO: Graph of distribution of question types  -->
+<!-- TODO: Link to attempts, if done -->
