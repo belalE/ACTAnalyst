@@ -1,5 +1,6 @@
 const Test = require("../models/test");
 const Question = require("../models/question");
+const { QuestionType, topics } = require("../models/questionType");
 
 module.exports.index = async (req, res) => {
   const tests = await Test.find({});
