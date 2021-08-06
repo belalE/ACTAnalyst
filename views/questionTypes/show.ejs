@@ -9,9 +9,11 @@
 <p><%= type.description %></p>
 <h3>Questions</h3>
 <ul>
-  <!-- TODO: remove questions from type model + replace with query -->
-  <% for (let question of type.questions) { %>
-  <li><a href="/questions/<%= question %>"><%= question.name %></a></li>
+  <% for (let question of questions) { %>
+  <li>
+    <!-- TODO: setup questions routes to add video for each vid -->
+    <a href=""><%= question.test.form %> - <%= question.index %> </a>
+  </li>
   <% } %>
 </ul>
 <h3>Resources</h3>

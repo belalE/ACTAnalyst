@@ -24,12 +24,6 @@ const readingTopics = [
 const scienceTopics = ["Detail", "Compare", "Purpose", "Inference"]; // Might be changed
 
 const QuestionTypeSchema = new Schema({
-  questions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Question",
-    },
-  ],
   name: String,
   general: {
     type: String,

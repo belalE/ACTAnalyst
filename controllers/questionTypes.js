@@ -1,4 +1,5 @@
 const { QuestionType, topics } = require("../models/questionType");
+const Question = require("../models/question");
 
 module.exports.index = async (req, res) => {
   const types = await QuestionType.find({});
@@ -17,11 +18,12 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.showQuestionType = async (req, res) => {
   const { id } = req.params;
   const type = await QuestionType.findById(id).populate("questions");
+  const questions = await Question.find({ type: id }).populate("test", "form");
   if (!type) {
     req.flash("error", "Cannot find that type!");
     return res.redirect("/types");
   }
-  res.render("questionTypes/show", { type });
+  res.render("questionTypes/show", { type, questions });
 };
 module.exports.createQuestionType = async (req, res) => {
   const questionType = new QuestionType(req.body.questionType);

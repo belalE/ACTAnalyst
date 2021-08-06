@@ -1,10 +1,117 @@
 <% layout('layouts/boilerplate') %>
 <!-- Show score, graphs + analysis for attempt -->
+
+<link rel="stylesheet" href="/stylesheets/attemptPage.css" />
+<a class="btn btn-sm btn-outline-secondary mb-3" href="/attempts"
+  >&laquo; All Attempts</a
+>
 <h1>Attempt: <%= attempt.test.form %></h1>
-<h2 class="text-muted">Date: <%= attempt.dateTaken %></h2>
-<!-- <p>Raw Score: <%= attempt.rawScores %></p> -->
-<a href="/attempts">Back to all attempts</a>
-<a href="/attempts/<%= attempt._id %>/edit">Edit</a>
-<form action="/attempts/<%= attempt.id %>?_method=DELETE" method="POST">
-  <button>Delete</button>
-</form>
+<h2 class="text-muted mb-3">
+  <b>Date:</b> <%= attempt.dateTaken.toISOString().slice(0, 10)%>
+</h2>
+<div class="text-center">
+  <div class="row">
+    <div class="col">English</div>
+    <div class="col">Math</div>
+    <div class="col">Reading</div>
+    <div class="col">Science</div>
+  </div>
+  <div class="row display-1">
+    <div class="col"><%= scaled.english %></div>
+    <div class="col"><%= scaled.math %></div>
+    <div class="col"><%= scaled.reading %></div>
+    <div class="col"><%= scaled.science %></div>
+  </div>
+  <div class="row display-4">
+    <div class="col"><%= raw.english %></div>
+    <div class="col"><%= raw.math %></div>
+    <div class="col"><%= raw.reading %></div>
+    <div class="col"><%= raw.science %></div>
+  </div>
+  <hr />
+  <div class="row display-6">
+    <div class="col">
+      <%= attempt.tagStats.englishStats.skips %>
+      <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.mathStats.skips %>
+      <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.readingStats.skips %>
+      <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.scienceStats.skips %>
+      <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
+    </div>
+  </div>
+  <div class="row display-6">
+    <div class="col">
+      <%= attempt.tagStats.englishStats.guesses %>
+      <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.mathStats.guesses %>
+      <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.readingStats.guesses %>
+      <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.scienceStats.guesses %>
+      <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
+    </div>
+  </div>
+  <div class="row display-6">
+    <div class="col">
+      <%= attempt.tagStats.englishStats.times %>
+      <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.mathStats.times %>
+      <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.readingStats.times %>
+      <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.scienceStats.times %>
+      <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
+    </div>
+  </div>
+  <div class="row display-6">
+    <div class="col">
+      <%= attempt.tagStats.englishStats.revises %>
+      <span><img class="thumbnail" src="/assets/revise.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.mathStats.revises %>
+      <span><img class="thumbnail" src="/assets/revise.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.readingStats.revises %>
+      <span><img class="thumbnail" src="/assets/revise.png" alt="" /></span>
+    </div>
+    <div class="col">
+      <%= attempt.tagStats.scienceStats.revises %>
+      <span><img class="thumbnail" src="/assets/revise.png" alt="" /></span>
+    </div>
+  </div>
+</div>
+
+<div class="mt-3">
+  <a class="btn btn-sm btn-success" href="/attempts/<%= attempt._id %>/edit"
+    >Edit</a
+  >
+  <form
+    class="d-inline"
+    action="/attempts/<%= attempt.id %>?_method=DELETE"
+    method="POST"
+  >
+    <button class="btn btn-sm btn-danger">Delete</button>
+  </form>
+</div>
