@@ -2,7 +2,7 @@ const { QuestionType, topics } = require("../models/questionType");
 
 module.exports.index = async (req, res) => {
   const types = await QuestionType.find({});
-  res.render("questionTypes/index", { types });
+  res.render("questionTypes/index", { types, topics });
 };
 
 module.exports.renderNewForm = (req, res) => {

@@ -2,8 +2,240 @@
 <!-- User: see page for all question types -->
 <h1>Question Types</h1>
 <a href="/types/new">Add Question Type</a>
-<ul>
-  <% for(let type of types) { %>
-  <li><a href="/types/<%= type._id %>"><%= type.name %> </a></li>
-  <% } %>
-</ul>
+<div class="accordion " id="parentAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne"
+        aria-expanded="false"
+        aria-controls="flush-collapseOne"
+      >
+        English
+      </button>
+    </h2>
+    <div
+      id="flush-collapseOne"
+      class="accordion-collapse collapse"
+      aria-labelledby="flush-headingOne"
+      data-bs-parent="#parentAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion " id="englishAccordion">
+          <% for (let i = 0; i < topics.english.length; i++) { %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="engHeading<% i %>">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#engCollapse<%= i %>"
+                aria-expanded="false"
+                aria-controls="engCollapse<%= i %>"
+              >
+                <%= topics.english[i] %>
+              </button>
+            </h2>
+            <div
+              id="engCollapse<%= i %>"
+              class="accordion-collapse collapse"
+              aria-labelledby="engHeading<%= i %>"
+              data-bs-parent="#englishAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <% for(let type of types.filter((type) => type.section == "English" && type.general ==
+                  topics.english[i])) { %>
+                  <li>
+                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseTwo"
+        aria-expanded="false"
+        aria-controls="flush-collapseTwo"
+      >
+        Math
+      </button>
+    </h2>
+    <div
+      id="flush-collapseTwo"
+      class="accordion-collapse collapse"
+      aria-labelledby="flush-headingTwo"
+      data-bs-parent="#parentAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion " id="mathAccordion">
+          <% for (let i = 0; i < topics.math.length; i++) { %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="mathHeading<% i %>">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mathCollapse<%= i %>"
+                aria-expanded="false"
+                aria-controls="mathCollapse<%= i %>"
+              >
+                <%= topics.math[i] %>
+              </button>
+            </h2>
+            <div
+              id="mathCollapse<%= i %>"
+              class="accordion-collapse collapse"
+              aria-labelledby="mathHeading<%= i %>"
+              data-bs-parent="#mathAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <% for(let type of types.filter((type) => type.section == "Math" && type.general ==
+                  topics.math[i])) { %>
+                  <li>
+                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseThree"
+        aria-expanded="false"
+        aria-controls="flush-collapseThree"
+      >
+        Reading
+      </button>
+    </h2>
+    <div
+      id="flush-collapseThree"
+      class="accordion-collapse collapse"
+      aria-labelledby="flush-headingThree"
+      data-bs-parent="#parentAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion " id="readingAccordion">
+          <% for (let i = 0; i < topics.reading.length; i++) { %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="readHeading<% i %>">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#readCollapse<%= i %>"
+                aria-expanded="false"
+                aria-controls="readCollapse<%= i %>"
+              >
+                <%= topics.reading[i] %>
+              </button>
+            </h2>
+            <div
+              id="readCollapse<%= i %>"
+              class="accordion-collapse collapse"
+              aria-labelledby="readHeading<%= i %>"
+              data-bs-parent="#readingAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <% for(let type of types.filter((type) => type.section == "Reading" && type.general ==
+                  topics.reading[i])) { %>
+                  <li>
+                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseFour"
+        aria-expanded="false"
+        aria-controls="flush-collapseFour"
+      >
+        Science
+      </button>
+    </h2>
+    <div
+      id="flush-collapseFour"
+      class="accordion-collapse collapse"
+      aria-labelledby="flush-headingFour"
+      data-bs-parent="#parentAccordion"
+    >
+      <div class="accordion-body">
+        <div class="accordion " id="scienceAccordion">
+          <% for (let i = 0; i < topics.science.length; i++) { %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="sciHeading<% i %>">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sciCollapse<%= i %>"
+                aria-expanded="false"
+                aria-controls="sciCollapse<%= i %>"
+              >
+                <%= topics.science[i] %>
+              </button>
+            </h2>
+            <div
+              id="sciCollapse<%= i %>"
+              class="accordion-collapse collapse"
+              aria-labelledby="sciHeading<%= i %>"
+              data-bs-parent="#scienceAccordion"
+            >
+              <div class="accordion-body">
+                <ul>
+                  <% for(let type of types.filter((type) => type.section == "Science" && type.general ==
+                  topics.science[i])) { %>
+                  <li>
+                    <a href="/types/<%= type._id %>"><%= type.name %> </a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
