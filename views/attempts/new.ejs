@@ -25,15 +25,15 @@
     />
     <label for="date">Date Taken</label>
   </div>
-  <div class="mx-3">
-    <h2>English</h2>
+  <div class="mx-5">
+    <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">English</h2>
   </div>
   <% for(let i=1;i<76;i++) { %>
-  <div class="row">
-    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+  <div class="row justify-content-start">
+    <div class="col-1 offset-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <span class="fw-bold">Q<%= i %></span>
     </div>
-    <div class=" col <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class=" col-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
         
         <div class="form-check form-check-inline">
@@ -76,10 +76,11 @@
             name="attempt[answers][english][<%= i %>][choice]"
             value="D"required
           />
-          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
+          <label class="form-check-label " for="q<%= i %>D">D</label>
         </div>
       </div>
-    
+    </div>
+      <div class="col-3<% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -119,17 +120,16 @@
     </div>
   </div>
   <% } %>
-  <div class="mx-3">
-    <h2>Math</h2>
+  <div class="mx-5">
+    <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">Math</h2>
   </div>
   <% for(let i=1;i<61;i++) { %>
-  <div class="row">
-    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+  <div class="row justify-content-start">
+    <div class="col-1 offset-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
     <span class="fw-bold">Q<%= i %></span>
     </div>
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class="col-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
->>>>>>> parent of f34fca6 (removed columns from new attempt form)
         <div class="form-check form-check-inline">
           <input
             type="radio"
@@ -179,10 +179,11 @@
             name="attempt[answers][math][<%= i %>][choice]"
             value="E"required
           />
-          <label class="form-check-label me-5" for="q<%= i %>E">E</label>
+          <label class="form-check-label " for="q<%= i %>E">E</label>
         </div>
       </div>
-    
+    </div>
+      <div class="col-3<% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -222,15 +223,15 @@
     </div>
   </div>
   <% } %>
-  <div class="mx-3">
-    <h2>Reading</h2>
+  <div class="mx-5">
+    <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">Reading</h2>
   </div>
   <% for(let i=1;i<41;i++) { %>
-  <div class="row">
-    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+  <div class="row justify-content-start">
+    <div class="col-1 offset-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
         <span class="fw-bold">Q<%= i %></span>
     </div>
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class="col-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
         <div class="form-check form-check-inline">
           <input
@@ -271,10 +272,11 @@
             name="attempt[answers][reading][<%= i %>][choice]"
             value="D"required
           />
-          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
+          <label class="form-check-label " for="q<%= i %>D">D</label>
         </div>
       </div>
-    
+    </div>
+      <div class="col-3<% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -314,15 +316,15 @@
     </div>
   </div>
   <% } %>
-  <div class="mx-3">
-    <h2>Science</h2>
+  <div class="mx-5">
+    <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3  text-center rounded-pill">Science</h2>
   </div>
   <% for(let i=1;i<41;i++) { %>
-  <div class="row">
-    <div class="col-1 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+  <div class="row justify-content-start">
+    <div class="col-1 offset-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <span class="fw-bold">Q<%= i %></span>
     </div>
-    <div class=" col <% if(i % 2 == 0) {  %> bg-light <% } %>">
+    <div class=" col-3 <% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="d-inline">
         <div class="form-check form-check-inline">
           <input
@@ -363,10 +365,11 @@
             name="attempt[answers][science][<%= i %>][choice]"
             value="D" required
           />
-          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
+          <label class="form-check-label " for="q<%= i %>D">D</label>
         </div>
       </div>
-
+      </div>
+      <div class="col-3<% if(i % 2 == 0) {  %> bg-light <% } %>">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -406,5 +409,10 @@
     </div>
   </div>
   <% } %>
-  <button type="submit" class="btn btn-success">Submit</button>
+  <div class="row m-5">
+    <div class="col-6 offset-3 d-grid">
+          <button type="submit" class= "btn btn-success rounded-pill">Submit</button>
+    </div>
+  
+  </div>
 </form>
