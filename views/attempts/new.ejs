@@ -30,8 +30,8 @@
   </div>
   <% for(let i=1;i<76;i++) { %>
   <div class="row">
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
-      <div>
+    <div class="<% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <div class="d-inline">
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
@@ -73,11 +73,10 @@
             name="attempt[answers][english][<%= i %>][choice]"
             value="D"required
           />
-          <label class="form-check-label" for="q<%= i %>D">D</label>
+          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
         </div>
       </div>
-    </div>
-    <div class="col">
+    
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -122,8 +121,8 @@
   </div>
   <% for(let i=1;i<61;i++) { %>
   <div class="row">
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
-      <div>
+    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <div class="d-inline">
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
@@ -174,11 +173,10 @@
             name="attempt[answers][math][<%= i %>][choice]"
             value="E"required
           />
-          <label class="form-check-label" for="q<%= i %>E">E</label>
+          <label class="form-check-label me-5" for="q<%= i %>E">E</label>
         </div>
       </div>
-    </div>
-    <div class="col">
+    
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -223,8 +221,8 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
-      <div>
+    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <div class="d-inline">
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
@@ -265,11 +263,10 @@
             name="attempt[answers][reading][<%= i %>][choice]"
             value="D"required
           />
-          <label class="form-check-label" for="q<%= i %>D">D</label>
+          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
         </div>
       </div>
-    </div>
-    <div class="col">
+    
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -314,8 +311,8 @@
   </div>
   <% for(let i=1;i<41;i++) { %>
   <div class="row">
-    <div class="col <% if(i % 2 == 0) {  %> bg-light <% } %>">
-      <div>
+    <div class=" <% if(i % 2 == 0) {  %> bg-light <% } %>">
+      <div class="d-inline">
         <span class="fw-bold">Q<%= i %></span>
         <div class="form-check form-check-inline">
           <input
@@ -356,11 +353,10 @@
             name="attempt[answers][science][<%= i %>][choice]"
             value="D" required
           />
-          <label class="form-check-label" for="q<%= i %>D">D</label>
+          <label class="form-check-label me-5" for="q<%= i %>D">D</label>
         </div>
       </div>
-    </div>
-    <div class="col">
+
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
