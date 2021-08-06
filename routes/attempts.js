@@ -3,14 +3,16 @@ const router = express.Router();
 const Test = require("../models/test");
 const Attempt = require("../models/attempt");
 const catchAsync = require("../utils/catchAsync");
-const { validateAttempt } = require("../middleware");
-const { isLoggedIn } = require("../middleware");
+const { validateAttempt, isLoggedIn, isOwner } = require("../middleware");
 
 router.get(
   "/",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const attempts = await Attempt.find({}).populate("test", "form");
+    const attempts = await Attempt.find({ owner: req.user._id }).populate(
+      "test",
+      "form"
+    );
     res.render("attempts/index", { attempts });
   })
 );
@@ -31,6 +33,7 @@ router.post(
   validateAttempt,
   catchAsync(async (req, res) => {
     const attempt = new Attempt(req.body.attempt);
+    attempt.owner = req.user._id;
     await attempt.save();
     req.flash("success", "Successfully made a new attempt!");
     res.redirect(`/attempts/${attempt._id}`);
@@ -40,6 +43,7 @@ router.post(
 router.get(
   "/:id",
   isLoggedIn,
+  isOwner,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
@@ -54,6 +58,7 @@ router.get(
 router.get(
   "/:id/edit",
   isLoggedIn,
+  isOwner,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const attempt = await Attempt.findById(id).populate("test", "form");
@@ -68,6 +73,7 @@ router.get(
 router.put(
   "/:id",
   isLoggedIn,
+  isOwner,
   validateAttempt,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -82,6 +88,7 @@ router.put(
 router.delete(
   "/:id",
   isLoggedIn,
+  isOwner,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Attempt.findByIdAndDelete(id);

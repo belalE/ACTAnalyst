@@ -46,3 +46,18 @@ module.exports.isLoggedIn = (req, res, next) => {
   }
   next();
 };
+
+module.exports.isOwner = async (req, res, next) => {
+  const { id } = req.params;
+  const attempt = await Attempt.findById(id);
+  if (!attempt.owner.equals(req.user._id)) {
+    req.flash("error", "You do not have permission to do that!");
+    return res.redirect(`/attempts`);
+  }
+  next();
+};
+
+module.exports.isAdmin = async (req, res, next) => {
+  console.log(req.user);
+  next();
+};

@@ -7,6 +7,10 @@ const AttemptSchema = new Schema({
     ref: "Test",
   },
   dateTaken: Date,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   answers: {
     english: [
       {
