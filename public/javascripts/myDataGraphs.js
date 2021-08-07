@@ -1,8 +1,11 @@
+// Chart for Scaled Scores
 Highcharts.chart("scoreChart", {
   chart: {
     zoomType: "xy",
   },
-  title: "Scaled Score",
+  title: {
+    text: "Scaled Score",
+  },
   subtitle: "/36",
   xAxis: {
     type: "datetime",
@@ -37,6 +40,52 @@ Highcharts.chart("scoreChart", {
     {
       name: "Science",
       data: trendData.scienceArr,
+    },
+  ],
+});
+
+// Chart for Scaled Scores
+Highcharts.chart("rawChart", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Number of Mistakes",
+  },
+  subtitle: "",
+  xAxis: {
+    type: "datetime",
+    categories: mistakeData.dateArr,
+  },
+  yAxis: {
+    title: {
+      text: "# of Mistakes",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "English",
+      data: mistakeData.englishArr,
+    },
+    {
+      name: "Math",
+      data: mistakeData.mathArr,
+    },
+    {
+      name: "Reading",
+      data: mistakeData.readingArr,
+    },
+    {
+      name: "Science",
+      data: mistakeData.scienceArr,
     },
   ],
 });

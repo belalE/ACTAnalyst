@@ -14,7 +14,9 @@
   <% for (let question of questions) { %>
   <li>
     <!-- TODO: setup questions routes to add video for each vid -->
-    <a href="">Test <%= question.test.form %> - Q<%= question.index %> </a>
+    <a href="/tests/<%= question.test._id %>"
+      >Test <%= question.test.form %> - Q<%= question.index %>
+    </a>
   </li>
   <% } %>
 </ul>

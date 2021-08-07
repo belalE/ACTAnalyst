@@ -3,18 +3,35 @@
 <h1>All Attempts</h1>
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
 <div id="scoreChart"></div>
-<ul>
-  <% for (attempt of sortedAttempts) { %>
-  <li>
-    <a href="/attempts/<%= attempt._id %>"
-      ><%= attempt.test.form %> - <%= attempt.dateTaken.toISOString().slice(0,
-      10) %>
-    </a>
-  </li>
-  <% } %>
-</ul>
+<div id="rawChart"></div>
+<div class="row my-3">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Previous Attempts</h5>
+        <p class="card-text text-muted">Most recent practice tests</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% for (attempt of sortedAttempts.slice(0,5)) { %>
+        <li class="list-group-item">
+          <a href="/attempts/<%= attempt._id %>"
+            ><%= attempt.test.form %> - <%=
+            attempt.dateTaken.toISOString().slice(0, 10) %>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link text-dark">Show more...</a>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
+
 <script>
   const trendData = <%- JSON.stringify(trendData) %>
+  const mistakeData = <%- JSON.stringify(mistakeData) %>
 </script>
 <script src="/highchart/highcharts.js"></script>
 <script src="/javascripts/myDataGraphs.js"></script>

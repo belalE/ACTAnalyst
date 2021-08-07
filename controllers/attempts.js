@@ -17,6 +17,22 @@ async function getScoreTrends(attempts) {
   }
   return { dateArr, englishArr, mathArr, readingArr, scienceArr };
 }
+async function getMistakeTrends(attempts) {
+  var dateArr = [];
+  var englishArr = [];
+  var mathArr = [];
+  var readingArr = [];
+  var scienceArr = [];
+  for (attempt of attempts) {
+    dateArr.push(attempt.dateTaken.toISOString().slice(0, 10));
+    const rawScores = await attempt.get("rawScores");
+    englishArr.push(75 - rawScores.english);
+    mathArr.push(60 - rawScores.math);
+    readingArr.push(40 - rawScores.reading);
+    scienceArr.push(40 - rawScores.science);
+  }
+  return { dateArr, englishArr, mathArr, readingArr, scienceArr };
+}
 
 module.exports.index = async (req, res) => {
   const attempts = await Attempt.find({ owner: req.user._id }).populate(
@@ -30,7 +46,8 @@ module.exports.index = async (req, res) => {
     return new Date(b.dateTaken) - new Date(a.dateTaken);
   });
   const trendData = await getScoreTrends(sortedAttempts.slice().reverse());
-  res.render("attempts/index", { sortedAttempts, trendData });
+  const mistakeData = await getMistakeTrends(sortedAttempts.slice().reverse());
+  res.render("attempts/index", { sortedAttempts, trendData, mistakeData });
 };
 
 module.exports.renderNewForm = async (req, res) => {
