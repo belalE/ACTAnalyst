@@ -83,36 +83,46 @@ const AttemptSchema = new Schema(
   }
 );
 
-AttemptSchema.virtual("rawScores").get(async function () {
+AttemptSchema.virtual("mistakes").get(async function () {
   const test = await Test.findById(this.test)
     .populate("questions.english")
     .populate("questions.math")
     .populate("questions.reading")
     .populate("questions.science");
-  var english = 0;
-  var math = 0;
-  var reading = 0;
-  var science = 0;
+  var english = [];
+  var math = [];
+  var reading = [];
+  var science = [];
+
   for (let i = 0; i < 75; i++) {
-    if (test.questions.english[i].answer == this.answers.english[i].choice) {
-      english += 1;
+    if (test.questions.english[i].answer != this.answers.english[i].choice) {
+      english.push(test.questions.english[i]);
     }
   }
   for (let i = 0; i < 60; i++) {
-    if (test.questions.math[i].answer == this.answers.math[i].choice) {
-      math += 1;
+    if (test.questions.math[i].answer != this.answers.math[i].choice) {
+      math.push(test.questions.math[i]);
     }
   }
   for (let i = 0; i < 40; i++) {
-    if (test.questions.reading[i].answer == this.answers.reading[i].choice) {
-      reading += 1;
+    if (test.questions.reading[i].answer != this.answers.reading[i].choice) {
+      reading.push(test.questions.reading[i]);
     }
   }
   for (let i = 0; i < 40; i++) {
-    if (test.questions.science[i].answer == this.answers.science[i].choice) {
-      science += 1;
+    if (test.questions.science[i].answer != this.answers.science[i].choice) {
+      science.push(test.questions.science[i]);
     }
   }
+  return { english, math, reading, science };
+});
+
+AttemptSchema.virtual("rawScores").get(async function () {
+  const mistakes = await this.get("mistakes");
+  var english = 75 - mistakes.english.length;
+  var math = 60 - mistakes.math.length;
+  var reading = 40 - mistakes.reading.length;
+  var science = 40 - mistakes.science.length;
   const scoreDict = { english, math, reading, science };
   return scoreDict;
 });
@@ -158,6 +168,29 @@ AttemptSchema.virtual("tagStats").get(function () {
   readingStats = getStats(this.answers.reading);
   scienceStats = getStats(this.answers.science);
   return { englishStats, mathStats, readingStats, scienceStats };
+});
+
+function getTypeStats(mistakeArr) {
+  var arr = [];
+  for (let question of mistakeArr) {
+    if (question.type) {
+      if (arr[question.type]) {
+        arr[question.type] += 1;
+      } else {
+        arr[question.type] = 1;
+      }
+    }
+  }
+  return arr;
+}
+
+AttemptSchema.virtual("typeStats").get(async function () {
+  const mistakes = await this.get("mistakes");
+  const english = getTypeStats(mistakes.english);
+  const math = getTypeStats(mistakes.math);
+  const reading = getTypeStats(mistakes.reading);
+  const science = getTypeStats(mistakes.science);
+  return { english, math, reading, science };
 });
 
 module.exports = mongoose.model("Attempt", AttemptSchema);
