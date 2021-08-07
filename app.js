@@ -7,6 +7,7 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
+const ejsLint = require("ejs-lint");
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");

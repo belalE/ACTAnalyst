@@ -10,6 +10,7 @@
 <h2 class="text-muted"><%= type.section %> - <%= type.general %></h2>
 <p><%= type.description %></p>
 <h3>Questions</h3>
+<% if(questions.length != 0) { %>
 <ul>
   <% for (let question of questions) { %>
   <li>
@@ -20,7 +21,11 @@
   </li>
   <% } %>
 </ul>
+<% } else { %>
+<p>Sorry, no questions are available under this type :(</p>
+<% } %>
 <h3>Resources</h3>
+<% if(type.resources.length != 0) { %>
 <ul>
   <% for (let resource of type.resources) { %>
   <li>
@@ -34,7 +39,9 @@
   </li>
   <% } %>
 </ul>
-<% if (currentUser && currentUser.isAdmin) { %>
+<% } else { %>
+<p>Sorry, no resources have been added for this question type yet :(</p>
+<% } %> <% if (currentUser && currentUser.isAdmin) { %>
 <a class="btn btn-sm btn-success" href="/types/<%= type._id %>/edit">Edit</a>
 <form
   class="d-inline"

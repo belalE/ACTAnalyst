@@ -1,5 +1,16 @@
 const { QuestionType, topics } = require("../models/questionType");
 const Question = require("../models/question");
+const Attempt = require("../models/attempt");
+const test = require("../models/test");
+
+async function getTestsTaken(id) {
+  const attempts = await Attempt.find({ owner: id });
+  const tests = [];
+  for (attempt of attempts) {
+    tests.push(attempt.test);
+  }
+  return tests;
+}
 
 module.exports.index = async (req, res) => {
   const types = await QuestionType.find({});
@@ -19,11 +30,15 @@ module.exports.showQuestionType = async (req, res) => {
   const { id } = req.params;
   const type = await QuestionType.findById(id).populate("questions");
   const questions = await Question.find({ type: id }).populate("test", "form");
+  var tests = [];
+  if (req.user) {
+    tests = await getTestsTaken(req.user._id);
+  }
   if (!type) {
     req.flash("error", "Cannot find that type!");
     return res.redirect("/types");
   }
-  res.render("questionTypes/show", { type, questions });
+  res.render("questionTypes/show", { type, questions, tests });
 };
 module.exports.createQuestionType = async (req, res) => {
   const questionType = new QuestionType(req.body.questionType);
