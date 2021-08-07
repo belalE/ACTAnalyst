@@ -2,8 +2,9 @@
 <!-- Show all previous attempts(data page) w/ graphs + analysis -->
 <h1>All Attempts</h1>
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
+<div id="scoreChart"></div>
 <ul>
-  <% for (attempt of attempts) { %>
+  <% for (attempt of sortedAttempts) { %>
   <li>
     <a href="/attempts/<%= attempt._id %>"
       ><%= attempt.test.form %> - <%= attempt.dateTaken.toISOString().slice(0,
@@ -12,3 +13,8 @@
   </li>
   <% } %>
 </ul>
+<script>
+  const trendData = <%- JSON.stringify(trendData) %>
+</script>
+<script src="/highchart/highcharts.js"></script>
+<script src="/javascripts/myDataGraphs.js"></script>
