@@ -3,7 +3,6 @@
 <h1>All Attempts</h1>
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
 <div id="scoreChart"></div>
-<div id="rawChart"></div>
 <div class="row my-3">
   <div class="col">
     <div class="card">
@@ -26,8 +25,28 @@
       </div>
     </div>
   </div>
-  <div class="col"></div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Worst Topic</h5>
+        <p class="card-text text-muted">
+          The topic within each section with the most mistakes
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <!-- TODO: Make function to calculate worst topic based on sum of mistakes stats -->
+        <li class="list-group-item">English: <%= %></li>
+        <li class="list-group-item">Math: <%= %></li>
+        <li class="list-group-item">Reading: <%= %></li>
+        <li class="list-group-item">Science: <%= %></li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link text-dark">Show more...</a>
+      </div>
+    </div>
+  </div>
 </div>
+<div id="rawChart"></div>
 
 <script>
   const trendData = <%- JSON.stringify(trendData) %>

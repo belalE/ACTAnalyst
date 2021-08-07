@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const question = require("./question");
+const { topics } = require("./questionType");
 const Schema = mongoose.Schema;
 const Test = require("./test");
 
@@ -191,6 +192,24 @@ AttemptSchema.virtual("typeStats").get(async function () {
   const reading = getTypeStats(mistakes.reading);
   const science = getTypeStats(mistakes.science);
   return { english, math, reading, science };
+});
+
+AttemptSchema.virtual("topicStats").get(async function () {
+  // Get typeStats and populate with QuestionTypes
+  const typeStats = await this.get("typeStats");
+  // Make dictionary with variable for each general topic within each section
+  topicsDict = [topics.english, topics.math, topics.reading, topics.science];
+  for (let i = 0; i < topicsDict.length; i++) {
+    topicsDict[i] = topicsDict[i].map(function (topic) {
+      const dict = {};
+      dict[topic] = 0;
+      return dict;
+    });
+  }
+  // Loop through all question types from typeStats
+  // Increment the general topic based on QuestionType.general
+  // Return dictionary
+  return topicsDict;
 });
 
 module.exports = mongoose.model("Attempt", AttemptSchema);

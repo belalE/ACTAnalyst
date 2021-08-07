@@ -74,7 +74,8 @@ module.exports.showAttempt = async (req, res) => {
   raw = await attempt.rawScores;
   scaled = await attempt.scaledScores;
   const typeStats = await attempt.typeStats;
-  console.log("type Stats", typeStats);
+  const topicStats = await attempt.topicStats;
+  console.log("topic Stats", topicStats);
 
   res.render("attempts/show", { attempt, raw, scaled });
 };
