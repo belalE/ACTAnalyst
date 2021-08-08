@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const question = require("./question");
-const { topics } = require("./questionType");
+const { QuestionType, topics } = require("./questionType");
 const Schema = mongoose.Schema;
 const Test = require("./test");
 
@@ -197,16 +197,35 @@ AttemptSchema.virtual("typeStats").get(async function () {
 AttemptSchema.virtual("topicStats").get(async function () {
   // Get typeStats and populate with QuestionTypes
   const typeStats = await this.get("typeStats");
+  console.log(typeStats);
   // Make dictionary with variable for each general topic within each section
-  topicsDict = [topics.english, topics.math, topics.reading, topics.science];
+  var topicsDict = [
+    topics.english,
+    topics.math,
+    topics.reading,
+    topics.science,
+  ];
   for (let i = 0; i < topicsDict.length; i++) {
-    topicsDict[i] = topicsDict[i].map(function (topic) {
-      const dict = {};
-      dict[topic] = 0;
-      return dict;
-    });
+    for (let j = 0; j < topicsDict[i].length; j++) {
+      const topic = topicsDict[i][j];
+      // Delete string version
+      topicsDict[i].splice(topicsDict[i].indexOf(topic), 1);
+      j--;
+      topicsDict[i][topic + " "] = 0;
+    }
   }
   // Loop through all question types from typeStats
+  for (let i = 0; i < 4; i++) {
+    const section = ["english", "math", "reading", "science"][i];
+    const keys = Object.keys(typeStats[section]);
+    console.log("keys: ", keys.length);
+    for (let j = 0; j < keys.length; j++) {
+      const value = typeStats[section][keys[j]];
+      const questionType = await QuestionType.findById(keys[j]);
+      console.log(questionType.general);
+      topicsDict[i][questionType.general + " "] += value;
+    }
+  }
   // Increment the general topic based on QuestionType.general
   // Return dictionary
   return topicsDict;
