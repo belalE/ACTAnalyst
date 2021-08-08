@@ -182,6 +182,8 @@ function getTypeStats(mistakeArr) {
       }
     }
   }
+  // Convert to object (https://stackoverflow.com/questions/7259728/json-stringify-returning)
+  arr = Object.assign({}, arr);
   return arr;
 }
 
@@ -197,7 +199,6 @@ AttemptSchema.virtual("typeStats").get(async function () {
 AttemptSchema.virtual("topicStats").get(async function () {
   // Get typeStats and populate with QuestionTypes
   const typeStats = await this.get("typeStats");
-  console.log(typeStats);
   // Make dictionary with variable for each general topic within each section
   var topicsDict = [
     topics.english,
@@ -211,22 +212,24 @@ AttemptSchema.virtual("topicStats").get(async function () {
       // Delete string version
       topicsDict[i].splice(topicsDict[i].indexOf(topic), 1);
       j--;
-      topicsDict[i][topic + " "] = 0;
+      topicsDict[i][topic + " "] = [];
     }
   }
   // Loop through all question types from typeStats
   for (let i = 0; i < 4; i++) {
     const section = ["english", "math", "reading", "science"][i];
     const keys = Object.keys(typeStats[section]);
-    console.log("keys: ", keys.length);
     for (let j = 0; j < keys.length; j++) {
+      // Increment the general topic based on QuestionType.general
       const value = typeStats[section][keys[j]];
       const questionType = await QuestionType.findById(keys[j]);
-      console.log(questionType.general);
-      topicsDict[i][questionType.general + " "] += value;
+      topicsDict[i][questionType.general + " "].push({ questionType, value });
+      // Convert to object
+      topicsDict[i] = Object.assign({}, topicsDict[i]);
     }
   }
-  // Increment the general topic based on QuestionType.general
+  // Change it from
+
   // Return dictionary
   return topicsDict;
 });

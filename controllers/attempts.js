@@ -1,5 +1,6 @@
 const Test = require("../models/test");
 const Attempt = require("../models/attempt");
+const { QuestionType } = require("../models/questionType");
 
 async function getScoreTrends(attempts) {
   var dateArr = [];
@@ -73,11 +74,14 @@ module.exports.showAttempt = async (req, res) => {
   }
   raw = await attempt.rawScores;
   scaled = await attempt.scaledScores;
-  const typeStats = await attempt.typeStats;
   const topicStats = await attempt.topicStats;
-  console.log("topic Stats", topicStats);
-
-  res.render("attempts/show", { attempt, raw, scaled });
+  console.dir(topicStats);
+  res.render("attempts/show", {
+    attempt,
+    raw,
+    scaled,
+    topicStats,
+  });
 };
 
 module.exports.renderEditForm = async (req, res) => {
