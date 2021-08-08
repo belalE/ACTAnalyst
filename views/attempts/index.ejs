@@ -2,6 +2,82 @@
 <!-- Show all previous attempts(data page) w/ graphs + analysis -->
 <h1>All Attempts</h1>
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
+<div class="text-center mb-3">
+  <h2 class="display-2 bg-secondary rounded-pill text-light mb-3">Scores</h2>
+  <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
+  <div class="row display-2">
+    <div class="col">
+      <%= trendData.englishArr.reduce((a,b) => a + b, 0) /
+      trendData.englishArr.length %>
+    </div>
+    <div class="col">
+      <%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length
+      %>
+    </div>
+    <div class="col">
+      <%= trendData.readingArr.reduce((a,b) => a + b, 0) /
+      trendData.readingArr.length %>
+    </div>
+    <div class="col">
+      <%= trendData.scienceArr.reduce((a,b) => a + b, 0) /
+      trendData.scienceArr.length %>
+    </div>
+  </div>
+  <div class="row display-6">
+    <div class="col">
+      <%= Math.min(...trendData.englishArr) %> - <%=
+      Math.max(...trendData.englishArr) %>
+    </div>
+    <div class="col">
+      <%= Math.min(...trendData.mathArr) %> - <%= Math.max(...trendData.mathArr)
+      %>
+    </div>
+    <div class="col">
+      <%= Math.min(...trendData.readingArr) %> - <%=
+      Math.max(...trendData.readingArr) %>
+    </div>
+    <div class="col">
+      <%= Math.min(...trendData.scienceArr) %> - <%=
+      Math.max(...trendData.scienceArr) %>
+    </div>
+  </div>
+  <div class="row display-4">
+    <div class="col">
+      <%= mistakeData.englishArr.reduce((a,b) => a + b, 0) /
+      mistakeData.englishArr.length %>
+    </div>
+    <div class="col">
+      <%= mistakeData.mathArr.reduce((a,b) => a + b, 0) /
+      mistakeData.mathArr.length %>
+    </div>
+    <div class="col">
+      <%= mistakeData.readingArr.reduce((a,b) => a + b, 0) /
+      mistakeData.readingArr.length %>
+    </div>
+    <div class="col">
+      <%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) /
+      mistakeData.scienceArr.length %>
+    </div>
+  </div>
+  <div class="row display-6">
+    <div class="col">
+      <%= Math.min(...mistakeData.englishArr) %> - <%=
+      Math.max(...mistakeData.englishArr) %>
+    </div>
+    <div class="col">
+      <%= Math.min(...mistakeData.mathArr) %> - <%=
+      Math.max(...mistakeData.mathArr) %>
+    </div>
+    <div class="col">
+      <%= Math.min(...mistakeData.readingArr) %> - <%=
+      Math.max(...mistakeData.readingArr) %>
+    </div>
+    <div class="col">
+      <%= Math.min(...mistakeData.scienceArr) %> - <%=
+      Math.max(...mistakeData.scienceArr) %>
+    </div>
+  </div>
+</div>
 <div id="scoreChart"></div>
 <div class="row my-3">
   <div class="col">

@@ -35,6 +35,19 @@ async function getMistakeTrends(attempts) {
   return { dateArr, englishArr, mathArr, readingArr, scienceArr };
 }
 
+async function sumTopicStats(attempts) {
+  // create empty dict for the stats
+  // get topicStats for each attempt
+  // loop through each attempt
+  // loop through each section
+  // if section is not in index, add it
+  // loop through topics in each section
+  // if topic not in index, add it
+  // loop through types in each topic
+  // if type not in index, add it
+  // else, increment its value
+}
+
 module.exports.index = async (req, res) => {
   const attempts = await Attempt.find({ owner: req.user._id }).populate(
     "test",

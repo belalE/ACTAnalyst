@@ -1,7 +1,26 @@
 // TODO: Setup Tab View to hold graph below
 // https://www.w3schools.com/howto/howto_js_tabs.asp
-// TODO: reformat + populate data to fit the following format below
-section = 0;
+document.getElementById("defaultOpen").click();
+function switchTab(evt, sectionName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(sectionName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 
 function getData(stats, section) {
   var arr = [];
@@ -12,16 +31,19 @@ function getData(stats, section) {
     const key = keys[i];
     const types = data[key];
     // Add general topic to data arr
-    arr.push({
-      name: key,
-      y: types.length,
-      drilldown: key,
-    });
-    //   Add specific types to drill down data arr
+    var num = 0;
     var drillDownData = [];
     for (let type of types) {
       drillDownData.push([type.questionType.name, type.value]);
+      num += type.value;
     }
+    arr.push({
+      name: key,
+      y: num,
+      drilldown: key,
+    });
+    //   Add specific types to drill down data arr
+
     drilldown.push({
       name: key,
       id: key,
@@ -30,15 +52,13 @@ function getData(stats, section) {
   }
   return { arr, drilldown };
 }
-const data = getData(topicStats, section);
-console.log(data);
 // https://www.highcharts.com/demo/column-drilldown
-Highcharts.chart("qTypeBar", {
+Highcharts.chart("qTypeBarEng", {
   chart: {
     type: "column",
   },
   title: {
-    text: "Mistakes by Question Type",
+    text: "English Mistakes by Question Type",
   },
   subtitle: {
     text: "Distribution of the mistakes by the question type, within each section",
@@ -79,10 +99,169 @@ Highcharts.chart("qTypeBar", {
     {
       name: "General Topics",
       colorByPoint: true,
-      data: data.arr,
+      data: getData(topicStats, 0).arr,
     },
   ],
   drilldown: {
-    series: data.drilldown,
+    series: getData(topicStats, 0).drilldown,
+  },
+});
+Highcharts.chart("qTypeBarMath", {
+  chart: {
+    type: "column",
+  },
+  title: {
+    text: "Math Mistakes by Question Type",
+  },
+  subtitle: {
+    text: "Distribution of the mistakes by the question type, within each section",
+  },
+  accessibility: {
+    announceNewData: {
+      enabled: true,
+    },
+  },
+  xAxis: {
+    type: "category",
+  },
+  yAxis: {
+    title: {
+      text: "Total number of mistakes",
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+  plotOptions: {
+    series: {
+      borderWidth: 0,
+      dataLabels: {
+        enabled: true,
+        format: "{point.y:.1f}",
+      },
+    },
+  },
+
+  tooltip: {
+    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+    pointFormat:
+      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.1f}</b> mistakes<br/>',
+  },
+
+  series: [
+    {
+      name: "General Topics",
+      colorByPoint: true,
+      data: getData(topicStats, 1).arr,
+    },
+  ],
+  drilldown: {
+    series: getData(topicStats, 1).drilldown,
+  },
+});
+Highcharts.chart("qTypeBarRead", {
+  chart: {
+    type: "column",
+  },
+  title: {
+    text: "Reading Mistakes by Question Type",
+  },
+  subtitle: {
+    text: "Distribution of the mistakes by the question type, within each section",
+  },
+  accessibility: {
+    announceNewData: {
+      enabled: true,
+    },
+  },
+  xAxis: {
+    type: "category",
+  },
+  yAxis: {
+    title: {
+      text: "Total number of mistakes",
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+  plotOptions: {
+    series: {
+      borderWidth: 0,
+      dataLabels: {
+        enabled: true,
+        format: "{point.y:.1f}",
+      },
+    },
+  },
+
+  tooltip: {
+    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+    pointFormat:
+      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.1f}</b> mistakes<br/>',
+  },
+
+  series: [
+    {
+      name: "General Topics",
+      colorByPoint: true,
+      data: getData(topicStats, 2).arr,
+    },
+  ],
+  drilldown: {
+    series: getData(topicStats, 2).drilldown,
+  },
+});
+Highcharts.chart("qTypeBarSci", {
+  chart: {
+    type: "column",
+  },
+  title: {
+    text: "Science Mistakes by Question Type",
+  },
+  subtitle: {
+    text: "Distribution of the mistakes by the question type, within each section",
+  },
+  accessibility: {
+    announceNewData: {
+      enabled: true,
+    },
+  },
+  xAxis: {
+    type: "category",
+  },
+  yAxis: {
+    title: {
+      text: "Total number of mistakes",
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+  plotOptions: {
+    series: {
+      borderWidth: 0,
+      dataLabels: {
+        enabled: true,
+        format: "{point.y:.1f}",
+      },
+    },
+  },
+
+  tooltip: {
+    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+    pointFormat:
+      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.1f}</b> mistakes<br/>',
+  },
+
+  series: [
+    {
+      name: "General Topics",
+      colorByPoint: true,
+      data: getData(topicStats, 3).arr,
+    },
+  ],
+  drilldown: {
+    series: getData(topicStats, 3).drilldown,
   },
 });
