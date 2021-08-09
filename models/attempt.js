@@ -199,20 +199,22 @@ AttemptSchema.virtual("typeStats").get(async function () {
 AttemptSchema.virtual("topicStats").get(async function () {
   // Get typeStats and populate with QuestionTypes
   const typeStats = await this.get("typeStats");
+  console.log(typeStats);
   // Make dictionary with variable for each general topic within each section
-  var topicsDict = [
+  var topicsDict = new Array(
     topics.english,
     topics.math,
     topics.reading,
-    topics.science,
-  ];
+    topics.science
+  );
   for (let i = 0; i < topicsDict.length; i++) {
     for (let j = 0; j < topicsDict[i].length; j++) {
       const topic = topicsDict[i][j];
       // Delete string version
-      topicsDict[i].splice(topicsDict[i].indexOf(topic), 1);
+      const index = topicsDict[i].indexOf(topic);
+      console.log(topicsDict[i].splice(index, 1));
+      topicsDict[i][topic] = new Array();
       j--;
-      topicsDict[i][topic + " "] = [];
     }
   }
   // Loop through all question types from typeStats
@@ -223,7 +225,13 @@ AttemptSchema.virtual("topicStats").get(async function () {
       // Increment the general topic based on QuestionType.general
       const value = typeStats[section][keys[j]];
       const questionType = await QuestionType.findById(keys[j]);
-      topicsDict[i][questionType.general + " "].push({ questionType, value });
+      if (
+        topicsDict[i][questionType.general].findIndex((t) =>
+          t.questionType._id.equals(questionType._id)
+        ) === -1
+      ) {
+        topicsDict[i][questionType.general].push({ questionType, value });
+      }
       // Convert to object
       topicsDict[i] = Object.assign({}, topicsDict[i]);
     }
@@ -231,6 +239,8 @@ AttemptSchema.virtual("topicStats").get(async function () {
   // Change it from
 
   // Return dictionary
+
+  console.log("out: ");
   return topicsDict;
 });
 

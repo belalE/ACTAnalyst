@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <!-- Show score, graphs + analysis for attempt -->
 <link rel="stylesheet" href="/stylesheets/styles.css" />
-<link rel="stylesheet" href="/stylesheets/tabView.css" />
 <a class="btn btn-sm btn-outline-secondary mb-3" href="/attempts"
   >&laquo; All Attempts</a
 >
@@ -103,23 +102,8 @@
   </div>
 </div>
 
-<!-- TODO: bar graph for each subject with general topics, with drilldown being specific question types -->
-<div class="tab mt-3">
-  <button
-    class="tablinks"
-    id="defaultOpen"
-    onclick="switchTab(event, 'English')"
-  >
-    English
-  </button>
-  <button class="tablinks" onclick="switchTab(event, 'Math')">Math</button>
-  <button class="tablinks" onclick="switchTab(event, 'Reading')">
-    Reading
-  </button>
-  <button class="tablinks" onclick="switchTab(event, 'Science')">
-    Science
-  </button>
-</div>
+<!-- TODO: bar graph for each subject with general topics, with drill down being specific question types -->
+<%- include('../partials/tabview') %>
 <div id="English" class="tabcontent">
   <div id="qTypeBarEng" class="mt-3"></div>
 </div>

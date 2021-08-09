@@ -78,6 +78,7 @@
     </div>
   </div>
 </div>
+<!-- TODO: Add card + graph w/ info about tags (skip, guess, time, revised ) -->
 <div id="scoreChart"></div>
 <div class="row my-3">
   <div class="col">
@@ -124,9 +125,28 @@
 </div>
 <div id="rawChart"></div>
 
+<%- include('../partials/tabview') %>
+<div id="English" class="tabcontent">
+  <div id="qTypeBarEng" class="mt-3"></div>
+</div>
+<div id="Math" class="tabcontent">
+  <div id="qTypeBarMath" class="mt-3"></div>
+</div>
+<div id="Reading" class="tabcontent">
+  <div id="qTypeBarRead" class="mt-3"></div>
+</div>
+<div id="Science" class="tabcontent">
+  <div id="qTypeBarSci" class="mt-3"></div>
+</div>
+
 <script>
-  const trendData = <%- JSON.stringify(trendData) %>
-  const mistakeData = <%- JSON.stringify(mistakeData) %>
+  document.getElementById("defaultOpen").click();
+
+    const trendData = <%- JSON.stringify(trendData) %>
+    const mistakeData = <%- JSON.stringify(mistakeData) %>
+    const summedQTypes = <%- JSON.stringify(summedQTypes) %>
 </script>
+
 <script src="/highchart/highcharts.js"></script>
+<script src="/highchart/modules/drilldown.js"></script>
 <script src="/javascripts/myDataGraphs.js"></script>

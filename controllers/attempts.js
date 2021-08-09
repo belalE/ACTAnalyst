@@ -37,15 +37,51 @@ async function getMistakeTrends(attempts) {
 
 async function sumTopicStats(attempts) {
   // create empty dict for the stats
+  var dict = Object.create({});
   // get topicStats for each attempt
+  const statsArr = new Array();
+  for (let attempt of attempts) {
+    const stat = await attempt.get("topicStats");
+    statsArr.push({ ...stat });
+  }
   // loop through each attempt
-  // loop through each section
-  // if section is not in index, add it
-  // loop through topics in each section
-  // if topic not in index, add it
-  // loop through types in each topic
-  // if type not in index, add it
-  // else, increment its value
+  for (let stats of statsArr) {
+    console.log("NEW Attempt");
+    console.log(stats);
+    // loop through each section
+    for (let section of [0, 1, 2, 3]) {
+      // if section is not in index, add it
+      if (!dict[section]) {
+        dict[section] = Object.create({});
+      }
+      // loop through topics in each section
+      for (let topicKey of Object.keys(stats[section])) {
+        // if topic not in index, add it
+        if (!dict[section][topicKey]) {
+          dict[section][topicKey] = new Array();
+        }
+        // loop through types in each topic
+        for (let type of stats[section][topicKey]) {
+          // if type not in index, add it
+          // else, increment its value
+          if (
+            dict[section][topicKey].findIndex((t) =>
+              t.questionType._id.equals(type.questionType._id)
+            ) === -1
+          ) {
+            dict[section][topicKey].push({ ...type });
+          } else {
+            const index = dict[section][topicKey].findIndex((t) =>
+              t.questionType._id.equals(type.questionType._id)
+            );
+            dict[section][topicKey][index].value += type.value;
+          }
+        }
+      }
+    }
+  }
+  console.log("out: ", dict["0"]["Punctuation "]);
+  return dict;
 }
 
 module.exports.index = async (req, res) => {
@@ -61,7 +97,13 @@ module.exports.index = async (req, res) => {
   });
   const trendData = await getScoreTrends(sortedAttempts.slice().reverse());
   const mistakeData = await getMistakeTrends(sortedAttempts.slice().reverse());
-  res.render("attempts/index", { sortedAttempts, trendData, mistakeData });
+  const summedQTypes = await sumTopicStats(sortedAttempts);
+  res.render("attempts/index", {
+    sortedAttempts,
+    trendData,
+    mistakeData,
+    summedQTypes,
+  });
 };
 
 module.exports.renderNewForm = async (req, res) => {
