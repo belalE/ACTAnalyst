@@ -6,6 +6,7 @@
   <h2 class="display-2 bg-secondary rounded-pill text-light mb-3">Scores</h2>
   <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
   <div class="row display-2">
+    <div class="col display-6">Average Score</div>
     <div class="col">
       <%= trendData.englishArr.reduce((a,b) => a + b, 0) /
       trendData.englishArr.length %>
@@ -24,6 +25,7 @@
     </div>
   </div>
   <div class="row display-6">
+    <div class="col display-6">Score Range</div>
     <div class="col">
       <%= Math.min(...trendData.englishArr) %> - <%=
       Math.max(...trendData.englishArr) %>
@@ -42,6 +44,7 @@
     </div>
   </div>
   <div class="row display-4">
+    <div class="col display-6">Average # of Mistakes</div>
     <div class="col">
       <%= mistakeData.englishArr.reduce((a,b) => a + b, 0) /
       mistakeData.englishArr.length %>
@@ -60,6 +63,7 @@
     </div>
   </div>
   <div class="row display-6">
+    <div class="col display-6"># of Mistakes Range</div>
     <div class="col">
       <%= Math.min(...mistakeData.englishArr) %> - <%=
       Math.max(...mistakeData.englishArr) %>

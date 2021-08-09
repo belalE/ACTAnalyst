@@ -202,10 +202,10 @@ AttemptSchema.virtual("topicStats").get(async function () {
   console.log(typeStats);
   // Make dictionary with variable for each general topic within each section
   var topicsDict = new Array(
-    topics.english,
-    topics.math,
-    topics.reading,
-    topics.science
+    [...topics.english],
+    [...topics.math],
+    [...topics.reading],
+    [...topics.science]
   );
   for (let i = 0; i < topicsDict.length; i++) {
     for (let j = 0; j < topicsDict[i].length; j++) {
