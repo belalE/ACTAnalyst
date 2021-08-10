@@ -46,8 +46,6 @@ async function sumTopicStats(attempts) {
   }
   // loop through each attempt
   for (let stats of statsArr) {
-    console.log("NEW Attempt");
-    console.log(stats);
     // loop through each section
     for (let section of [0, 1, 2, 3]) {
       // if section is not in index, add it
@@ -80,7 +78,6 @@ async function sumTopicStats(attempts) {
       }
     }
   }
-  console.log("out: ", dict["0"]["Punctuation "]);
   return dict;
 }
 

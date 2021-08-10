@@ -199,7 +199,6 @@ AttemptSchema.virtual("typeStats").get(async function () {
 AttemptSchema.virtual("topicStats").get(async function () {
   // Get typeStats and populate with QuestionTypes
   const typeStats = await this.get("typeStats");
-  console.log(typeStats);
   // Make dictionary with variable for each general topic within each section
   var topicsDict = new Array(
     [...topics.english],
@@ -212,7 +211,6 @@ AttemptSchema.virtual("topicStats").get(async function () {
       const topic = topicsDict[i][j];
       // Delete string version
       const index = topicsDict[i].indexOf(topic);
-      console.log(topicsDict[i].splice(index, 1));
       topicsDict[i][topic] = new Array();
       j--;
     }
@@ -240,7 +238,6 @@ AttemptSchema.virtual("topicStats").get(async function () {
 
   // Return dictionary
 
-  console.log("out: ");
   return topicsDict;
 });
 
