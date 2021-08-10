@@ -211,6 +211,7 @@ AttemptSchema.virtual("topicStats").get(async function () {
       const topic = topicsDict[i][j];
       // Delete string version
       const index = topicsDict[i].indexOf(topic);
+      topicsDict[i].splice(index, 1);
       topicsDict[i][topic] = new Array();
       j--;
     }
