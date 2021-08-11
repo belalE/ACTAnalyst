@@ -81,6 +81,33 @@ async function sumTopicStats(attempts) {
   return dict;
 }
 
+function getWorst(stats, section) {
+  var arr = [];
+  const data = stats[section];
+  const keys = Object.keys(data);
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const types = data[key];
+    // Add general topic to data arr
+    var num = 0;
+
+    for (let type of types) {
+      num += type.value;
+    }
+    arr.push({
+      name: key,
+      y: num,
+      drilldown: key,
+    });
+  }
+  // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
+  const max = arr.reduce(function (prev, current) {
+    return prev.y > current.y ? prev : current;
+  });
+
+  return max.name;
+}
+
 module.exports.index = async (req, res) => {
   const attempts = await Attempt.find({ owner: req.user._id }).populate(
     "test",
@@ -95,11 +122,18 @@ module.exports.index = async (req, res) => {
   const trendData = await getScoreTrends(sortedAttempts.slice().reverse());
   const mistakeData = await getMistakeTrends(sortedAttempts.slice().reverse());
   const summedQTypes = await sumTopicStats(sortedAttempts);
+  const worstDict = {
+    english: getWorst(summedQTypes, 0),
+    math: getWorst(summedQTypes, 1),
+    reading: getWorst(summedQTypes, 2),
+    science: getWorst(summedQTypes, 3),
+  };
   res.render("attempts/index", {
     sortedAttempts,
     trendData,
     mistakeData,
     summedQTypes,
+    worstDict,
   });
 };
 
@@ -127,7 +161,6 @@ module.exports.showAttempt = async (req, res) => {
   raw = await attempt.rawScores;
   scaled = await attempt.scaledScores;
   const topicStats = await attempt.topicStats;
-  console.dir(topicStats);
   res.render("attempts/show", {
     attempt,
     raw,

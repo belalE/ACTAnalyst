@@ -116,14 +116,17 @@
       </div>
       <ul class="list-group list-group-flush">
         <!-- TODO: Make function to calculate worst topic based on sum of mistakes stats -->
-        <li class="list-group-item">English: <%= %></li>
-        <li class="list-group-item">Math: <%= %></li>
-        <li class="list-group-item">Reading: <%= %></li>
-        <li class="list-group-item">Science: <%= %></li>
+        <li class="list-group-item">
+          <b>English:</b> <%= worstDict.english %>
+        </li>
+        <li class="list-group-item"><b>Math:</b> <%= worstDict.math %></li>
+        <li class="list-group-item">
+          <b>Reading:</b> <%= worstDict.reading %>
+        </li>
+        <li class="list-group-item">
+          <b>Science:</b> <%= worstDict.science %>
+        </li>
       </ul>
-      <div class="card-body">
-        <a href="#" class="card-link text-dark">Show more...</a>
-      </div>
     </div>
   </div>
 </div>
