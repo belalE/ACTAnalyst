@@ -81,7 +81,20 @@
     >
       <option value="" selected disabled>Select question type</option>
       <% for(let type of types.filter(type => type.section === 'English')) { %>
-      <option <% if(test.questions.english[i - 1].type && test.questions.english[i - 1].type.equals(type._id)) { %> selected <% } %> value="<%= type._id %>"><%=  type.name  %></option>
+      <option
+        <%
+        if(test.questions.english[i
+        -
+        1].type
+        &&
+        test.questions.english[i
+        -
+        1].type.equals(type._id))
+        {
+        %
+      >
+        selected <% } %> value="<%= type._id %>"><%= type.name %>
+      </option>
       <% } %>
     </select>
   </div>
@@ -142,7 +155,20 @@
       <option value="" selected disabled>Select question type</option>
 
       <% for(let type of types.filter(type => type.section === 'Math')) { %>
-      <option <% if(test.questions.english[i - 1].type && test.questions.english[i - 1].type.equals(type._id)) { %> selected <% } %> value="<%= type._id %>"><%= type.name %></option>
+      <option
+        <%
+        if(test.questions.english[i
+        -
+        1].type
+        &&
+        test.questions.english[i
+        -
+        1].type.equals(type._id))
+        {
+        %
+      >
+        selected <% } %> value="<%= type._id %>"><%= type.name %>
+      </option>
       <% } %>
     </select>
   </div>
@@ -201,7 +227,20 @@
       <option value="" selected disabled>Select question type</option>
 
       <% for(let type of types.filter(type => type.section === 'Reading')) { %>
-      <option <% if(test.questions.english[i - 1].type && test.questions.english[i - 1].type.equals(type._id)) { %> selected <% } %> value="<%= type._id %>"><%= type.name %></option>
+      <option
+        <%
+        if(test.questions.english[i
+        -
+        1].type
+        &&
+        test.questions.english[i
+        -
+        1].type.equals(type._id))
+        {
+        %
+      >
+        selected <% } %> value="<%= type._id %>"><%= type.name %>
+      </option>
       <% } %>
     </select>
   </div>
@@ -259,11 +298,25 @@
       <option value="" selected disabled>Select question type</option>
 
       <% for(let type of types.filter(type => type.section === 'Science')) { %>
-      <option <% if(test.questions.english[i - 1].type && test.questions.english[i - 1].type.equals(type._id)) { %> selected <% } %> value="<%= type._id %>"><%= type.name %></option>
+      <option
+        <%
+        if(test.questions.english[i
+        -
+        1].type
+        &&
+        test.questions.english[i
+        -
+        1].type.equals(type._id))
+        {
+        %
+      >
+        selected <% } %> value="<%= type._id %>"><%= type.name %>
+      </option>
       <% } %>
     </select>
   </div>
   <% } %>
+  <!-- TODO: Come up with new way to input scale -->
 
   <h2 class="text-center">Scale</h2>
   <div class="row">

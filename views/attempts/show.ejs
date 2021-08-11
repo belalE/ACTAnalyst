@@ -102,7 +102,6 @@
   </div>
 </div>
 
-<!-- TODO: bar graph for each subject with general topics, with drill down being specific question types -->
 <%- include('../partials/tabview') %>
 <div id="English" class="tabcontent">
   <div id="qTypeBarEng" class="mt-3"></div>
@@ -131,9 +130,10 @@
     <button class="btn btn-sm btn-danger">Delete</button>
   </form>
 </div>
+<!-- TODO: Add Table with all the mistakes (#, section, topic, type, tags, etc)  -->
+<!-- TODO: Histogram of mistakes for question # and mistakes with bins= 10 or 5 -->
 <script>
   const topicStats = <%- JSON.stringify(topicStats) %>;
 </script>
-<script src="/highchart/highcharts.js"></script>
-<script src="/highchart/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="/javascripts/attemptShowPage.js"></script>

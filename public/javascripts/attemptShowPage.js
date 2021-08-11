@@ -1,4 +1,3 @@
-// TODO: Setup Tab View to hold graph below
 // https://www.w3schools.com/howto/howto_js_tabs.asp
 
 function getData(stats, section) {
