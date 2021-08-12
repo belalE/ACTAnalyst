@@ -130,7 +130,6 @@
     <button class="btn btn-sm btn-danger">Delete</button>
   </form>
 </div>
-<!-- TODO: Add Table with all the mistakes (#, section, topic, type, tags, etc)  -->
 <table class="table">
   <thead>
     <tr>
@@ -144,15 +143,15 @@
       <th scope="col">Revise</th>
     </tr>
   </thead>
+  <!-- https://stackoverflow.com/questions/22057610/uncaught-typeerror-cannot-read-property-value-of-null -->
   <tbody>
     <% for(let section of ['english','math','reading','science']) { %> 
       <% for(let i=0;i<mistakes[section].length;i++) { %>
       <tr>
         <th scope="row"><%= section[0].toUpperCase() + section.slice(1) %></th>
         <td><%= mistakes[section][i].index  %></td>
-        <% console.log(mistakes[section][i].type) %> 
-        <td> <%= mistakes[section][i] != null ?  mistakes[section][i].type  : '' %> </td>
-        <td> <%= mistakes[section][i] != null ?  mistakes[section][i].type  : '' %> </td>
+        <td> <%=  (mistakes[section][i].type||{}).general || "" %> </td>
+        <td> <%= (mistakes[section][i].type||{}).name || "" %> </td>
         <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('skip') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
         <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('guess') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
         <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('time') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
