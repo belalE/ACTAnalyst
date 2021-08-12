@@ -1,4 +1,15 @@
-console.log(scale);
+function getScalesData(stats, section) {
+  const scale = scales[section];
+  const arr = [];
+  for (let i = 0; i < scale.length; i++) {
+    arr.push({
+      x: i,
+      y: scale[i].scaled,
+    });
+  }
+  return arr;
+}
+
 function getData(stats, section) {
   var arr = [];
   var drilldown = [];
@@ -244,36 +255,142 @@ Highcharts.chart("distScience", {
   },
 });
 
-// Highcharts.chart("scaleEng", {
-//   chart: {
-//     zoomType: "xy",
-//   },
-//   title: {
-//     text: "English Section Scale",
-//   },
-//   subtitle: "",
-//   xAxis: {
-//     type: "datetime",
-//     categories: trendData.dateArr,
-//   },
-//   yAxis: {
-//     title: {
-//       text: "",
-//       style: {
-//         color: Highcharts.getOptions().colors[0],
-//       },
-//     },
-//   },
-//   legend: {
-//     layout: "vertical",
-//     align: "right",
-//     verticalAlign: "middle",
-//   },
-//   series: [
-//     {
-//       name: "English",
-//       data: trendData.englishArr,
-//       step: true,
-//     },
-//   ],
-// });
+Highcharts.chart("scaleEng", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "English Section Scale",
+  },
+  subtitle: "",
+  xAxis: {
+    accessibility: {
+      rangeDescription: "Range: 0-75 ",
+    },
+  },
+  yAxis: {
+    title: {
+      text: "",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "English",
+      data: getScalesData(scales, "english"),
+      step: "left",
+    },
+  ],
+});
+
+Highcharts.chart("scaleMath", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Math Section Scale",
+  },
+  subtitle: "",
+  xAxis: {
+    accessibility: {
+      rangeDescription: "Range: 0-60 ",
+    },
+  },
+  yAxis: {
+    title: {
+      text: "",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Math",
+      data: getScalesData(scales, "math"),
+      step: "left",
+    },
+  ],
+});
+
+Highcharts.chart("scaleReading", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Reading Section Scale",
+  },
+  subtitle: "",
+  xAxis: {
+    accessibility: {
+      rangeDescription: "Range: 0-40 ",
+    },
+  },
+  yAxis: {
+    title: {
+      text: "",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "reading",
+      data: getScalesData(scales, "reading"),
+      step: "left",
+    },
+  ],
+});
+
+Highcharts.chart("scaleScience", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Science Section Scale",
+  },
+  subtitle: "",
+  xAxis: {
+    accessibility: {
+      rangeDescription: "Range: 0-40 ",
+    },
+  },
+  yAxis: {
+    title: {
+      text: "",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Science",
+      data: getScalesData(scales, "science"),
+      step: "left",
+    },
+  ],
+});

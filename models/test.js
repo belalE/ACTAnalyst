@@ -62,7 +62,6 @@ const TestSchema = new Schema({
 
 function getTypeStats(questions) {
   var arr = [];
-  console.log(questions[0]);
   for (let question of questions) {
     if (question.type) {
       if (arr[question.type]) {
@@ -127,7 +126,6 @@ TestSchema.virtual("topicStats").get(async function () {
   // Change it from
 
   // Return dictionary
-  console.log(topicsDict[0]["Punctuation"]);
   return topicsDict;
 });
 

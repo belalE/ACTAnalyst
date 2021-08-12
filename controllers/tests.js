@@ -43,7 +43,6 @@ module.exports.showTest = async (req, res) => {
     .populate("questions.reading")
     .populate("questions.science");
   const topicStats = await test.topicStats;
-  console.log(topicStats);
   if (!test) {
     req.flash("error", "Cannot find that type!");
     return res.redirect("/tests");
