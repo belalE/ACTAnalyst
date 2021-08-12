@@ -37,12 +37,18 @@ module.exports.createTest = async (req, res, next) => {
 
 module.exports.showTest = async (req, res) => {
   const { id } = req.params;
-  const test = await Test.findById(id);
+  const test = await Test.findById(id)
+    .populate("questions.english")
+    .populate("questions.math")
+    .populate("questions.reading")
+    .populate("questions.science");
+  const topicStats = await test.topicStats;
+  console.log(topicStats);
   if (!test) {
     req.flash("error", "Cannot find that type!");
     return res.redirect("/tests");
   }
-  res.render("tests/show", { test });
+  res.render("tests/show", { test, topicStats });
 };
 
 module.exports.renderEditForm = async (req, res) => {
