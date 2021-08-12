@@ -238,11 +238,13 @@ module.exports.showAttempt = async (req, res) => {
   raw = await attempt.rawScores;
   scaled = await attempt.scaledScores;
   const topicStats = await attempt.topicStats;
+  const mistakes = await attempt.mistakes;
   res.render("attempts/show", {
     attempt,
     raw,
     scaled,
     topicStats,
+    mistakes,
   });
 };
 

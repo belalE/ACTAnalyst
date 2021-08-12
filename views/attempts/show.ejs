@@ -131,9 +131,42 @@
   </form>
 </div>
 <!-- TODO: Add Table with all the mistakes (#, section, topic, type, tags, etc)  -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Section</th>
+      <th scope="col">#</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Type</th>
+      <th scope="col">Skip</th>
+      <th scope="col">Guess</th>
+      <th scope="col">Time</th>
+      <th scope="col">Revise</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let section of ['english','math','reading','science']) { %> 
+      <% for(let i=0;i<mistakes[section].length;i++) { %>
+      <tr>
+        <th scope="row"><%= section[0].toUpperCase() + section.slice(1) %></th>
+        <td><%= mistakes[section][i].index  %></td>
+        <% console.log(mistakes[section][i].type) %> 
+        <td> <%= mistakes[section][i] != null ?  mistakes[section][i].type  : '' %> </td>
+        <td> <%= mistakes[section][i] != null ?  mistakes[section][i].type  : '' %> </td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('skip') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('guess') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('time') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('revise') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
+      </tr>
+    <% } %>
+    <% }  %> 
+    
+  </tbody>
+</table>
 <!-- TODO: Histogram of mistakes for question # and mistakes with bins= 10 or 5 -->
 <script>
   const topicStats = <%- JSON.stringify(topicStats) %>;
 </script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 <script src="/javascripts/attemptShowPage.js"></script>

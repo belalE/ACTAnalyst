@@ -86,10 +86,22 @@ const AttemptSchema = new Schema(
 
 AttemptSchema.virtual("mistakes").get(async function () {
   const test = await Test.findById(this.test)
-    .populate("questions.english")
-    .populate("questions.math")
-    .populate("questions.reading")
-    .populate("questions.science");
+    .populate({
+      path: "questions.english",
+      populate: { path: "type" },
+    })
+    .populate({
+      path: "questions.math",
+      populate: { path: "type" },
+    })
+    .populate({
+      path: "questions.reading",
+      populate: { path: "type" },
+    })
+    .populate({
+      path: "questions.science",
+      populate: { path: "type" },
+    });
   var english = [];
   var math = [];
   var reading = [];
@@ -175,10 +187,10 @@ function getTypeStats(mistakeArr) {
   var arr = [];
   for (let question of mistakeArr) {
     if (question.type) {
-      if (arr[question.type]) {
-        arr[question.type] += 1;
+      if (arr[question.type._id]) {
+        arr[question.type._id] += 1;
       } else {
-        arr[question.type] = 1;
+        arr[question.type._id] = 1;
       }
     }
   }
