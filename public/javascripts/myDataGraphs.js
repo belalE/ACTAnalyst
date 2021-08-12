@@ -92,7 +92,6 @@ Highcharts.chart("rawChart", {
 
 // Drilldown graphs for question types
 
-// TODO: Setup Tab View to hold graph below
 // https://www.w3schools.com/howto/howto_js_tabs.asp
 
 function getData(stats, section) {
@@ -337,4 +336,192 @@ Highcharts.chart("qTypeBarSci", {
   drilldown: {
     series: getData(summedQTypes, 3).drilldown,
   },
+});
+
+// Chart for Tags English
+
+Highcharts.chart("tagGraphEng", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Question Tags",
+  },
+  subtitle: "Question tags count for each test",
+  xAxis: {
+    type: "datetime",
+    categories: tagsData.dates,
+  },
+  yAxis: {
+    title: {
+      text: "Score / 36",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Skips",
+      data: tagsData.english.skips,
+    },
+    {
+      name: "Guesses",
+      data: tagsData.english.guesses,
+    },
+    {
+      name: "No Time",
+      data: tagsData.english.times,
+    },
+    {
+      name: "Revisions",
+      data: tagsData.english.revises,
+    },
+  ],
+});
+
+// Chart for Tags Math
+
+Highcharts.chart("tagGraphMath", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Question Tags",
+  },
+  subtitle: "Question tags count for each test",
+  xAxis: {
+    type: "datetime",
+    categories: tagsData.dates,
+  },
+  yAxis: {
+    title: {
+      text: "Score / 36",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Skips",
+      data: tagsData.math.skips,
+    },
+    {
+      name: "Guesses",
+      data: tagsData.math.guesses,
+    },
+    {
+      name: "No Time",
+      data: tagsData.math.times,
+    },
+    {
+      name: "Revisions",
+      data: tagsData.math.revises,
+    },
+  ],
+});
+
+// Chart for Tags Reading
+
+Highcharts.chart("tagGraphRead", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Question Tags",
+  },
+  subtitle: "Question tags count for each test",
+  xAxis: {
+    type: "datetime",
+    categories: tagsData.dates,
+  },
+  yAxis: {
+    title: {
+      text: "Score / 36",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Skips",
+      data: tagsData.reading.skips,
+    },
+    {
+      name: "Guesses",
+      data: tagsData.reading.guesses,
+    },
+    {
+      name: "No Time",
+      data: tagsData.reading.times,
+    },
+    {
+      name: "Revisions",
+      data: tagsData.reading.revises,
+    },
+  ],
+});
+
+// Chart for Tags Science
+
+Highcharts.chart("tagGraphSci", {
+  chart: {
+    zoomType: "xy",
+  },
+  title: {
+    text: "Question Tags",
+  },
+  subtitle: "Question tags count for each test",
+  xAxis: {
+    type: "datetime",
+    categories: tagsData.dates,
+  },
+  yAxis: {
+    title: {
+      text: "Score / 36",
+      style: {
+        color: Highcharts.getOptions().colors[0],
+      },
+    },
+  },
+  legend: {
+    layout: "vertical",
+    align: "right",
+    verticalAlign: "middle",
+  },
+  series: [
+    {
+      name: "Skips",
+      data: tagsData.science.skips,
+    },
+    {
+      name: "Guesses",
+      data: tagsData.science.guesses,
+    },
+    {
+      name: "No Time",
+      data: tagsData.science.times,
+    },
+    {
+      name: "Revisions",
+      data: tagsData.science.revises,
+    },
+  ],
 });

@@ -108,6 +108,81 @@ function getWorst(stats, section) {
   return max.name;
 }
 
+async function getTagsData(attempts) {
+  var dates = [];
+  var engSkips = [];
+  var engGuesses = [];
+  var engTimes = [];
+  var engRevises = [];
+  var mathSkips = [];
+  var mathGuesses = [];
+  var mathTimes = [];
+  var mathRevises = [];
+  var readSkips = [];
+  var readGuesses = [];
+  var readTimes = [];
+  var readRevises = [];
+  var sciSkips = [];
+  var sciGuesses = [];
+  var sciTimes = [];
+  var sciRevises = [];
+  for (attempt of attempts) {
+    dates.push(attempt.dateTaken.toISOString().slice(0, 10));
+    const stats = await attempt.get("tagStats");
+    engSkips.push(stats.englishStats.skips);
+    engGuesses.push(stats.englishStats.guesses);
+    engTimes.push(stats.englishStats.times);
+    engRevises.push(stats.englishStats.revises);
+
+    mathSkips.push(stats.mathStats.skips);
+    mathGuesses.push(stats.mathStats.guesses);
+    mathTimes.push(stats.mathStats.times);
+    mathRevises.push(stats.mathStats.revises);
+
+    readSkips.push(stats.readingStats.skips);
+    readGuesses.push(stats.readingStats.guesses);
+    readTimes.push(stats.readingStats.times);
+    readRevises.push(stats.readingStats.revises);
+
+    sciSkips.push(stats.scienceStats.skips);
+    sciGuesses.push(stats.scienceStats.guesses);
+    sciTimes.push(stats.scienceStats.times);
+    sciRevises.push(stats.scienceStats.revises);
+  }
+  const english = {
+    skips: engSkips,
+    guesses: engGuesses,
+    times: engTimes,
+    revises: engRevises,
+  };
+  const math = {
+    skips: mathSkips,
+    guesses: mathGuesses,
+    times: mathTimes,
+    revises: mathRevises,
+  };
+  const reading = {
+    skips: readSkips,
+    guesses: readGuesses,
+    times: readTimes,
+    revises: readRevises,
+  };
+  const science = {
+    skips: sciSkips,
+    guesses: sciGuesses,
+    times: sciTimes,
+    revises: sciRevises,
+  };
+  const stats = {
+    dates,
+    english,
+    math,
+    reading,
+    science,
+  };
+  return stats;
+}
+
 module.exports.index = async (req, res) => {
   const attempts = await Attempt.find({ owner: req.user._id }).populate(
     "test",
@@ -128,12 +203,14 @@ module.exports.index = async (req, res) => {
     reading: getWorst(summedQTypes, 2),
     science: getWorst(summedQTypes, 3),
   };
+  const tagsData = await getTagsData(sortedAttempts.slice().reverse());
   res.render("attempts/index", {
     sortedAttempts,
     trendData,
     mistakeData,
     summedQTypes,
     worstDict,
+    tagsData,
   });
 };
 

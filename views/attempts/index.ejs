@@ -133,29 +133,59 @@
 <%- include('../partials/tabview') %>
 <div id="English" class="tabcontent">
   <div id="qTypeBarEng" class="mt-3"></div>
+  <div id="tagGraphEng" class="mt-3"></div>
 </div>
 <div id="Math" class="tabcontent">
   <div id="qTypeBarMath" class="mt-3"></div>
+  <div id="tagGraphMath" class="mt-3"></div>
 </div>
 <div id="Reading" class="tabcontent">
   <div id="qTypeBarRead" class="mt-3"></div>
+  <div id="tagGraphRead" class="mt-3"></div>
 </div>
 <div id="Science" class="tabcontent">
   <div id="qTypeBarSci" class="mt-3"></div>
+  <div id="tagGraphSci" class="mt-3"></div>
 </div>
 
-<!-- TODO: Add card + graph w/ info about tags (skip, guess, time, revised ) -->
-
-<!-- TODO: Add Table for more attempts -->
 <div id="allAttempts">
-  <h3>All Attempts</h3>
+  <h3 class="text-center">All Attempts</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Attempt</th>
+      <th scope="col">Date</th>
+      <th scope="col">English</th>
+      <th scope="col">Math</th>
+      <th scope="col">Reading</th>
+      <th scope="col">Science</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0;i<sortedAttempts.length;i++) { %>
+      <tr>
+        <th scope="row"><%= i + 1 %></th>
+        <td><a href="/attempts/<%= sortedAttempts[i]._id %>"><%= sortedAttempts[i].test.form %> </a></td>
+        <td><%= sortedAttempts[i].dateTaken.toISOString().slice(0, 10) %></td>
+        <td><%= trendData.englishArr.slice().reverse()[i] %></td>
+        <td><%= trendData.mathArr.slice().reverse()[i] %></td>
+        <td><%= trendData.readingArr.slice().reverse()[i] %></td>
+        <td><%= trendData.scienceArr.slice().reverse()[i] %></td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
 </div>
+
+
 <script>
   document.getElementById("defaultOpen").click();
 
     const trendData = <%- JSON.stringify(trendData) %>
     const mistakeData = <%- JSON.stringify(mistakeData) %>
     const summedQTypes = <%- JSON.stringify(summedQTypes) %>
+    const tagsData = <%- JSON.stringify(tagsData) %>
 </script>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>

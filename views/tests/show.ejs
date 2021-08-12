@@ -17,10 +17,11 @@
 <a class="btn btn-success mb-2" href="/tests/<%=test._id%>/edit">Edit</a>
 <br />
 <% }%>
-<!-- TODO: Make Button Huge -->
-<a class="btn btn-primary" href="/attempts/new?test=<%= test._id %>"
-  >Make New Attempt</a
->
+<div class="d-grid">
+  <a class="btn btn-primary" href="/attempts/new?test=<%= test._id %>"
+    >Make New Attempt</a
+  >
+</div>
 
 <!-- TODO: TabView: Graph of distribution of question types and scale step graph  -->
 
