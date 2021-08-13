@@ -105,17 +105,21 @@
 <%- include('../partials/tabview') %>
 <div id="English" class="tabcontent">
   <div id="qTypeBarEng" class="mt-3"></div>
+  <div id="histEng" class="mt-3"></div>
 </div>
 
 <div id="Math" class="tabcontent">
   <div id="qTypeBarMath" class="mt-3"></div>
+  <div id="histMath" class="mt-3"></div>
 </div>
 
 <div id="Reading" class="tabcontent">
   <div id="qTypeBarRead" class="mt-3"></div>
+  <div id="histRead" class="mt-3"></div>
 </div>
 <div id="Science" class="tabcontent">
   <div id="qTypeBarSci" class="mt-3"></div>
+  <div id="histSci" class="mt-3"></div>
 </div>
 
 <div class="mt-3">
@@ -152,20 +156,22 @@
         <td><%= mistakes[section][i].index  %></td>
         <td> <%=  (mistakes[section][i].type||{}).general || "" %> </td>
         <td> <%= (mistakes[section][i].type||{}).name || "" %> </td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('skip') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('guess') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('time') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('revise') ? "/assets/check.png" : "/assets/close.png" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('skip') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('guess') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('time') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('revise') ? "/assets/check.png" : "" %>" alt=""></td>
       </tr>
     <% } %>
     <% }  %> 
     
   </tbody>
 </table>
-<!-- TODO: Histogram of mistakes for question # and mistakes with bins= 10 or 5 -->
+
 <script>
   const topicStats = <%- JSON.stringify(topicStats) %>;
+  const mistakes = <%- JSON.stringify(mistakes) %>;
 </script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
 <script src="/javascripts/attemptShowPage.js"></script>
