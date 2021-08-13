@@ -1,10 +1,24 @@
 const Test = require("../models/test");
 const Question = require("../models/question");
+const Attempt = require("../models/attempt");
 const { QuestionType, topics } = require("../models/questionType");
+
+function getTestIDs(attempts) {
+  var ids = [];
+  for (let attempt of attempts) {
+    ids.push(attempt.test);
+  }
+  return ids;
+}
 
 module.exports.index = async (req, res) => {
   const tests = await Test.find({});
-  res.render("tests/index", { tests });
+  var attempts = [];
+  if (req.user) {
+    attempts = await Attempt.find({ owner: req.user._id });
+  }
+  const ids = getTestIDs(attempts);
+  res.render("tests/index", { tests, ids });
 };
 
 module.exports.renderNewForm = async (req, res) => {

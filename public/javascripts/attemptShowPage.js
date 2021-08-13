@@ -272,7 +272,7 @@ Highcharts.chart("qTypeBarSci", {
     series: getData(topicStats, 3).drilldown,
   },
 });
-// TODO: Setup histogram function to enable histogram use
+
 Highcharts.chart("histEng", {
   chart: {
     type: "column",

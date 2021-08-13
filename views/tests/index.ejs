@@ -12,7 +12,9 @@
       <th scope="col">#</th>
       <th scope="col">Test</th>
       <th scope="col">Date</th>
+      <% if (currentUser) { %>
       <th scope="col">Taken?</th>
+      <% } %>
     </tr>
   </thead>
   <tbody>
@@ -21,8 +23,14 @@
         <th scope="row"><%= i + 1 %></th>
         <td><a href="/tests/<%= tests[i]._id %>"><%= tests[i].form %> </a></td>
         <td><%= tests[i].date.toISOString().slice(0, 10) %></td>
-        <!-- TODO: Fix conditional for test taken -->
-        <td><% if (!true) { %> <img class="small" src="/assets/check.png" alt="" /> <%
+        <% if (currentUser) { %>
+          <% var included = false; %> 
+          <% for (let id of ids) { %> 
+            <% if(id.equals(tests[i]._id)) { %> 
+              <% included = true; %> 
+              <% } %> 
+            <% } %>
+          <td><% if (included) { %> <img class="small" src="/assets/check.png" alt="" /> <%
       } else { %>
       <img class="small me-3" src="/assets/close.png" alt="" />
       <a
@@ -32,6 +40,8 @@
       >
       <% } %>
       </td>
+        <% } %>
+        
       </tr>
     <% } %>
   </tbody>
