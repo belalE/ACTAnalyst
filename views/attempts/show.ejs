@@ -156,10 +156,10 @@
         <td><%= mistakes[section][i].index  %></td>
         <td> <%=  (mistakes[section][i].type||{}).general || "" %> </td>
         <td> <%= (mistakes[section][i].type||{}).name || "" %> </td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('skip') ? "/assets/check.png" : "" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('guess') ? "/assets/check.png" : "" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('time') ? "/assets/check.png" : "" %>" alt=""></td>
-        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index].tags.includes('revise') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index - 1].tags.includes('skip') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index - 1].tags.includes('guess') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index - 1].tags.includes('noTime') ? "/assets/check.png" : "" %>" alt=""></td>
+        <td><img class="small" src="<%= attempt.answers[section][mistakes[section][i].index - 1].tags.includes('revised') ? "/assets/check.png" : "" %>" alt=""></td>
       </tr>
     <% } %>
     <% }  %> 

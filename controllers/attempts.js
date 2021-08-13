@@ -183,6 +183,20 @@ async function getTagsData(attempts) {
   return stats;
 }
 
+function getMistakesIndices(mistakes) {
+  const dict = {};
+  for (let section of ["english", "math", "reading", "science"]) {
+    for (let mistake of mistakes[section]) {
+      if (!dict[section]) {
+        dict[section] = [mistake.index];
+      } else {
+        dict[section].push(mistake.index);
+      }
+    }
+  }
+  return dict;
+}
+
 module.exports.index = async (req, res) => {
   const attempts = await Attempt.find({ owner: req.user._id }).populate(
     "test",
@@ -255,7 +269,9 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Cannot find that attempt!");
     return res.redirect("/attempts");
   }
-  res.render("attempts/edit", { attempt });
+  const mistakes = await attempt.mistakes;
+  const mistakeIndices = getMistakesIndices(mistakes);
+  res.render("attempts/edit", { attempt, mistakeIndices });
 };
 
 module.exports.updateAttempt = async (req, res) => {
