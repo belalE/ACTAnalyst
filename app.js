@@ -13,7 +13,9 @@ const ExpressError = require("./utils/ExpressError");
 const ejsLint = require("ejs-lint");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
-const dBUrl = process.env.DB_URL;
+const dBUrl = "mongodb://localhost:27017/act-analyst";
+
+const MongoStore = require("connect-mongo");
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -23,7 +25,7 @@ const userRoutes = require("./routes/users");
 const tests = require("./routes/tests");
 const questionTypes = require("./routes/questionTypes");
 const attempts = require("./routes/attempts");
-// ("mongodb://localhost:27017/act-analyst");
+
 mongoose.connect(dBUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -48,7 +50,19 @@ app.use(methodOverride("_method"));
 app.use(mongoSanitize());
 
 app.use(express.static(path.join(__dirname, "public")));
+
+const store = MongoStore.create({
+  mongoUrl: dBUrl,
+  secret: "thisshouldbeabettersecret!",
+  touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR: ", e);
+});
+
 const sessionConfig = {
+  store,
   name: "session",
   secret: "thisshouldbeabettersecret!",
   resave: false,
