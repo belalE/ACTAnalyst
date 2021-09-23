@@ -13,7 +13,7 @@ const ExpressError = require("./utils/ExpressError");
 const ejsLint = require("ejs-lint");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
-const dBUrl = "mongodb://localhost:27017/act-analyst";
+const dBUrl = process.env.DB_URL || "mongodb://localhost:27017/act-analyst";
 
 const MongoStore = require("connect-mongo");
 
@@ -51,9 +51,11 @@ app.use(mongoSanitize());
 
 app.use(express.static(path.join(__dirname, "public")));
 
+const secret = process.env.SECRET || "thisshouldbeabettersecret!";
+
 const store = MongoStore.create({
   mongoUrl: dBUrl,
-  secret: "thisshouldbeabettersecret!",
+  secret,
   touchAfter: 24 * 60 * 60,
 });
 
@@ -64,7 +66,7 @@ store.on("error", function (e) {
 const sessionConfig = {
   store,
   name: "session",
-  secret: "thisshouldbeabettersecret!",
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
