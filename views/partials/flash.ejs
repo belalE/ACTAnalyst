@@ -10,7 +10,7 @@
 </div>
 <% } %> <% if (error && error.length) { %>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error %>
+  <%= error, error.stack %>
   <button
     type="button"
     class="btn-close"
