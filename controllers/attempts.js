@@ -83,8 +83,8 @@ async function sumTopicStats(attempts) {
 
 function getWorst(stats, section) {
   var arr = [];
-  const data = stats[section];
-  const keys = Object.keys(data) || [];
+  const data = stats[section] || [];
+  const keys = Object.keys(data);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
     const types = data[key];
