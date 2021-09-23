@@ -5,83 +5,66 @@
 <div class="text-center mb-3">
   <h2 class="display-2 bg-secondary rounded-pill text-light mb-3">Scores</h2>
   <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
-  <div class="row display-2">
-    <div class="col display-6">Average Score</div>
-    <div class="col">
-      <%= trendData.englishArr.reduce((a,b) => a + b, 0) /
-      trendData.englishArr.length %>
-    </div>
-    <div class="col">
-      <%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length
-      %>
-    </div>
-    <div class="col">
-      <%= trendData.readingArr.reduce((a,b) => a + b, 0) /
-      trendData.readingArr.length %>
-    </div>
-    <div class="col">
-      <%= trendData.scienceArr.reduce((a,b) => a + b, 0) /
-      trendData.scienceArr.length %>
-    </div>
+  <div class="row mx-5 rounded-3">
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">English</th>
+        <th scope="col">Math</th>
+        <th scope="col">Reading</th>
+        <th scope="col">Science</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tr>
+        <th scope="row">Average Score</th>
+        <td><%= trendData.englishArr.reduce((a,b) => a + b, 0) /
+        trendData.englishArr.length %></td>
+        <td><%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length
+        %></td>
+        <td><%= trendData.readingArr.reduce((a,b) => a + b, 0) /
+        trendData.readingArr.length %></td>
+        <td><%= trendData.scienceArr.reduce((a,b) => a + b, 0) /
+        trendData.scienceArr.length %></td>
+      </tr>
+      <tr>
+        <th scope="row">Score Range</th>
+        <td><%= Math.min(...trendData.englishArr) %> - <%=
+        Math.max(...trendData.englishArr) %></td>
+        <td><%= Math.min(...trendData.mathArr) %> - <%=
+        Math.max(...trendData.mathArr) %></td>
+        <td><%= Math.min(...trendData.readingArr) %> - <%=
+        Math.max(...trendData.readingArr) %></td>
+        <td><%= Math.min(...trendData.scienceArr) %> - <%=
+        Math.max(...trendData.scienceArr) %></td>
+      </tr>
+      <tr>
+        <th scope="row">Average # of Mistakes</th>
+        <td><%= mistakeData.englishArr.reduce((a,b) => a + b, 0) /
+        mistakeData.englishArr.length %></td>
+        <td><%= mistakeData.mathArr.reduce((a,b) => a + b, 0) /
+        mistakeData.mathArr.length %></td>
+        <td><%= mistakeData.readingArr.reduce((a,b) => a + b, 0) /
+        mistakeData.readingArr.length %></td>
+        <td><%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) /
+        mistakeData.scienceArr.length %></td>
+      </tr>
+      <tr>
+        <th scope="row">Mistakes Range</th>
+        <td><%= Math.min(...mistakeData.englishArr) %> - <%=
+        Math.max(...mistakeData.englishArr) %></td>
+        <td><%= Math.min(...mistakeData.mathArr) %> - <%=
+        Math.max(...mistakeData.mathArr) %></td>
+        <td><%= Math.min(...mistakeData.readingArr) %> - <%=
+        Math.max(...mistakeData.readingArr) %></td>
+        <td><%= Math.min(...mistakeData.scienceArr) %> - <%=
+        Math.max(...mistakeData.scienceArr) %></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
-  <div class="row display-6">
-    <div class="col display-6">Score Range</div>
-    <div class="col">
-      <%= Math.min(...trendData.englishArr) %> - <%=
-      Math.max(...trendData.englishArr) %>
-    </div>
-    <div class="col">
-      <%= Math.min(...trendData.mathArr) %> - <%= Math.max(...trendData.mathArr)
-      %>
-    </div>
-    <div class="col">
-      <%= Math.min(...trendData.readingArr) %> - <%=
-      Math.max(...trendData.readingArr) %>
-    </div>
-    <div class="col">
-      <%= Math.min(...trendData.scienceArr) %> - <%=
-      Math.max(...trendData.scienceArr) %>
-    </div>
-  </div>
-  <div class="row display-4">
-    <div class="col display-6">Average # of Mistakes</div>
-    <div class="col">
-      <%= mistakeData.englishArr.reduce((a,b) => a + b, 0) /
-      mistakeData.englishArr.length %>
-    </div>
-    <div class="col">
-      <%= mistakeData.mathArr.reduce((a,b) => a + b, 0) /
-      mistakeData.mathArr.length %>
-    </div>
-    <div class="col">
-      <%= mistakeData.readingArr.reduce((a,b) => a + b, 0) /
-      mistakeData.readingArr.length %>
-    </div>
-    <div class="col">
-      <%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) /
-      mistakeData.scienceArr.length %>
-    </div>
-  </div>
-  <div class="row display-6">
-    <div class="col display-6"># of Mistakes Range</div>
-    <div class="col">
-      <%= Math.min(...mistakeData.englishArr) %> - <%=
-      Math.max(...mistakeData.englishArr) %>
-    </div>
-    <div class="col">
-      <%= Math.min(...mistakeData.mathArr) %> - <%=
-      Math.max(...mistakeData.mathArr) %>
-    </div>
-    <div class="col">
-      <%= Math.min(...mistakeData.readingArr) %> - <%=
-      Math.max(...mistakeData.readingArr) %>
-    </div>
-    <div class="col">
-      <%= Math.min(...mistakeData.scienceArr) %> - <%=
-      Math.max(...mistakeData.scienceArr) %>
-    </div>
-  </div>
-</div>
 <div id="scoreChart"></div>
 <div class="row my-3">
   <div class="col">
@@ -148,8 +131,8 @@
   <div id="tagGraphSci" class="mt-3"></div>
 </div>
 
-<div id="allAttempts">
-  <h3 class="text-center">All Attempts</h3>
+<div id="allAttempts mt-3">
+  <h3 class="text-center mt-3">All Attempts</h3>
   <table class="table">
   <thead>
     <tr>
