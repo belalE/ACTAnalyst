@@ -82,30 +82,33 @@ async function sumTopicStats(attempts) {
 }
 
 function getWorst(stats, section) {
-  var arr = [];
-  const data = stats[section] || [];
-  const keys = Object.keys(data);
-  for (let i = 0; i < keys.length; i++) {
-    const key = keys[i];
-    const types = data[key];
-    // Add general topic to data arr
-    var num = 0;
+  if (stats[section] != null) {
+    var arr = [];
+    const data = stats[section];
+    const keys = Object.keys(data);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      const types = data[key];
+      // Add general topic to data arr
+      var num = 0;
 
-    for (let type of types) {
-      num += type.value;
+      for (let type of types) {
+        num += type.value;
+      }
+      arr.push({
+        name: key,
+        y: num,
+        drilldown: key,
+      });
     }
-    arr.push({
-      name: key,
-      y: num,
-      drilldown: key,
+    // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
+    const max = arr.reduce(function (prev, current) {
+      return prev.y > current.y ? prev : current;
     });
-  }
-  // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
-  const max = arr.reduce(function (prev, current) {
-    return prev.y > current.y ? prev : current;
-  });
 
-  return max.name;
+    return max.name;
+  }
+  return "Add more data";
 }
 
 async function getTagsData(attempts) {
