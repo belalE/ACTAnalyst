@@ -62,28 +62,36 @@
                     id="q<%= i %>A" name="attempt[answers][english][<%= i
                     %>][choice]" value="A" <% if (attempt.answers.english[i -
                     1].choice == "A") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>A">A</label>
+                    <label class="form-check-label" for="q<%= i %>A"
+                      ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                    </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>B" name="attempt[answers][english][<%= i
                     %>][choice]" value="B" <% if (attempt.answers.english[i -
                     1].choice == "B") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>B">B</label>
+                    <label class="form-check-label" for="q<%= i %>B"
+                      ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>C" name="attempt[answers][english][<%= i
                     %>][choice]" value="C" <% if (attempt.answers.english[i -
                     1].choice == "C") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>C">C</label>
+                    <label class="form-check-label" for="q<%= i %>C"
+                      ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>D" name="attempt[answers][english][<%= i
                     %>][choice]" value="D" <% if (attempt.answers.english[i -
                     1].choice == "D") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>D">D</label>
+                    <label class="form-check-label" for="q<%= i %>D"
+                      ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
+                    >
                   </div>
                 </div>
               </div>
@@ -173,35 +181,45 @@
                     id="q<%= i %>A" name="attempt[answers][math][<%= i
                     %>][choice]" value="A" <% if (attempt.answers.math[i -
                     1].choice == "A") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>A">A</label>
+                    <label class="form-check-label" for="q<%= i %>A"
+                      ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                    </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>B" name="attempt[answers][math][<%= i
                     %>][choice]" value="B" <% if (attempt.answers.math[i -
                     1].choice == "B") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>B">B</label>
+                    <label class="form-check-label" for="q<%= i %>B"
+                      ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>C" name="attempt[answers][math][<%= i
                     %>][choice]" value="C" <% if (attempt.answers.math[i -
                     1].choice == "C") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>C">C</label>
+                    <label class="form-check-label" for="q<%= i %>C"
+                      ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>D" name="attempt[answers][math][<%= i
                     %>][choice]" value="D" <% if (attempt.answers.math[i -
                     1].choice == "D") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>D">D</label>
+                    <label class="form-check-label" for="q<%= i %>D"
+                      ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>E" name="attempt[answers][math][<%= i
                     %>][choice]" value="E" <% if (attempt.answers.math[i -
                     1].choice == "E") { %> checkeE <% } %> />
-                    <label class="form-check-label" for="q<%= i %>E">E</label>
+                    <label class="form-check-label" for="q<%= i %>E"
+                      ><% if(i % 2 ==\ 0) { %> K <% } else { %> E <% } %></label
+                    >
                   </div>
                 </div>
               </div>
@@ -288,28 +306,36 @@
                     id="q<%= i %>A" name="attempt[answers][reading][<%= i
                     %>][choice]" value="A" <% if (attempt.answers.reading[i -
                     1].choice == "A") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>A">A</label>
+                    <label class="form-check-label" for="q<%= i %>A"
+                      ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                    </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>B" name="attempt[answers][reading][<%= i
                     %>][choice]" value="B" <% if (attempt.answers.reading[i -
                     1].choice == "B") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>B">B</label>
+                    <label class="form-check-label" for="q<%= i %>B"
+                      ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>C" name="attempt[answers][reading][<%= i
                     %>][choice]" value="C" <% if (attempt.answers.reading[i -
                     1].choice == "C") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>C">C</label>
+                    <label class="form-check-label" for="q<%= i %>C"
+                      ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>D" name="attempt[answers][reading][<%= i
                     %>][choice]" value="D" <% if (attempt.answers.reading[i -
                     1].choice == "D") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>D">D</label>
+                    <label class="form-check-label" for="q<%= i %>D"
+                      ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
+                    >
                   </div>
                 </div>
               </div>
@@ -400,28 +426,36 @@
                     id="q<%= i %>A" name="attempt[answers][science][<%= i
                     %>][choice]" value="A" <% if (attempt.answers.science[i -
                     1].choice == "A") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>A">A</label>
+                    <label class="form-check-label" for="q<%= i %>A"
+                      ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                    </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>B" name="attempt[answers][science][<%= i
                     %>][choice]" value="B" <% if (attempt.answers.science[i -
                     1].choice == "B") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>B">B</label>
+                    <label class="form-check-label" for="q<%= i %>B"
+                      ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>C" name="attempt[answers][science][<%= i
                     %>][choice]" value="C" <% if (attempt.answers.science[i -
                     1].choice == "C") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>C">C</label>
+                    <label class="form-check-label" for="q<%= i %>C"
+                      ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input type="radio" required class="form-check-input"
                     id="q<%= i %>D" name="attempt[answers][science][<%= i
                     %>][choice]" value="D" <% if (attempt.answers.science[i -
                     1].choice == "D") { %> checked <% } %> />
-                    <label class="form-check-label" for="q<%= i %>D">D</label>
+                    <label class="form-check-label" for="q<%= i %>D"
+                      ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
+                    >
                   </div>
                 </div>
               </div>
