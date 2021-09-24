@@ -2,6 +2,7 @@
 <!-- Show all previous attempts(data page) w/ graphs + analysis -->
 <h1>All Attempts</h1>
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
+<% if (sortedAttempts.length != 0) { %>
 <div class="text-center mb-3">
   <h2 class="display-2 bg-secondary rounded-pill text-light mb-3">Scores</h2>
   <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
@@ -176,3 +177,7 @@
 
 
 <script src="/javascripts/myDataGraphs.js"></script>
+
+<% } else { %>
+<p>Add attempt first to analyze data.</p>
+  <% } %> 
