@@ -217,7 +217,7 @@
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="E"required
                   />
-                  <label class="form-check-label " for="q<%= i %>E">E</label>
+                  <label class="form-check-label " for="q<%= i %>E"><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label>
                 </div>
               </div>
             </div>
