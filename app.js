@@ -81,12 +81,6 @@ app.use(session(sessionConfig));
 app.use(flash());
 app.use(helmet());
 
-app.use(function (req, res, next) {
-  if (req.get("X-Forwarded-Proto") !== "https") {
-    res.redirect("https://" + req.get("Host") + req.url);
-  } else next();
-});
-
 const scriptSrcUrls = [
   "https://stackpath.bootstrapcdn.com/",
   "https://api.tiles.mapbox.com/",
