@@ -1,6 +1,12 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/homeplate') %>
 <!-- User page: see all tests to choose for test -->
-<h1>All Tests</h1>
+<div>
+  <h1 id="test_header" class="display-1 text-center fw-bold text-white">
+    Tests
+  </h1>
+</div>
+<div class="container mt-5">
+
 <% if (currentUser && currentUser.isAdmin) { %>
 <div><a class="btn btn-success btn-sm mb-3" href="/tests/new">Add Test</a></div>
 <% } %>
@@ -41,3 +47,4 @@
     <% } %>
   </tbody>
 </table>
+</div>

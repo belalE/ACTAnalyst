@@ -5,3 +5,33 @@ img.small {
 #navbar {
   background-color: #13293d;
 }
+
+#questiontypes_header {
+  height: 20vh;
+  background-image: url("/assets/home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  line-height: 20vh;
+}
+
+#test_header {
+  height: 20vh;
+  background-image: url("/assets/home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  line-height: 20vh;
+}
+
+#attempts_header {
+  height: 20vh;
+  background-image: url("/assets/home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  line-height: 20vh;
+}
