@@ -12,39 +12,41 @@
 <% } %>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Test</th>
-      <th scope="col">Date</th>
-      <% if (currentUser) { %>
-      <th scope="col">Taken?</th>
-      <% } %>
-    </tr>
-  </thead>
-  <tbody>
-    <% for(let i=0;i<tests.length;i++) { %>
+<div class="p-3 bg-white rounded-3 text-white mb-3">
+  <table class="table ">
+    <thead>
       <tr>
-        <th scope="row"><%= i + 1 %></th>
-        <td><a href="/tests/<%= tests[i]._id %>"><%= tests[i].form %> </a></td>
-        <td><%= tests[i].date.toISOString().slice(0, 10) %></td>
+        <th scope="col">#</th>
+        <th scope="col">Test</th>
+        <th scope="col">Date</th>
         <% if (currentUser) { %>
-          <!-- https://www.samanthaming.com/tidbits/81-how-to-check-if-array-includes-a-value/ -->
-          <td><% if (ids.some(id => id.equals(tests[i]._id))) { %> <img class="small" src="/assets/check.png" alt="" /> <%
-      } else { %>
-      <img class="small me-3" src="/assets/close.png" alt="" />
-      <a
-        class="btn btn-primary btn-sm"
-        href="/attempts/new?test=<%= tests[i]._id %>"
-        >Make New Attempt</a
-      >
-      <% } %>
-      </td>
+        <th scope="col">Taken?</th>
         <% } %>
-        
       </tr>
-    <% } %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% for(let i=0;i<tests.length;i++) { %>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+          <td><a href="/tests/<%= tests[i]._id %>"><%= tests[i].form %> </a></td>
+          <td><%= tests[i].date.toISOString().slice(0, 10) %></td>
+          <% if (currentUser) { %>
+            <!-- https://www.samanthaming.com/tidbits/81-how-to-check-if-array-includes-a-value/ -->
+            <td><% if (ids.some(id => id.equals(tests[i]._id))) { %> <img class="small" src="/assets/check.png" alt="" /> <%
+        } else { %>
+        <img class="small me-3" src="/assets/close.png" alt="" />
+        <a
+          class="btn btn-primary btn-sm"
+          href="/attempts/new?test=<%= tests[i]._id %>"
+          >Make New Attempt</a
+        >
+        <% } %>
+        </td>
+          <% } %>
+  
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
 </div>

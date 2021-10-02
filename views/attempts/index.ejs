@@ -10,7 +10,7 @@
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
 <% if (sortedAttempts.length != 0) { %>
 <div class="text-center mb-3">
-  <h2 class="display-2 bg-primary p-3 rounded-pill text-light mb-3">Scores</h2>
+  <h2 class="bg-gradient-to-r from-green-400 to-blue-500">Scores</h2>
   <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
     <div class="row p-3 bg-white rounded-3 text-white mb-3">
       <table class="table">
@@ -84,7 +84,7 @@
         <p class="card-text text-muted">Most recent practice tests</p>
       </div>
       <ul class="list-group list-group-flush">
-        <% for (attempt of sortedAttempts.slice(0,5)) { %>
+        <% for (attempt of sortedAttempts.slice(0,3)) { %>
         <li class="list-group-item">
           <a href="/attempts/<%= attempt._id %>"
             ><%= attempt.test.form %> - <%=
@@ -92,10 +92,11 @@
           </a>
         </li>
         <% } %>
+        <li class="list-group-item">
+          <a href="#allAttempts" class="card-link text-dark">Show more...</a>
+        </li>
       </ul>
-      <div class="card-body">
-        <a href="#allAttempts" class="card-link text-dark">Show more...</a>
-      </div>
+
     </div>
   </div>
   <div class="col">
@@ -146,7 +147,7 @@
   <div id="tagGraphSci" class="mt-3"></div>
 </div>
 </div>
-<div class="row p-3 bg-white rounded-3 pb-4">
+<div class="row p-3 bg-white rounded-3 b-4">
 
 <div id="allAttempts mt-3">
   <h3 class="text-center mt-3">All Attempts</h3>

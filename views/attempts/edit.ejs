@@ -15,7 +15,13 @@
           <h1 class="card-subtitle text-center">
             Form: <%= attempt.test.form %>
           </h1>
-
+          <div class="d-none">
+            <input
+              type="text"
+              name="attempt[test]"
+              value="<%= attempt.test._id %>"
+            />
+          </div>
           <div class="form-floating mb-3">
             <input
               class="form-control"
@@ -217,7 +223,9 @@
                     id="q<%= i %>E" name="attempt[answers][math][<%= i
                     %>][choice]" value="E" <% if (attempt.answers.math[i -
                     1].choice == "E") { %> checkeE <% } %> />
-                    <label class="form-check-label" for="q<%= i %>E"><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label>
+                    <label class="form-check-label" for="q<%= i %>E"
+                      ><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label
+                    >
                   </div>
                 </div>
               </div>

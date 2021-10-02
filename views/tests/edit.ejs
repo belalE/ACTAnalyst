@@ -98,7 +98,8 @@
         test.questions.english[i
         -
         1].type.equals(type._id))
-        {%>
+        {%
+      >
         selected <% } %> value="<%= type._id %>"><%= type.name %>
       </option>
       <% } %>
@@ -114,7 +115,8 @@
       <input type="radio" class="form-check-input" required id="q<%= i %>A"
       name="questions[math][<%= i %>][answer]" value="A" <% if
       (test.questions.math[i - 1].answer == "A") { %> checked <% } %> />
-      <label class="form-check-label" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+      <label class="form-check-label" for="q<%= i %>A"
+        ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
       </label>
     </div>
     <div class="form-check form-check-inline">
@@ -179,7 +181,8 @@
         test.questions.english[i
         -
         1].type.equals(type._id))
-        {%>
+        {%
+      >
         selected <% } %> value="<%= type._id %>"><%= type.name %>
       </option>
       <% } %>
@@ -257,7 +260,9 @@
         test.questions.english[i
         -
         1].type.equals(type._id))
-        { %>
+        {
+        %
+      >
         selected <% } %> value="<%= type._id %>"><%= type.name %>
       </option>
       <% } %>
@@ -334,7 +339,8 @@
         test.questions.english[i
         -
         1].type.equals(type._id))
-        {%>
+        {%
+      >
         selected <% } %> value="<%= type._id %>"><%= type.name %>
       </option>
       <% } %>
