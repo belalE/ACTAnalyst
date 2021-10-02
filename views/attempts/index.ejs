@@ -1,11 +1,13 @@
 <% layout('layouts/boilerplate') %>
 <!-- Show all previous attempts(data page) w/ graphs + analysis -->
+<div class="container">
+
+
 <div>
   <h1 id="attempts_header" class="display-1 text-center fw-bold text-white">
     Data
   </h1>
 </div>
-<div class="container mt-5">
 
 <a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
 <% if (sortedAttempts.length != 0) { %>
@@ -261,40 +263,94 @@
 </div>
 <div class="row p-3 bg-white rounded-3 b-4">
 
-<div id="allAttempts mt-3">
-  <h3 class="text-center mt-3">All Attempts</h3>
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Attempt</th>
-      <th scope="col">Date</th>
-      <th scope="col">English</th>
-      <th scope="col">Math</th>
-      <th scope="col">Reading</th>
-      <th scope="col">Science</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for(let i=0;i<sortedAttempts.length;i++) { %>
-      <tr>
-        <th scope="row"><%= i + 1 %></th>
-        <td><a href="/attempts/<%= sortedAttempts[i]._id %>"><%= sortedAttempts[i].test.form %> </a></td>
-        <td><%= sortedAttempts[i].dateTaken.toISOString().slice(0, 10) %></td>
-        <td><%= trendData.englishArr.slice().reverse()[i] %></td>
-        <td><%= trendData.mathArr.slice().reverse()[i] %></td>
-        <td><%= trendData.readingArr.slice().reverse()[i] %></td>
-        <td><%= trendData.scienceArr.slice().reverse()[i] %></td>
-      </tr>
-    <% } %>
-  </tbody>
-</table>
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                #
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Attempt
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                English
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Math
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Reading
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Science
+              </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Go</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% for(let i=0;i<sortedAttempts.length;i++) { %>
+               <tr>
+                 <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <%= i + 1 %> 
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= sortedAttempts[i].test.form %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= sortedAttempts[i].dateTaken.toISOString().slice(0, 10) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <!-- <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900"><%= i + 1 %></div>
+                <div class="text-sm text-gray-500">Optimization</div>
+              </td> -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center justify-content-center">
+                <%= trendData.englishArr.slice().reverse()[i] %>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center justify-content-center">
+                <%= trendData.mathArr.slice().reverse()[i] %></div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center justify-content-center">
+                <%= trendData.readingArr.slice().reverse()[i] %>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center justify-content-center">
+                <%= trendData.scienceArr.slice().reverse()[i] %>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <a href="/attempts/<%= sortedAttempts[i]._id %>" class="text-indigo-600 hover:text-indigo-900">Go</a>
+              </td>
+            </tr>
+              <% } %> 
+            <!-- More people... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
 <script>
-  document.getElementById("defaultOpen").click();
-
     const trendData = <%- JSON.stringify(trendData) %>
     const mistakeData = <%- JSON.stringify(mistakeData) %>
     const summedQTypes = <%- JSON.stringify(summedQTypes) %>
@@ -310,5 +366,7 @@
 <% } else { %>
 <p>Add attempt first to analyze data.</p>
   <% } %> 
+
+  </div>
 
   </div>

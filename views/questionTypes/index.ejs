@@ -10,7 +10,22 @@
 </div>
 <div class="container mt-5">
   <% if (currentUser && currentUser.isAdmin) { %>
-  <a class="btn btn-success btn-sm mb-3" href="/types/new">Add Question Type</a>
+  <a
+    class="
+      inline-flex
+      text-white
+      bg-blue-500
+      border-0
+      py-2
+      px-6
+      focus:outline-none
+      hover:bg-blue-600
+      rounded
+      text-lg
+    "
+    href="/types/new"
+    >Add Question Type</a
+  >
   <% } %>
   <div class="accordion" id="parentAccordion">
     <div class="accordion-item">
