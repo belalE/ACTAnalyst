@@ -102,24 +102,42 @@
   </div>
 </div>
 
-<%- include('../partials/tabview') %>
-<div id="English" class="tabcontent">
-  <div id="qTypeBarEng" class="mt-3"></div>
+<div class="w-4/5 mx-auto mt-4  rounded">
+  <!-- Tabs -->
+  <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
+    <li class="px-4 py-2 -mb-px font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a id="default-tab" href="#first">English</a></li>
+    <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Math</a></li>
+    <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Reading</a></li>
+    <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Science</a></li>
+  </ul>
+
+  <!-- Tab Contents -->
+  <div id="tab-contents">
+    <div id="first" class="p-4">
+      <div class="grid grid-cols-2">
+        <div id="qTypeBarEng" class="mt-3"></div>
   <div id="histEng" class="mt-3"></div>
-</div>
-
-<div id="Math" class="tabcontent">
-  <div id="qTypeBarMath" class="mt-3"></div>
+      </div>
+    </div>
+    <div id="second" class="hidden p-4">
+      <div class="grid grid-cols-2">
+        <div id="qTypeBarMath" class="mt-3"></div>
   <div id="histMath" class="mt-3"></div>
-</div>
-
-<div id="Reading" class="tabcontent">
-  <div id="qTypeBarRead" class="mt-3"></div>
+      </div>
+    </div>
+    <div id="third" class="hidden p-4">
+      <div class="grid grid-cols-2">
+        <div id="qTypeBarRead" class="mt-3"></div>
   <div id="histRead" class="mt-3"></div>
-</div>
-<div id="Science" class="tabcontent">
-  <div id="qTypeBarSci" class="mt-3"></div>
+      </div>
+    </div>
+    <div id="fourth" class="hidden p-4">
+      <div class="grid grid-cols-2">
+        <div id="qTypeBarSci" class="mt-3"></div>
   <div id="histSci" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="mt-3">
