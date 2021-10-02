@@ -11,10 +11,40 @@
   action="/tests/<%= test.id %>?_method=DELETE"
   method="POST"
 >
-  <button class="btn btn-danger mb-2">Delete</button>
+  <button
+    class="
+      inline-flex
+      text-white
+      bg-red-500
+      border-0
+      py-2
+      px-6
+      focus:outline-none
+      hover:bg-red-600
+      rounded
+      text-lg
+    "
+  >
+    Delete
+  </button>
 </form>
 
-<a class="btn btn-success mb-2" href="/tests/<%=test._id%>/edit">Edit</a>
+<a
+  class="
+    inline-flex
+    text-white
+    bg-blue-500
+    border-0
+    py-2
+    px-6
+    focus:outline-none
+    hover:bg-blue-600
+    rounded
+    text-lg
+  "
+  href="/tests/<%=test._id%>/edit"
+  >Edit</a
+>
 <br />
 <% }%>
 <div class="d-grid">
