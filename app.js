@@ -14,7 +14,6 @@ const ejsLint = require("ejs-lint");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const dBUrl = process.env.DB_URL || "mongodb://localhost:27017/act-analyst";
-
 const MongoStore = require("connect-mongo");
 
 const passport = require("passport");
