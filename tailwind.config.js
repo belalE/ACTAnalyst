@@ -1,11 +1,24 @@
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {},
   },
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    plugin(function ({ addComponents }) {
+      const components = {
+        // ...
+        ".navbar-inverse a.nav-link": {
+          color: "#fff",
+        },
+      };
+
+      addComponents(components);
+    }),
+  ],
+};
