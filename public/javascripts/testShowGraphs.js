@@ -46,6 +46,10 @@ Highcharts.chart("distEng", {
   chart: {
     type: "column",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   credits: {
     enabled: false,
   },
@@ -102,6 +106,10 @@ Highcharts.chart("distMath", {
   chart: {
     type: "column",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Math Mistakes by Question Type",
   },
@@ -155,6 +163,10 @@ Highcharts.chart("distReading", {
   chart: {
     type: "column",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Reading Mistakes by Question Type",
   },
@@ -207,6 +219,10 @@ Highcharts.chart("distReading", {
 Highcharts.chart("distScience", {
   chart: {
     type: "column",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Science Mistakes by Question Type",
@@ -262,6 +278,10 @@ Highcharts.chart("scaleEng", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "English Section Scale",
   },
@@ -296,6 +316,10 @@ Highcharts.chart("scaleEng", {
 Highcharts.chart("scaleMath", {
   chart: {
     zoomType: "xy",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Math Section Scale",
@@ -332,6 +356,10 @@ Highcharts.chart("scaleReading", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Reading Section Scale",
   },
@@ -366,6 +394,10 @@ Highcharts.chart("scaleReading", {
 Highcharts.chart("scaleScience", {
   chart: {
     zoomType: "xy",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Science Section Scale",

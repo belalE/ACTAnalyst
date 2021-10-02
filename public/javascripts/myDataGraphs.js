@@ -53,6 +53,10 @@ Highcharts.chart("rawChart", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Number of Mistakes",
   },
@@ -133,6 +137,10 @@ Highcharts.chart("qTypeBarEng", {
   chart: {
     type: "column",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "English Mistakes by Question Type",
   },
@@ -185,6 +193,10 @@ Highcharts.chart("qTypeBarEng", {
 Highcharts.chart("qTypeBarMath", {
   chart: {
     type: "column",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Math Mistakes by Question Type",
@@ -239,6 +251,10 @@ Highcharts.chart("qTypeBarRead", {
   chart: {
     type: "column",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Reading Mistakes by Question Type",
   },
@@ -291,6 +307,10 @@ Highcharts.chart("qTypeBarRead", {
 Highcharts.chart("qTypeBarSci", {
   chart: {
     type: "column",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Science Mistakes by Question Type",
@@ -348,6 +368,10 @@ Highcharts.chart("tagGraphEng", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Question Tags",
   },
@@ -394,6 +418,10 @@ Highcharts.chart("tagGraphEng", {
 Highcharts.chart("tagGraphMath", {
   chart: {
     zoomType: "xy",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Question Tags",
@@ -442,6 +470,10 @@ Highcharts.chart("tagGraphRead", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Question Tags",
   },
@@ -488,6 +520,10 @@ Highcharts.chart("tagGraphRead", {
 Highcharts.chart("tagGraphSci", {
   chart: {
     zoomType: "xy",
+  },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
   },
   title: {
     text: "Question Tags",
