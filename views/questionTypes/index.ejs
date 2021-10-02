@@ -27,145 +27,57 @@
     >Add Question Type</a
   >
   <% } %>
-  <ul class="shadow-box">
-						
-		<li class="relative border-b border-gray-200">
-
-			<button type="button" class="w-full px-8 py-6 text-left" @click="selected !== 1 ? selected = 1 : selected = null">
-				<div class="flex items-center justify-between">
-					<span>
-						English					</span>
-					<span class="ico-plus"></span>
-				</div>
-							</button>
-
-			<div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
-				<div class="p-6">
-					<p>reCAPTCHA v2 is not going away! We will continue to fully support and improve security and usability for v2.</p>
-<p>reCAPTCHA v3 is intended for power users, site owners that want more data about their traffic, and for use cases in which it is not appropriate to show a challenge to the user.</p>
-<p>For example, a registration page might still use reCAPTCHA v2 for a higher-friction challenge, whereas more common actions like sign-in, searches, comments, or voting might use reCAPTCHA v3. To see more details, see the reCAPTCHA v3 developer guide.</p>
-				</div>
-			</div>
-
-		</li>
-
-	
-		<li class="relative border-b border-gray-200">
-
-			<button type="button" class="w-full px-8 py-6 text-left" @click="selected !== 2 ? selected = 2 : selected = null">
-				<div class="flex items-center justify-between">
-					<span>
-						Math					</span>
-					<span class="ico-plus"></span>
-				</div>
-							</button>
-
-			<div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
-				<div class="p-6">
-					<p>For reCAPTCHA v3, create a separate key for testing environments. Scores may not be accurate as reCAPTCHA v3 relies on seeing real traffic.</p>
-<p>For reCAPTCHA v2, use the following test keys. You will always get No CAPTCHA and all verification requests will pass.</p>
-				</div>
-			</div>
-
-		</li>
-
-	
-		<li class="relative border-b border-gray-200">
-
-			<button type="button" class="w-full px-8 py-6 text-left" @click="selected !== 3 ? selected = 3 : selected = null">
-				<div class="flex items-center justify-between">
-					<span>
-						Reading					</span>
-					<span class="ico-plus"></span>
-				</div>
-							</button>
-
-			<div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container3" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
-				<div class="p-6">
-					<p>To do this, load the v3 site key as documented, and then explicitly render v2 using grecaptcha.render.</p>
-<p>You are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. Please include the following text:</p>
-<p>Yes, please use "www.recaptcha.net" in your code in circumstances when "www.google.com" is not accessible.</p>
-<ul>
-<li>First, replace &lt;script src="https://www.google.com/recaptcha/api.js" async defer&gt;&lt;/script&gt; with &lt;script src="https://www.recaptcha.net/recaptcha/api.js" async defer&gt;&lt;/script&gt;</li>
-<li>After that, apply the same to everywhere else that uses "www.google.com/recaptcha/" on your site.</li>
-</ul>
-<p>After that, apply the same to everywhere else that uses "www.google.com/recaptcha/" on your site.</p>
-				</div>
-			</div>
-
-		</li>
-    	<li class="relative border-b border-gray-200">
-
-			<button type="button" class="w-full px-8 py-6 text-left" @click="selected !== 3 ? selected = 3 : selected = null">
-				<div class="flex items-center justify-between">
-					<span>
-						Science					</span>
-					<span class="ico-plus"></span>
-				</div>
-							</button>
-
-			<div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container3" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
-				<div class="p-6">
-					<p>To do this, load the v3 site key as documented, and then explicitly render v2 using grecaptcha.render.</p>
-<p>You are allowed to hide the badge as long as you include the reCAPTCHA branding visibly in the user flow. Please include the following text:</p>
-<p>Yes, please use "www.recaptcha.net" in your code in circumstances when "www.google.com" is not accessible.</p>
-<ul>
-<li>First, replace &lt;script src="https://www.google.com/recaptcha/api.js" async defer&gt;&lt;/script&gt; with &lt;script src="https://www.recaptcha.net/recaptcha/api.js" async defer&gt;&lt;/script&gt;</li>
-<li>After that, apply the same to everywhere else that uses "www.google.com/recaptcha/" on your site.</li>
-</ul>
-<p>After that, apply the same to everywhere else that uses "www.google.com/recaptcha/" on your site.</p>
-				</div>
-			</div>
-
-		</li>
-
-			</ul>
-
-  <div class="accordion" id="parentAccordion">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
+  <div
+    class="bg-white mx-auto border border-gray-200 mt-3"
+    x-data="{selected:null}"
+  >
+    <ul class="shadow-box">
+      <li class="relative border-b border-gray-200">
         <button
-          class="accordion-button collapsed"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseOne"
-          aria-expanded="false"
-          aria-controls="flush-collapseOne"
+          class="w-full px-8 py-6 text-left"
+          @click="selected !== 1 ? selected = 1 : selected = null"
         >
-          English
+          <div class="flex items-center justify-between">
+            <span> English </span>
+            <span class="ico-plus"></span>
+          </div>
         </button>
-      </h2>
-      <div
-        id="flush-collapseOne"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingOne"
-        data-bs-parent="#parentAccordion"
-      >
-        <div class="accordion-body">
-          <div class="accordion" id="englishAccordion">
-            <% for (let i = 0; i < topics.english.length; i++) { %>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="engHeading<% i %>">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#engCollapse<%= i %>"
-                  aria-expanded="false"
-                  aria-controls="engCollapse<%= i %>"
-                >
-                  <%= topics.english[i] %>
-                </button>
-              </h2>
-              <div
-                id="engCollapse<%= i %>"
-                class="accordion-collapse collapse"
-                aria-labelledby="engHeading<%= i %>"
-                data-bs-parent="#englishAccordion"
-              >
-                <div class="accordion-body">
-                  <ul>
-                    <% for(let type of types.filter((type) => type.section ==
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="container1"
+          x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+                <div
+      class="bg-white max-w-6xl mx-auto border border-gray-200"
+      x-data="{selectedEng:null}"
+    >
+      <ul class="shadow-box">
+        <% for(let i = 0; i < topics.english.length; i++) { %>
+          <li class="relative border-b border-gray-200">
+        <button
+          type="button"
+          class="w-full px-8 py-6 text-left"
+          @click="selectedEng !== <%= i %>  ? selectedEng = <%= i %>  : selectedEng = null"
+        >
+          <div class="flex items-center justify-between">
+            <span> <%= topics.english[i] %>  </span>
+            <span class="ico-plus"></span>
+          </div>
+        </button>
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="containerE<%= i %>"
+          x-bind:style="selectedEng == <%= i %> ? 'max-height: ' + $refs.containerE<%= i %>.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <ul>
+              <% for(let type of types.filter((type) => type.section ==
                     "English" && type.general == topics.english[i])) { %>
                     <li>
                       <a class="text-dark" href="/types/<%= type._id %>"
@@ -173,59 +85,62 @@
                       </a>
                     </li>
                     <% } %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <% } %>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingTwo">
+      </li>
+        <% } %>
+      </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="relative border-b border-gray-200">
         <button
-          class="accordion-button collapsed"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseTwo"
-          aria-expanded="false"
-          aria-controls="flush-collapseTwo"
+          class="w-full px-8 py-6 text-left"
+          @click="selected !== 2 ? selected = 2 : selected = null"
         >
-          Math
+          <div class="flex items-center justify-between">
+            <span> Math </span>
+            <span class="ico-plus"></span>
+          </div>
         </button>
-      </h2>
-      <div
-        id="flush-collapseTwo"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingTwo"
-        data-bs-parent="#parentAccordion"
-      >
-        <div class="accordion-body">
-          <div class="accordion" id="mathAccordion">
-            <% for (let i = 0; i < topics.math.length; i++) { %>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="mathHeading<% i %>">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#mathCollapse<%= i %>"
-                  aria-expanded="false"
-                  aria-controls="mathCollapse<%= i %>"
-                >
-                  <%= topics.math[i] %>
-                </button>
-              </h2>
-              <div
-                id="mathCollapse<%= i %>"
-                class="accordion-collapse collapse"
-                aria-labelledby="mathHeading<%= i %>"
-                data-bs-parent="#mathAccordion"
-              >
-                <div class="accordion-body">
-                  <ul>
-                    <% for(let type of types.filter((type) => type.section ==
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="container2"
+          x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <div
+      class="bg-white max-w-6xl mx-auto border border-gray-200"
+      x-data="{selectedMath:null}"
+    >
+      <ul class="shadow-box">
+        <% for(let i = 0; i < topics.math.length; i++) { %>
+          <li class="relative border-b border-gray-200">
+        <button
+          type="button"
+          class="w-full px-8 py-6 text-left"
+          @click="selectedMath !== <%= i %>  ? selectedMath = <%= i %>  : selectedMath = null"
+        >
+          <div class="flex items-center justify-between">
+            <span> <%= topics.math[i] %>  </span>
+            <span class="ico-plus"></span>
+          </div>
+        </button>
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="containerM<%= i %>"
+          x-bind:style="selectedMath == <%= i %> ? 'max-height: ' + $refs.containerM<%= i %>.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <ul>
+              <% for(let type of types.filter((type) => type.section ==
                     "Math" && type.general == topics.math[i])) { %>
                     <li>
                       <a class="text-dark" href="/types/<%= type._id %>"
@@ -233,59 +148,63 @@
                       </a>
                     </li>
                     <% } %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <% } %>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingThree">
+      </li>
+        <% } %>
+      </ul>
+          </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="relative border-b border-gray-200">
         <button
-          class="accordion-button collapsed"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseThree"
-          aria-expanded="false"
-          aria-controls="flush-collapseThree"
+          class="w-full px-8 py-6 text-left"
+          @click="selected !== 3 ? selected = 3 : selected = null"
         >
-          Reading
+          <div class="flex items-center justify-between">
+            <span> Reading </span>
+            <span class="ico-plus"></span>
+          </div>
         </button>
-      </h2>
-      <div
-        id="flush-collapseThree"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingThree"
-        data-bs-parent="#parentAccordion"
-      >
-        <div class="accordion-body">
-          <div class="accordion" id="readingAccordion">
-            <% for (let i = 0; i < topics.reading.length; i++) { %>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="readHeading<% i %>">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#readCollapse<%= i %>"
-                  aria-expanded="false"
-                  aria-controls="readCollapse<%= i %>"
-                >
-                  <%= topics.reading[i] %>
-                </button>
-              </h2>
-              <div
-                id="readCollapse<%= i %>"
-                class="accordion-collapse collapse"
-                aria-labelledby="readHeading<%= i %>"
-                data-bs-parent="#readingAccordion"
-              >
-                <div class="accordion-body">
-                  <ul>
-                    <% for(let type of types.filter((type) => type.section ==
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="container3"
+          x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <div
+      class="bg-white max-w-6xl mx-auto border border-gray-200"
+      x-data="{selectedRead:null}"
+    >
+      <ul class="shadow-box">
+        <% for(let i = 0; i < topics.reading.length; i++) { %>
+          <li class="relative border-b border-gray-200">
+        <button
+          type="button"
+          class="w-full px-8 py-6 text-left"
+          @click="selectedRead !== <%= i %>  ? selectedRead = <%= i %>  : selectedRead = null"
+        >
+          <div class="flex items-center justify-between">
+            <span> <%= topics.reading[i] %>  </span>
+            <span class="ico-plus"></span>
+          </div>
+        </button>
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="containerR<%= i %>"
+          x-bind:style="selectedRead == <%= i %> ? 'max-height: ' + $refs.containerR<%= i %>.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <ul>
+              <% for(let type of types.filter((type) => type.section ==
                     "Reading" && type.general == topics.reading[i])) { %>
                     <li>
                       <a class="text-dark" href="/types/<%= type._id %>"
@@ -293,59 +212,62 @@
                       </a>
                     </li>
                     <% } %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <% } %>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingThree">
+      </li>
+        <% } %>
+      </ul>
+          </div>
+          </div>
+        </div>
+      </li>
+      <li class="relative border-b border-gray-200">
         <button
-          class="accordion-button collapsed"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseFour"
-          aria-expanded="false"
-          aria-controls="flush-collapseFour"
+          class="w-full px-8 py-6 text-left"
+          @click="selected !== 4 ? selected = 4 : selected = null"
         >
-          Science
+          <div class="flex items-center justify-between">
+            <span> Science </span>
+            <span class="ico-plus"></span>
+          </div>
         </button>
-      </h2>
-      <div
-        id="flush-collapseFour"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingFour"
-        data-bs-parent="#parentAccordion"
-      >
-        <div class="accordion-body">
-          <div class="accordion" id="scienceAccordion">
-            <% for (let i = 0; i < topics.science.length; i++) { %>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="sciHeading<% i %>">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#sciCollapse<%= i %>"
-                  aria-expanded="false"
-                  aria-controls="sciCollapse<%= i %>"
-                >
-                  <%= topics.science[i] %>
-                </button>
-              </h2>
-              <div
-                id="sciCollapse<%= i %>"
-                class="accordion-collapse collapse"
-                aria-labelledby="sciHeading<%= i %>"
-                data-bs-parent="#scienceAccordion"
-              >
-                <div class="accordion-body">
-                  <ul>
-                    <% for(let type of types.filter((type) => type.section ==
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="container4"
+          x-bind:style="selected == 4 ? 'max-height: ' + $refs.container4.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <div
+      class="bg-white max-w-6xl mx-auto border border-gray-200"
+      x-data="{selectedSci:null}"
+    >
+      <ul class="shadow-box">
+        <% for(let i = 0; i < topics.english.length; i++) { %>
+          <li class="relative border-b border-gray-200">
+        <button
+          type="button"
+          class="w-full px-8 py-6 text-left"
+          @click="selectedSci !== <%= i %>  ? selectedSci = <%= i %>  : selectedSci = null"
+        >
+          <div class="flex items-center justify-between">
+            <span> <%= topics.english[i] %>  </span>
+            <span class="ico-plus"></span>
+          </div>
+        </button>
+
+        <div
+          class="relative overflow-hidden transition-all max-h-0 duration-700"
+          style=""
+          x-ref="containerS<%= i %>"
+          x-bind:style="selectedSci == <%= i %> ? 'max-height: ' + $refs.containerS<%= i %>.scrollHeight + 'px' : ''"
+        >
+          <div class="p-6">
+            <ul>
+              <% for(let type of types.filter((type) => type.section ==
                     "Science" && type.general == topics.science[i])) { %>
                     <li>
                       <a class="text-dark" href="/types/<%= type._id %>"
@@ -353,14 +275,15 @@
                       </a>
                     </li>
                     <% } %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <% } %>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
+      </li>
+        <% } %>
+      </ul>
+          </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
-</div>
