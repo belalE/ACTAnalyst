@@ -9,10 +9,9 @@
   </h1>
 </div>
 
-<a class="btn btn-success btn-sm mb-3" href="/attempts/new">New Attempt</a>
+<a class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80 m-4 mb-20 p-4" href="/attempts/new">New Attempt</a>
 <% if (sortedAttempts.length != 0) { %>
-<div class="text-center mb-3">
-  <h2 class="bg-gradient-to-r from-green-400 to-blue-500">Scores</h2>
+<div class="text-center mt-5">
   <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -36,6 +35,7 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Science
               </th>
+              
               <!-- <th scope="col" class="relative px-6 py-3">
                 <span class="sr-only">Edit</span>
               </th> -->
@@ -160,6 +160,56 @@
                 </div>
               </td>
             </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  Worst Section
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= worstDict.english %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= worstDict.math %>
+                    </div>
+                    
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                     <%= worstDict.reading %>
+                    </div>
+                    
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= worstDict.science %>
+                    </div>
+                    
+                  </div>
+                </div>
+              </td>
+            </tr>
 
           </tbody>
         </table>
@@ -169,60 +219,11 @@
 </div>
 
   <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
-<div class="row p-3 bg-white rounded-3 text-white mb-3">
+<div class="grid grid-cols-2">
   <div id="scoreChart"></div>
+  <div id="rawChart"></div>
 </div>
 
-<div class="row my-3">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Previous Attempts</h5>
-        <p class="card-text text-muted">Most recent practice tests</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% for (attempt of sortedAttempts.slice(0,3)) { %>
-        <li class="list-group-item">
-          <a href="/attempts/<%= attempt._id %>"
-            ><%= attempt.test.form %> - <%=
-            attempt.dateTaken.toISOString().slice(0, 10) %>
-          </a>
-        </li>
-        <% } %>
-        <li class="list-group-item">
-          <a href="#allAttempts" class="card-link text-dark">Show more...</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Worst Topic</h5>
-        <p class="card-text text-muted">
-          The topic within each section with the most mistakes
-        </p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <b>English:</b> <%= worstDict.english %>
-        </li>
-        <li class="list-group-item"><b>Math:</b> <%= worstDict.math %></li>
-        <li class="list-group-item">
-          <b>Reading:</b> <%= worstDict.reading %>
-        </li>
-        <li class="list-group-item">
-          <b>Science:</b> <%= worstDict.science %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row p-3 bg-white rounded-3 text-white mb-3">
-
-<div id="rawChart"></div>
-</div>
 
 <div class="w-4/5 mx-auto mt-4  rounded">
   <!-- Tabs -->
