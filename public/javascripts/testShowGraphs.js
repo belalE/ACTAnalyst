@@ -46,6 +46,9 @@ Highcharts.chart("distEng", {
   chart: {
     type: "column",
   },
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "English Mistakes by Question Type",
   },

@@ -3,6 +3,10 @@ Highcharts.chart("scoreChart", {
   chart: {
     zoomType: "xy",
   },
+  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "Scaled Score",
   },

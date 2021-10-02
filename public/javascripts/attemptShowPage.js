@@ -64,6 +64,9 @@ Highcharts.chart("qTypeBarEng", {
   chart: {
     type: "column",
   },
+  credits: {
+    enabled: false,
+  },
   title: {
     text: "English Mistakes by Question Type",
   },

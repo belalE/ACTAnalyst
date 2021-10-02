@@ -11,67 +11,162 @@
 <% if (sortedAttempts.length != 0) { %>
 <div class="text-center mb-3">
   <h2 class="bg-gradient-to-r from-green-400 to-blue-500">Scores</h2>
-  <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
-    <div class="row p-3 bg-white rounded-3 text-white mb-3">
-      <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">English</th>
-          <th scope="col">Math</th>
-          <th scope="col">Reading</th>
-          <th scope="col">Science</th>
-        </tr>
-      </thead>
-      <tbody>
-    
-        <tr>
-          <th scope="row">Average Score</th>
-          <td><%= trendData.englishArr.reduce((a,b) => a + b, 0) /
-          trendData.englishArr.length %></td>
-          <td><%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length
-          %></td>
-          <td><%= trendData.readingArr.reduce((a,b) => a + b, 0) /
-          trendData.readingArr.length %></td>
-          <td><%= trendData.scienceArr.reduce((a,b) => a + b, 0) /
-          trendData.scienceArr.length %></td>
-        </tr>
-        <tr>
-          <th scope="row">Score Range</th>
-          <td><%= Math.min(...trendData.englishArr) %> - <%=
-          Math.max(...trendData.englishArr) %></td>
-          <td><%= Math.min(...trendData.mathArr) %> - <%=
-          Math.max(...trendData.mathArr) %></td>
-          <td><%= Math.min(...trendData.readingArr) %> - <%=
-          Math.max(...trendData.readingArr) %></td>
-          <td><%= Math.min(...trendData.scienceArr) %> - <%=
-          Math.max(...trendData.scienceArr) %></td>
-        </tr>
-        <tr>
-          <th scope="row">Average # of Mistakes</th>
-          <td><%= mistakeData.englishArr.reduce((a,b) => a + b, 0) /
-          mistakeData.englishArr.length %></td>
-          <td><%= mistakeData.mathArr.reduce((a,b) => a + b, 0) /
-          mistakeData.mathArr.length %></td>
-          <td><%= mistakeData.readingArr.reduce((a,b) => a + b, 0) /
-          mistakeData.readingArr.length %></td>
-          <td><%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) /
-          mistakeData.scienceArr.length %></td>
-        </tr>
-        <tr>
-          <th scope="row">Mistakes Range</th>
-          <td><%= Math.min(...mistakeData.englishArr) %> - <%=
-          Math.max(...mistakeData.englishArr) %></td>
-          <td><%= Math.min(...mistakeData.mathArr) %> - <%=
-          Math.max(...mistakeData.mathArr) %></td>
-          <td><%= Math.min(...mistakeData.readingArr) %> - <%=
-          Math.max(...mistakeData.readingArr) %></td>
-          <td><%= Math.min(...mistakeData.scienceArr) %> - <%=
-          Math.max(...mistakeData.scienceArr) %></td>
-        </tr>
-      </tbody>
-      </table>
+  <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                English
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Math
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Reading
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Science
+              </th>
+              <!-- <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th> -->
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  Average Score
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= trendData.englishArr.reduce((a,b) => a + b, 0) / trendData.englishArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...trendData.englishArr) %> - <%= Math.max(...trendData.englishArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...trendData.mathArr) %> - <%= Math.max(...trendData.mathArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= trendData.readingArr.reduce((a,b) => a + b, 0) / trendData.readingArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...trendData.readingArr) %> - <%= Math.max(...trendData.readingArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= trendData.scienceArr.reduce((a,b) => a + b, 0) / trendData.scienceArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...trendData.scienceArr) %> - <%= Math.max(...trendData.scienceArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  Average # of Mistakes
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= mistakeData.englishArr.reduce((a,b) => a + b, 0) / mistakeData.englishArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...mistakeData.englishArr) %> - <%= Math.max(...mistakeData.englishArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= mistakeData.mathArr.reduce((a,b) => a + b, 0) / mistakeData.mathArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...mistakeData.mathArr) %> - <%= Math.max(...mistakeData.mathArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= mistakeData.readingArr.reduce((a,b) => a + b, 0) / mistakeData.readingArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...mistakeData.readingArr) %> - <%= Math.max(...mistakeData.readingArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    
+                    <div class="text-sm font-medium text-gray-900">
+                      <%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) / mistakeData.scienceArr.length %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= Math.min(...mistakeData.scienceArr) %> - <%= Math.max(...mistakeData.scienceArr) %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+</div>
+
+  <!-- https://codeburst.io/javascript-arrays-finding-the-minimum-maximum-sum-average-values-f02f1b0ce332 -->
 <div class="row p-3 bg-white rounded-3 text-white mb-3">
   <div id="scoreChart"></div>
 </div>

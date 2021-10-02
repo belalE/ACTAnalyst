@@ -1,14 +1,14 @@
 <% layout('layouts/boilerplate') %>
 <!-- User page: see all tests to choose for test -->
 <div>
-  <h1 id="test_header" class="display-1 text-center fw-bold text-white">
+  <h1 id="test_header" class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
     Tests
   </h1>
 </div>
 <div class="container mt-5">
 
 <% if (currentUser && currentUser.isAdmin) { %>
-<div><a class="btn btn-success btn-sm mb-3" href="/tests/new">Add Test</a></div>
+<div><a class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80" href="/tests/new">Add Test</a></div>
 <% } %>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col">
@@ -75,44 +75,5 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<div class="p-3 bg-white rounded-3 text-white mb-3">
-  <table class="table ">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Test</th>
-        <th scope="col">Date</th>
-        <% if (currentUser) { %>
-        <th scope="col">Taken?</th>
-        <% } %>
-      </tr>
-    </thead>
-    <tbody>
-      <% for(let i=0;i<tests.length;i++) { %>
-        <tr>
-          <th scope="row"><%= i + 1 %></th>
-          <td><a href="/tests/<%= tests[i]._id %>"><%= tests[i].form %> </a></td>
-          <td><%= tests[i].date.toISOString().slice(0, 10) %></td>
-          <% if (currentUser) { %>
-            <!-- https://www.samanthaming.com/tidbits/81-how-to-check-if-array-includes-a-value/ -->
-            <td><% if (ids.some(id => id.equals(tests[i]._id))) { %> <img class="small" src="/assets/check.png" alt="" /> <%
-        } else { %>
-        <img class="small me-3" src="/assets/close.png" alt="" />
-        <a
-          class="btn btn-primary btn-sm"
-          href="/attempts/new?test=<%= tests[i]._id %>"
-          >Make New Attempt</a
-        >
-        <% } %>
-        </td>
-          <% } %>
-  
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
 </div>
 </div>
