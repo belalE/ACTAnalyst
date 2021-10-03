@@ -9,17 +9,17 @@
   <b>Date:</b> <%= attempt.dateTaken.toISOString().slice(0, 10)%>
 </h2>
 <div class="text-center">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">English</div>
     <div class="col">Math</div>
     <div class="col">Reading</div>
     <div class="col">Science</div>
-  </div>
+  </div> -->
   <div class="row display-1">
-    <div class="col"><%= scaled.english %></div>
-    <div class="col"><%= scaled.math %></div>
-    <div class="col"><%= scaled.reading %></div>
-    <div class="col"><%= scaled.science %></div>
+    <div class="col">English: <%= scaled.english %></div>
+    <div class="col">Math: <%= scaled.math %></div>
+    <div class="col">Reading: <%= scaled.reading %></div>
+    <div class="col">Science: <%= scaled.science %></div>
   </div>
   <div class="row display-4">
     <div class="col"><%= raw.english %></div>

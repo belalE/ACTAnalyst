@@ -53,7 +53,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= trendData.englishArr.reduce((a,b) => a + b, 0) / trendData.englishArr.length %>
+                      <%= Math.round(trendData.englishArr.reduce((a,b) => a + b, 0) / trendData.englishArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...trendData.englishArr) %> - <%= Math.max(...trendData.englishArr) %>
@@ -66,7 +66,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length %>
+                      <%= Math.round(trendData.mathArr.reduce((a,b) => a + b, 0) / trendData.mathArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...trendData.mathArr) %> - <%= Math.max(...trendData.mathArr) %>
@@ -79,7 +79,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= trendData.readingArr.reduce((a,b) => a + b, 0) / trendData.readingArr.length %>
+                      <%= Math.round(trendData.readingArr.reduce((a,b) => a + b, 0) / trendData.readingArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...trendData.readingArr) %> - <%= Math.max(...trendData.readingArr) %>
@@ -92,7 +92,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= trendData.scienceArr.reduce((a,b) => a + b, 0) / trendData.scienceArr.length %>
+                      <%= Math.round(trendData.scienceArr.reduce((a,b) => a + b, 0) / trendData.scienceArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...trendData.scienceArr) %> - <%= Math.max(...trendData.scienceArr) %>
@@ -112,7 +112,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= mistakeData.englishArr.reduce((a,b) => a + b, 0) / mistakeData.englishArr.length %>
+                      <%= Math.round(mistakeData.englishArr.reduce((a,b) => a + b, 0) / mistakeData.englishArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...mistakeData.englishArr) %> - <%= Math.max(...mistakeData.englishArr) %>
@@ -125,7 +125,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= mistakeData.mathArr.reduce((a,b) => a + b, 0) / mistakeData.mathArr.length %>
+                      <%= Math.round(mistakeData.mathArr.reduce((a,b) => a + b, 0) / mistakeData.mathArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...mistakeData.mathArr) %> - <%= Math.max(...mistakeData.mathArr) %>
@@ -138,7 +138,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= mistakeData.readingArr.reduce((a,b) => a + b, 0) / mistakeData.readingArr.length %>
+                      <%= Math.round(mistakeData.readingArr.reduce((a,b) => a + b, 0) / mistakeData.readingArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...mistakeData.readingArr) %> - <%= Math.max(...mistakeData.readingArr) %>
@@ -151,7 +151,7 @@
                   <div class="ml-4">
                     
                     <div class="text-sm font-medium text-gray-900">
-                      <%= mistakeData.scienceArr.reduce((a,b) => a + b, 0) / mistakeData.scienceArr.length %>
+                      <%= Math.round(mistakeData.scienceArr.reduce((a,b) => a + b, 0) / mistakeData.scienceArr.length) %>
                     </div>
                     <div class="text-sm text-gray-500">
                       <%= Math.min(...mistakeData.scienceArr) %> - <%= Math.max(...mistakeData.scienceArr) %>
