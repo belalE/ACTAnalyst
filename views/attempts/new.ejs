@@ -39,103 +39,102 @@
   
   
   
-  <div class="row justify-content-center mb-3">
-    <div class="col-8">
-      <div class="card rounded">
+  <div class="flex mb-3 justify-center">
+    <div class="w-1/2">
+      <div class="bg-gray-100 rounded-xl p-4">
         <div class="card-body p-5">
       
           <h2 class="card-title bg-secondary text-light text-center rounded-pill py-3 mb-3">English</h2>
-        <div class="list-group list-group-flush">
+        <div class="grid grid-cols-1">
         <% for(let i=1;i<76;i++) { %>
-        <div class="list-group-item bubble">
-          <div class="row">
-
+          <div class="w-full <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden w-5/6">
           
-          <div class="col-1  <% if(i % 2 == 0) {  %> bg-light <% } %>">
+          <div class="w-1/12 mr-3">
             <span class="fw-bold">Q<%= i %></span>
           </div>
-          <div class=" col-6 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+          <div class=" w-1/2">
             <div class="d-inline">
       
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
                   type="radio"
-                  class="form-check-input"
+                  class="form-radio"
                   id="q<%= i %>A"
                   name="attempt[answers][english][<%= i %>][choice]"
                   value="A"
                   checked
                   required
                 />
-                <label class="form-check-label" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                <label class="mx-2" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
       </label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
                   type="radio"
-                  class="form-check-input"
+                  class="form-radio"
                   id="q<%= i %>B"
                   name="attempt[answers][english][<%= i %>][choice]"
                   value="B"required
                 />
-                <label class="form-check-label" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
+                <label class="mx-2" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
                   type="radio"
-                  class="form-check-input"
+                  class="form-radio"
                   id="q<%= i %>C"
                   name="attempt[answers][english][<%= i %>][choice]"
                   value="C"required
                 />
-                <label class="form-check-label" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
+                <label class="mx-2" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
                   type="radio"
-                  class="form-check-input"
+                  class="form-radio"
                   id="q<%= i %>D"
                   name="attempt[answers][english][<%= i %>][choice]"
                   value="D"required
                 />
-                <label class="form-check-label " for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
+                <label class="mx-2" for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
               </div>
             </div>
           </div>
-            <div class="col-5<% if(i % 2 == 0) {  %> bg-light <% } %>">
-            <div class="form-check form-check-inline">
+            <div class="w-5/12<% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+            <div class="inline-flex items-center">
               <input
-                class="form-check-input"
+                class="form-radio"
                 type="checkbox"
                 id="skipCheckbox<%= i %>"
                 name="attempt[answers][english][<%= i %>][tags][0]"
                 value="skip"
               />
-              <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
+              <label class="mx-2" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="inline-flex items-center">
               <input
-                class="form-check-input"
+                class="form-radio"
                 type="checkbox"
                 id="guessCheckbox<%= i %>"
                 name="attempt[answers][english][<%= i %>][tags][1]"
                 value="guess"
               />
-              <label class="form-check-label" for="guessCheckbox<%= i %>"
+              <label class="mx-2" for="guessCheckbox<%= i %>"
                 ><img src="/assets/guess.png" alt=""></label
               >
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
+            <div class="inline-flex items-center">
+              <input class="form-radio" type="checkbox" id="timeCheckbox<%= i
               %>" name="attempt[answers][english][<%= i %>][tags][2]" value="noTime" />
-              <label class="form-check-label" for="timeCheckbox<%= i %>"
+              <label class="mx-2" for="timeCheckbox<%= i %>"
                 ><img src="/assets/late.png" alt=""></label
               >
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
+            <div class="inline-flex items-center">
+              <input class="form-radio" type="checkbox" id="reviseCheckbox<%= i
               %>" name="attempt[answers][english][<%= i %>][tags][3]" value="revised" />
-              <label class="form-check-label" for="reviseCheckbox<%= i %>"
+              <label class="mx-2" for="reviseCheckbox<%= i %>"
                 ><img src="/assets/revise.png" alt=""></label
               >
             </div>
@@ -149,112 +148,112 @@
     </div>
   </div>
   
-  <div class="row justify-content-center mb-3">
-    <div class="col-8">
-      <div class="card rounded">
+  <div class="flex mb-3 justify-center">
+    <div class="w-1/2">
+      <div class="bg-gray-100 rounded-xl p-4">
         <div class="card-body p-5">
           
             <h2 class="card-title bg-secondary text-light text-center rounded-pill py-3 mb-3">Math</h2>
          
-            <div class="list-group list-group-flush">
+            <div class="grid grid-cols-1">
 
             
           <% for(let i=1;i<61;i++) { %>
-            <div class="list-group-item">
-          <div class="row justify-content-center bubble">
-            <div class="col-1  <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class="w-full <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden w-5/6">
+            <div class="w-1/12  mr-3">
             <span class="fw-bold">Q<%= i %></span>
             </div>
-            <div class="col-6 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class="w-1/2 ">
               <div class="d-inline">
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>A"
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="A"
                     checked required
                   />
-                  <label class="form-check-label" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                  <label class="mx-2" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
       </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>B"
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="B"required
                   />
-                  <label class="form-check-label" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
+                  <label class="mx-2" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>C"
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="C"required
                   />
-                  <label class="form-check-label" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
+                  <label class="mx-2" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>D"
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="D"required
                   />
-                  <label class="form-check-label" for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
+                  <label class="mx-2" for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>E"
                     name="attempt[answers][math][<%= i %>][choice]"
                     value="E"required
                   />
-                  <label class="form-check-label " for="q<%= i %>E"><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label>
+                  <label class="mx-2" for="q<%= i %>E"><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label>
                 </div>
               </div>
             </div>
-              <div class="col-5<% if(i % 2 == 0) {  %> bg-light <% } %>">
-              <div class="form-check form-check-inline">
+              <div class="w-5/12<% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="skipCheckbox<%= i %>"
                   name="attempt[answers][math][<%= i %>][tags][0]"
                   value="skip"
                 />
-                <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
+                <label class="mx-2" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="guessCheckbox<%= i %>"
                   name="attempt[answers][math][<%= i %>][tags][1]"
                   value="guess"
                 />
-                <label class="form-check-label" for="guessCheckbox<%= i %>"
+                <label class="mx-2" for="guessCheckbox<%= i %>"
                   ><img src="/assets/guess.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
+              <div class="inline-flex items-center ">
+                <input class="form-radio" type="checkbox" id="timeCheckbox<%= i
                 %>" name="attempt[answers][math][<%= i %>][tags][2]" value="noTime" />
-                <label class="form-check-label" for="timeCheckbox<%= i %>"
+                <label class="mx-2" for="timeCheckbox<%= i %>"
                   ><img src="/assets/late.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
+              <div class="inline-flex items-center">
+                <input class="form-radio" type="checkbox" id="reviseCheckbox<%= i
                 %>" name="attempt[answers][math][<%= i %>][tags][3]" value="revised" />
-                <label class="form-check-label" for="reviseCheckbox<%= i %>"
+                <label class="mx-2" for="reviseCheckbox<%= i %>"
                   ><img src="/assets/revise.png" alt=""></label
                 >
               </div>
@@ -267,100 +266,102 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mb-3">
-    <div class="col-8">
-      <div class="card rounded">
+  <div class="flex mb-3 justify-center">
+    <div class="w-1/2">
+      <div class="bg-gray-100 rounded-xl p-4">
         <div class="card-body p-5">
           
             <h2 class=" card-title bg-secondary text-light text-center rounded-pill py-3 mb-3">Reading</h2>
           
-          <div class="list-group list-group-flush">
+          <div class="grid grid-cols-1">
           <% for(let i=1;i<41;i++) { %>
-            <div class="list-group-item">
-          <div class="row justify-content-center bubble">
-            <div class="col-1  <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class="w-full <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden w-5/6">
+            <div class="w-1/12  mr-3">
                 <span class="fw-bold">Q<%= i %></span>
             </div>
-            <div class="col-6 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class="w-1/2 <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
               <div class="d-inline">
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>A"
                     name="attempt[answers][reading][<%= i %>][choice]"
                     value="A"
                     checked required
                   />
-                  <label class="form-check-label" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                  <label class="mx-2" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
       </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>B"
                     name="attempt[answers][reading][<%= i %>][choice]"
                     value="B"required
                   />
-                  <label class="form-check-label" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
+                  <label class="mx-2" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>C"
                     name="attempt[answers][reading][<%= i %>][choice]"
                     value="C"required
                   />
-                  <label class="form-check-label" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
+                  <label class="mx-2" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>D"
                     name="attempt[answers][reading][<%= i %>][choice]"
                     value="D"required
                   />
-                  <label class="form-check-label " for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
+                  <label class="mx-2" for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
                 </div>
               </div>
             </div>
-              <div class="col-5<% if(i % 2 == 0) {  %> bg-light <% } %>">
-              <div class="form-check form-check-inline">
+              <div class="w-5/12<% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="skipCheckbox<%= i %>"
                   name="attempt[answers][reading][<%= i %>][tags][0]"
                   value="skip"
                 />
-                <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
+                <label class="mx-2" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="guessCheckbox<%= i %>"
                   name="attempt[answers][reading][<%= i %>][tags][1]"
                   value="guess"
                 />
-                <label class="form-check-label" for="guessCheckbox<%= i %>"
+                <label class="mx-2
+" for="guessCheckbox<%= i %>"
                   ><img src="/assets/guess.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
+              <div class="inline-flex items-center">
+                <input class="form-radio" type="checkbox" id="timeCheckbox<%= i
                 %>" name="attempt[answers][reading][<%= i %>][tags][2]" value="noTime" />
-                <label class="form-check-label" for="timeCheckbox<%= i %>"
+                <label class="mx-2
+" for="timeCheckbox<%= i %>"
                   ><img src="/assets/late.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
+              <div class="inline-flex items-center">
+                <input class="form-radio" type="checkbox" id="reviseCheckbox<%= i
                 %>" name="attempt[answers][reading][<%= i %>][tags][3]" value="revised" />
-                <label class="form-check-label" for="reviseCheckbox<%= i %>"
+                <label class="mx-2" for="reviseCheckbox<%= i %>"
                   ><img src="/assets/revise.png" alt=""></label
                 >
               </div>
@@ -373,100 +374,100 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mb-3">
-    <div class="col-8">
-      <div class="card rounded">
+  <div class="flex mb-3 justify-center">
+    <div class="w-1/2">
+      <div class="bg-gray-100 rounded-xl p-4">
         <div class="card-body p-5">
           
             <h2 class="card-title bg-secondary text-light text-center rounded-pill py-3 mb-3  text-center rounded-pill">Science</h2>
           
-        <div class="list-group list-group-flush">
+        <div class="grid grid-cols-1">
           <% for(let i=1;i<41;i++) { %>
-            <div class="list-group-item">
-          <div class="row justify-content-center bubble">
-            <div class="col-1  <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class="w-full <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden w-5/6">
+            <div class="w-1/12  <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
               <span class="fw-bold">Q<%= i %></span>
             </div>
-            <div class=" col-6 <% if(i % 2 == 0) {  %> bg-light <% } %>">
+            <div class=" w-1/2 <% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
               <div class="d-inline">
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>A"
                     name="attempt[answers][science][<%= i %>][choice]"
                     value="A"
                     checked required
                   />
-                  <label class="form-check-label" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
+                  <label class="mx-2" for="q<%= i %>A"><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
       </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>B"
                     name="attempt[answers][science][<%= i %>][choice]"
                     value="B" required
                   />
-                  <label class="form-check-label" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
+                  <label class="mx-2" for="q<%= i %>B"><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>C"
                     name="attempt[answers][science][<%= i %>][choice]"
                     value="C" required
                   />
-                  <label class="form-check-label" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
+                  <label class="mx-2" for="q<%= i %>C"><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="inline-flex items-center">
                   <input
                     type="radio"
-                    class="form-check-input"
+                    class="form-radio"
                     id="q<%= i %>D"
                     name="attempt[answers][science][<%= i %>][choice]"
                     value="D" required
                   />
-                  <label class="form-check-label " for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
+                  <label class="mx-2" for="q<%= i %>D"><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label>
                 </div>
               </div>
               </div>
-              <div class="col-5<% if(i % 2 == 0) {  %> bg-light <% } %>">
-              <div class="form-check form-check-inline">
+              <div class="w-5/12<% if(i % 2 == 0) {  %> bg-gray-200 <% } %>">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="skipCheckbox<%= i %>"
                   name="attempt[answers][science][<%= i %>][tags][0]"
                   value="skip"
                 />
-                <label class="form-check-label" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
+                <label class="mx-2" for="skipCheckbox<%= i %>"><img src="/assets/skip.png" alt=""></label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="inline-flex items-center">
                 <input
-                  class="form-check-input"
+                  class="form-radio"
                   type="checkbox"
                   id="guessCheckbox<%= i %>"
                   name="attempt[answers][science][<%= i %>][tags][1]"
                   value="guess"
                 />
-                <label class="form-check-label" for="guessCheckbox<%= i %>"
+                <label class="mx-2" for="guessCheckbox<%= i %>"
                   ><img src="/assets/guess.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="timeCheckbox<%= i
+              <div class="inline-flex items-center">
+                <input class="form-radio" type="checkbox" id="timeCheckbox<%= i
                 %>" name="attempt[answers][science][<%= i %>][tags][2]" value="noTime" />
-                <label class="form-check-label" for="timeCheckbox<%= i %>"
+                <label class="mx-2" for="timeCheckbox<%= i %>"
                   ><img src="/assets/late.png" alt=""></label
                 >
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="reviseCheckbox<%= i
+              <div class="inline-flex items-center">
+                <input class="form-radio" type="checkbox" id="reviseCheckbox<%= i
                 %>" name="attempt[answers][science][<%= i %>][tags][3]" value="revised" />
-                <label class="form-check-label" for="reviseCheckbox<%= i %>"
+                <label class="mx-2" for="reviseCheckbox<%= i %>"
                   ><img src="/assets/revise.png" alt=""></label
                 >
               </div>
@@ -479,8 +480,8 @@
       </div>
     </div>
   </div>
-  <div class="row m-5">
-    <div class="col-6 offset-3 d-grid">
+  <div class="flex justify-center pb-10">
+    <div class="w-1/2 text-center">
           <button
           type="submit"
           class="
