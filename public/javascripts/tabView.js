@@ -1,36 +1,22 @@
-let tabsContainer = document.querySelector("#tabs");
+document.getElementById("defaultOpen").click();
 
-let tabTogglers = tabsContainer.querySelectorAll("a");
-console.log(tabTogglers);
+function switchTab(evt, sectionName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
 
-tabTogglers.forEach(function (toggler) {
-  toggler.addEventListener("click", function (e) {
-    e.preventDefault();
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
 
-    let tabName = this.getAttribute("href");
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
 
-    let tabContents = document.querySelector("#tab-contents");
-
-    for (let i = 0; i < tabContents.children.length; i++) {
-      tabTogglers[i].parentElement.classList.remove(
-        "border-blue-400",
-        "border-b",
-        "-mb-px",
-        "opacity-100"
-      );
-      tabContents.children[i].classList.remove("hidden");
-      if ("#" + tabContents.children[i].id === tabName) {
-        continue;
-      }
-      tabContents.children[i].classList.add("hidden");
-    }
-    e.target.parentElement.classList.add(
-      "border-blue-400",
-      "border-b-4",
-      "-mb-px",
-      "opacity-100"
-    );
-  });
-});
-
-document.getElementById("default-tab").click();
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(sectionName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

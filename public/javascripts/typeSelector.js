@@ -1,4 +1,3 @@
-console.log("in type selector");
 for (let i = 1; i < 76; i++) {
   const topicSelector = document.querySelector(`#englishTopicSelector${i}`);
   const typesSelector = document.querySelector(`#englishTypeSelector${i}`);
@@ -6,7 +5,7 @@ for (let i = 1; i < 76; i++) {
     const specificTypes = types.filter(
       (type) => type.general === event.target.value
     );
-    var html = "";
+    const html = "";
     for (let type of specificTypes) {
       const option = `<option value="${type._id}">${type.name}</option>`;
       html += option;
@@ -21,7 +20,7 @@ for (let i = 1; i < 61; i++) {
     const specificTypes = types.filter(
       (type) => type.general === event.target.value
     );
-    var html = "";
+    const html = "";
     for (let type of specificTypes) {
       const option = `<option value="${type._id}">${type.name}</option>`;
       html += option;
@@ -36,7 +35,7 @@ for (let i = 1; i < 41; i++) {
     const specificTypes = types.filter(
       (type) => type.general === event.target.value
     );
-    var html = "";
+    const html = "";
     for (let type of specificTypes) {
       const option = `<option value="${type._id}">${type.name}</option>`;
       html += option;
@@ -51,7 +50,7 @@ for (let i = 1; i < 41; i++) {
     const specificTypes = types.filter(
       (type) => type.general === event.target.value
     );
-    var html = "";
+    const html = "";
     for (let type of specificTypes) {
       const option = `<option value="${type._id}">${type.name}</option>`;
       html += option;

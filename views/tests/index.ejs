@@ -1,79 +1,50 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/homeplate') %>
 <!-- User page: see all tests to choose for test -->
 <div>
-  <h1 id="test_header" class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+  <h1 id="test_header" class="display-1 text-center fw-bold text-white">
     Tests
   </h1>
 </div>
 <div class="container mt-5">
 
 <% if (currentUser && currentUser.isAdmin) { %>
-<div><a class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80 m-4 mb-8 p-4" href="/tests/new">Add Test</a></div>
+<div><a class="btn btn-success btn-sm mb-3" href="/tests/new">Add Test</a></div>
 <% } %>
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col p-8">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Test
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date
-              </th>
-              <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <% for(let i=0;i<tests.length;i++) { %>
-               <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <!-- <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                  </div> -->
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      <%= tests[i].form %>
-                    </div>
-                    <!-- <div class="text-sm text-gray-500">
-                      jane.cooper@example.com
-                    </div> -->
-                  </div>
-                </div>
-              </td>
-              <!-- <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900"><%= i + 1 %></div>
-                <div class="text-sm text-gray-500">Optimization</div>
-              </td> -->
-              <td class="px-6 py-4 whitespace-nowrap">
-                
-                  <% if (ids.some(id => id.equals(tests[i]._id))) { %> <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Taken</span> <%
-        } else { %>
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Not Taken</span><% } %>
-                
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <%= tests[i].date.toISOString().slice(0, 10) %>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="/tests/<%= tests[i]._id %>" class="text-indigo-600 hover:text-indigo-900">Go</a>
-              </td>
-            </tr>
-              <% } %> 
-            <!-- More people... -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Test</th>
+      <th scope="col">Date</th>
+      <% if (currentUser) { %>
+      <th scope="col">Taken?</th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0;i<tests.length;i++) { %>
+      <tr>
+        <th scope="row"><%= i + 1 %></th>
+        <td><a href="/tests/<%= tests[i]._id %>"><%= tests[i].form %> </a></td>
+        <td><%= tests[i].date.toISOString().slice(0, 10) %></td>
+        <% if (currentUser) { %>
+          <!-- https://www.samanthaming.com/tidbits/81-how-to-check-if-array-includes-a-value/ -->
+          <td><% if (ids.some(id => id.equals(tests[i]._id))) { %> <img class="small" src="/assets/check.png" alt="" /> <%
+      } else { %>
+      <img class="small me-3" src="/assets/close.png" alt="" />
+      <a
+        class="btn btn-primary btn-sm"
+        href="/attempts/new?test=<%= tests[i]._id %>"
+        >Make New Attempt</a
+      >
+      <% } %>
+      </td>
+        <% } %>
+        
+      </tr>
+    <% } %>
+  </tbody>
+</table>
 </div>

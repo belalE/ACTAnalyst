@@ -64,10 +64,6 @@ Highcharts.chart("qTypeBarEng", {
   chart: {
     type: "column",
   },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
-  },
   title: {
     text: "English Mistakes by Question Type",
   },
@@ -120,10 +116,6 @@ Highcharts.chart("qTypeBarEng", {
 Highcharts.chart("qTypeBarMath", {
   chart: {
     type: "column",
-  },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
   },
   title: {
     text: "Math Mistakes by Question Type",
@@ -178,10 +170,6 @@ Highcharts.chart("qTypeBarRead", {
   chart: {
     type: "column",
   },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
-  },
   title: {
     text: "Reading Mistakes by Question Type",
   },
@@ -234,10 +222,6 @@ Highcharts.chart("qTypeBarRead", {
 Highcharts.chart("qTypeBarSci", {
   chart: {
     type: "column",
-  },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
   },
   title: {
     text: "Science Mistakes by Question Type",
@@ -293,10 +277,6 @@ Highcharts.chart("histEng", {
   chart: {
     type: "column",
   },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
-  },
   title: {
     text: "Mistake Histogram",
   },
@@ -343,10 +323,6 @@ Highcharts.chart("histEng", {
 Highcharts.chart("histMath", {
   chart: {
     type: "column",
-  },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
   },
   title: {
     text: "Mistake Histogram",
@@ -395,10 +371,6 @@ Highcharts.chart("histRead", {
   chart: {
     type: "column",
   },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
-  },
   title: {
     text: "Mistake Histogram",
   },
@@ -445,10 +417,6 @@ Highcharts.chart("histRead", {
 Highcharts.chart("histSci", {
   chart: {
     type: "column",
-  },
-  colors: ["#00A7E1", "#00171F", "#003459", "#007EA7"],
-  credits: {
-    enabled: false,
   },
   title: {
     text: "Mistake Histogram",

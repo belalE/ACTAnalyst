@@ -14,6 +14,7 @@ const ejsLint = require("ejs-lint");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const dBUrl = process.env.DB_URL || "mongodb://localhost:27017/act-analyst";
+
 const MongoStore = require("connect-mongo");
 
 const passport = require("passport");
@@ -89,7 +90,6 @@ const scriptSrcUrls = [
   "https://cdn.jsdelivr.net",
   "https://platform.twitter.com/",
   "code.highcharts.com",
-  "unpkg.com",
 ];
 //This is the array that needs added to
 const styleSrcUrls = [
@@ -115,12 +115,7 @@ app.use(
     directives: {
       defaultSrc: ["https://platform.twitter.com/"],
       connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: [
-        "'unsafe-inline'",
-        "'unsafe-eval'",
-        "'self'",
-        ...scriptSrcUrls,
-      ],
+      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
