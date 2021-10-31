@@ -15,20 +15,20 @@
     <div class="col">Reading</div>
     <div class="col">Science</div>
   </div> -->
-  <div class="row display-1">
+  <div class="grid grid-cols-4 display-1">
     <div class="col">English: <%= scaled.english %></div>
     <div class="col">Math: <%= scaled.math %></div>
     <div class="col">Reading: <%= scaled.reading %></div>
     <div class="col">Science: <%= scaled.science %></div>
   </div>
-  <div class="row display-4">
+  <div class="grid grid-cols-4">
     <div class="col"><%= raw.english %></div>
     <div class="col"><%= raw.math %></div>
     <div class="col"><%= raw.reading %></div>
     <div class="col"><%= raw.science %></div>
   </div>
   <hr />
-  <div class="row display-6">
+  <div class="grid grid-cols-4 display-6">
     <div class="col">
       <%= attempt.tagStats.englishStats.skips %>
       <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
@@ -46,7 +46,7 @@
       <span><img class="thumbnail" src="/assets/skip.png" alt="" /></span>
     </div>
   </div>
-  <div class="row display-6">
+  <div class="grid grid-cols-4 display-6">
     <div class="col">
       <%= attempt.tagStats.englishStats.guesses %>
       <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
@@ -64,7 +64,7 @@
       <span><img class="thumbnail" src="/assets/guess.png" alt="" /></span>
     </div>
   </div>
-  <div class="row display-6 mb-3">
+  <div class="grid grid-cols-4 display-6 mb-3">
     <div class="col">
       <%= attempt.tagStats.englishStats.times %>
       <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
@@ -82,7 +82,7 @@
       <span><img class="thumbnail" src="/assets/late.png" alt="" /></span>
     </div>
   </div>
-  <div class="row display-6">
+  <div class="grid grid-cols-4 display-6">
     <div class="col">
       <%= attempt.tagStats.englishStats.revises %>
       <span><img class="thumbnail" src="/assets/revise.png" alt="" /></span>
