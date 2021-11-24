@@ -271,6 +271,7 @@
               id="user-menu-item-1"
               >Settings</a
             >
+            <% if (currentUser) { %>
             <a
               href="/logout"
               class="block px-4 py-2 text-sm text-gray-700"
@@ -279,6 +280,24 @@
               id="user-menu-item-2"
               >Sign out</a
             >
+            <% } else { %>
+            <a
+              href="/login"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="user-menu-item-2"
+              >Sign In</a
+            >
+            <a
+              href="/register"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="user-menu-item-2"
+              >Sign Up</a
+            >
+            <% } %>
           </div>
         </div>
       </div>
