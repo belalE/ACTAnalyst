@@ -7,12 +7,34 @@
   novalidate
   class="validated-form"
 >
-  <div class="row justify-content-center mb-3">
+  <div class="flex mb-3 justify-center">
     <div class="w-2/3">
       <div class="card">
         <div class="card-body">
-          <h1 class="card-title text-center">Edit Attempt</h1>
-          <h1 class="card-subtitle text-center">
+          <h1
+            class="
+              mt-3
+              text-2xl
+              font-bold
+              leading-7
+              text-gray-900
+              sm:text-3xl sm:truncate
+              text-center
+            "
+          >
+            Edit Attempt
+          </h1>
+          <h1
+            class="
+              my-3
+              text-xl
+              font-bold
+              leading-7
+              text-gray-600
+              sm:text-3xl sm:truncate
+              text-center
+            "
+          >
             Form: <%= attempt.test.form %>
           </h1>
           <div class="hidden">
@@ -23,6 +45,7 @@
             />
           </div>
           <div class="form-floating mb-3">
+            <label class="font-bold" for="date">Date: </label>
             <input
               class="form-control"
               type="date"
@@ -32,7 +55,6 @@
               required
               value="<%= attempt.dateTaken.toISOString().slice(0, 10) %>"
             />
-            <label for="date">Date</label>
           </div>
         </div>
       </div>
@@ -554,16 +576,26 @@
         <div class="d-grid">
           <button
             class="
-              inline-flex
-              text-white
-              bg-blue-500
-              border-0
+              mt-5
+              px-4
               py-2
-              px-6
+              font-medium
+              tracking-wide
+              text-white
+              capitalize
+              transition-colors
+              duration-200
+              transform
+              bg-indigo-600
+              rounded-md
+              hover:bg-indigo-500
               focus:outline-none
-              hover:bg-blue-600
-              rounded
-              text-lg
+              focus:ring
+              focus:ring-indigo-300
+              focus:ring-opacity-80
+              m-4
+              mb-8
+              p-4
             "
           >
             Edit

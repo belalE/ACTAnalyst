@@ -3,13 +3,20 @@
 
 <link rel="stylesheet" href="/stylesheets/new-attempt.css">
 <form action="/attempts/" method="POST" novalidate class="validated-form">
-  <div class="row justify-content-center mb-3">
+  <div class="flex mb-3 justify-center">
     <div class="col-8">
       <div class="card">
     <div class="card-body">
-<h1 class="card-title text-center">New Attempt</h1>
+<h1 class="mt-3
+              text-2xl
+              font-bold
+              leading-7
+              text-gray-900
+              sm:text-3xl sm:truncate
+              text-center">New Attempt</h1>
       <div class="list-group">
-        <div class="list-group-item">
+        <div class="list-group-item inline-flex">
+                      <label class="font-bold mr-2" for="testSelector">Test Form: </label>
           <div class="mb-3">
     <select name="attempt[test]" class="form-select" id="testSelector" required>
       <option value="" <% if (!selectedTest) { %>selected <% } %> disabled>Select test</option>
@@ -21,6 +28,7 @@
         </div>
         <div class="list-group-item">
           <div class="form-floating mb-3">
+            <label class="font-bold" for="date">Date Taken: </label>
     <input
       class="form-control"
       type="date"
@@ -28,7 +36,7 @@
       name="attempt[dateTaken]"
       required
     />
-    <label for="date">Date Taken</label>
+    
   </div>
         </div>
       </div>
@@ -485,16 +493,23 @@
           <button
           type="submit"
           class="
-            inline-flex
-            text-white
-            bg-blue-500
-            border-0
-            py-2
-            px-6
-            focus:outline-none
-            hover:bg-blue-600
-            rounded
-            text-lg
+            mt-5
+    px-4
+    py-2
+    font-medium
+    tracking-wide
+    text-white
+    capitalize
+    transition-colors
+    duration-200
+    transform
+    bg-indigo-600
+    rounded-md
+    hover:bg-indigo-500
+    focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80
+    m-4
+    mb-8
+    p-4
           "
         >
           Submit

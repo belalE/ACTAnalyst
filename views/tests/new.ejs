@@ -1,27 +1,42 @@
 <% layout('layouts/boilerplate') %>
 <!-- Admin page: add new test for users -->
-<h1>New Test</h1>
+
 <form action="/tests" method="POST" novalidate class="validated-form">
-  <div class="form-floating mb-3">
-    <input
-      class="form-control"
-      type="text"
-      id="form"
-      name="test[form]"
-      placeholder="Form Number"
-      required
-    />
-    <label for="form">Form</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input
-      class="form-control"
-      type="date"
-      id="date"
-      name="test[date]"
-      required
-    />
-    <label for="date">Date</label>
+  <div class="flex mb-3 justify-center">
+    <h1
+      class="
+        mt-3
+        text-2xl
+        font-bold
+        leading-7
+        text-gray-900
+        sm:text-3xl sm:truncate
+        text-center
+      "
+    >
+      New Test
+    </h1>
+    <div class="form-floating mb-3">
+      <label class="font-bold mr-3" for="form">Form: </label>
+      <input
+        class="form-control"
+        type="text"
+        id="form"
+        name="test[form]"
+        placeholder="Form Number"
+        required
+      />
+    </div>
+    <div class="form-floating mb-3">
+      <label class="font-bold mr-3" for="date">Date: </label>
+      <input
+        class="form-control"
+        type="date"
+        id="date"
+        name="test[date]"
+        required
+      />
+    </div>
   </div>
   <h2 class="text-center mb-3">Answers</h2>
 
