@@ -105,7 +105,21 @@ module.exports.updateTest = async (req, res) => {
 
 module.exports.deleteTest = async (req, res) => {
   const { id } = req.params;
+  // TODO: setup delete for questions
+  const test = test.findById(id);
+  for (let question in [
+    ...test.questions.english,
+    ...test.questions.math,
+    ...test.questions.reading,
+    ...test.questions.science,
+  ]) {
+    await Question.findByIdAndDelete(question);
+  }
   await Test.findByIdAndDelete(id);
+  const attempts = await Attempt.find({ test: id });
+  for (const attempt of attempts) {
+    await Attempt.findByIdAndDelete(attempt._id);
+  }
   req.flash("success", "Successfully deleted test!");
   res.redirect("/tests");
 };
