@@ -1,413 +1,485 @@
 <% layout('layouts/boilerplate') %>
 <!-- Admin page: add new test for users -->
+<a href="/tests" class="mt-5 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80 m-4 mb-8 p-4"> &laquo; All Tests</a>
 
 <form action="/tests" method="POST" novalidate class="validated-form">
   <div class="flex mb-3 justify-center">
-    <h1
-      class="
-        mt-3
-        text-2xl
-        font-bold
-        leading-7
-        text-gray-900
-        sm:text-3xl sm:truncate
-        text-center
-      "
-    >
-      New Test
-    </h1>
-    <div class="form-floating mb-3">
-      <label class="font-bold mr-3" for="form">Form: </label>
-      <input
-        class="form-control"
-        type="text"
-        id="form"
-        name="test[form]"
-        placeholder="Form Number"
-        required
-      />
+    <div class="col-8">
+      <h1 class="
+              my-3
+              text-2xl
+              font-bold
+              leading-7
+              text-gray-900
+              sm:text-3xl sm:truncate
+              text-center
+            ">
+        New Test
+      </h1>
+      <div class="list-group">
+        <div class="list-group-item">
+          <label class="font-bold inline-block mb-2 text-gray-700" for="form">Form: </label>
+          <input class="block w-full px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0 
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" id="form" name="test[form]" placeholder="Form Number" required />
+        </div>
+        <div class="list-group-item">
+          <label class="font-bold inline-block mb-2 text-gray-700" for="date">Date: </label>
+          <input class="block w-full px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="date" id="date" name="test[date]" required />
+        </div>
+      </div>
     </div>
-    <div class="form-floating mb-3">
-      <label class="font-bold mr-3" for="date">Date: </label>
-      <input
-        class="form-control"
-        type="date"
-        id="date"
-        name="test[date]"
-        required
-      />
-    </div>
+    
+    
   </div>
   <h2 class="text-center mb-3">Answers</h2>
-
-  <h3>English</h3>
-  <% for(let i=1;i<76;i++) { %>
-  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-    <span class="fw-bold">Q<%= i %></span>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>A"
-        name="questions[english][<%= i %>][answer]"
-        value="A"
-        checked
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>A"
-        ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %>
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>B"
-        name="questions[english][<%= i %>][answer]"
-        value="B"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>B"
-        ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>C"
-        name="questions[english][<%= i %>][answer]"
-        value="C"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>C"
-        ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>D"
-        name="questions[english][<%= i %>][answer]"
-        value="D"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>D"
-        ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
-      >
-    </div>
-  </div>
-  <div>
-    <select
-      id="englishTopicSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Topic"
-    >
-      <option value="" selected disabled>Select topic</option>
-      <% for(let topic of topics.english) { %>
-      <option value="<%= topic %>"><%= topic %></option>
-      <% } %>
-    </select>
-    <select
-      id="englishTypeSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Type"
-      name="questions[english][<%= i %>][type]"
-    >
-      <option value="" selected disabled>Select question type</option>
-      <% for(let type of types.filter(type => type.section === 'English')) { %>
-      <option value="<%= type._id %>"><%= type.name %></option>
-      <% } %>
-    </select>
-  </div>
-  <% } %>
-
-  <h3>Math</h3>
-  <% for(let i=1;i<61;i++) { %>
-  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-    <span class="fw-bold">Q<%= i %></span>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>A"
-        name="questions[math][<%= i %>][answer]"
-        value="A"
-        checked
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>A"
-        ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>B"
-        name="questions[math][<%= i %>][answer]"
-        value="B"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>B"
-        ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>C"
-        name="questions[math][<%= i %>][answer]"
-        value="C"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>C"
-        ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>D"
-        name="questions[math][<%= i %>][answer]"
-        value="D"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>D"
-        ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>E"
-        name="questions[math][<%= i %>][answer]"
-        value="E"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>E"
-        ><% if(i % 2 == 0) { %> K <% } else { %> E <% } %></label
-      >
+<div class="flex mb-3 justify-center">
+  <div class="w-1/2">
+    <div class="bg-gray-100 rounded-xl p-4">
+        <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">English</h2>
+        <% for(let i=1;i<76;i++) { %>
+          <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+            <div class="inline-flex overflow-hidden mr-3">
+              <div class="w-1/12 mr-3">
+                <span class="fw-bold">Q<%= i %></span>
+              </div>
+              <div class="w-1/2">
+                <div class="d-inline">
+                  <div class="inline-flex items-center">
+                    <input type="radio" class="form-radio" id="q<%= i %>A" name="questions[english][<%= i %>][answer]" value="A"
+                      checked required />
+                    <label class="mx-2" for="q<%= i %>A">
+                      <% if(i % 2==0) { %> F <% } else { %> A <% } %>
+                    </label>
+                  </div>
+                  <div class="inline-flex items-center">
+                    <input type="radio" class="form-radio" id="q<%= i %>B" name="questions[english][<%= i %>][answer]" value="B"
+                      required />
+                    <label class="mx-2" for="q<%= i %>B">
+                      <% if(i % 2==0) { %> G <% } else { %> B <% } %>
+                    </label>
+                  </div>
+                  <div class="inline-flex items-center">
+                    <input type="radio" class="form-radio" id="q<%= i %>C" name="questions[english][<%= i %>][answer]" value="C"
+                      required />
+                    <label class="mx-2" for="q<%= i %>C">
+                      <% if(i % 2==0) { %> H <% } else { %> C <% } %>
+                    </label>
+                  </div>
+                  <div class="inline-flex items-center">
+                    <input type="radio" class="form-radio" id="q<%= i %>D" name="questions[english][<%= i %>][answer]" value="D"
+                      required />
+                    <label class="mx-2" for="q<%= i %>D">
+                      <% if(i % 2==0) { %> J <% } else { %> D <% } %>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full<% if(i % 2 == 0) {  %> bg-gray-200 <% } %> grid grid-cols-1 lg:grid-cols-2">
+                <select id="englishTopicSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-2
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Topic">
+                  <option value="" selected disabled>Select topic</option>
+                  <% for(let topic of topics.english) { %>
+                    <option value="<%= topic %>">
+                      <%= topic %>
+                    </option>
+                    <% } %>
+                </select>
+                <select id="englishTypeSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Type"
+                  name="questions[english][<%= i %>][type]">
+                  <option value="" selected disabled>Select question type</option>
+                  <% for(let type of types.filter(type=> type.section === 'English')) { %>
+                    <option value="<%= type._id %>">
+                      <%= type.name %>
+                    </option>
+                    <% } %>
+                </select>
+              </div>
+            </div>
+        
+            
+          </div>
+          <% } %>
     </div>
   </div>
-  <div>
-    <select
-      id="mathTopicSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Topic"
-    >
-      <option value="" selected disabled>Select topic</option>
-      <% for(let topic of topics.math) { %>
-      <option value="<%= topic %>"><%= topic %></option>
-      <% } %>
-    </select>
-    <select
-      id="mathTypeSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Type"
-      name="questions[math][<%= i %>][type]"
-    >
-      <option value="" selected disabled>Select question type</option>
+</div>
 
-      <% for(let type of types.filter(type => type.section === 'Math')) { %>
-      <option value="<%= type._id %>"><%= type.name %></option>
-      <% } %>
-    </select>
-  </div>
-  <% } %>
+<div class="flex mb-3 justify-center">
+  <div class="w-1/2">
+    <div class="bg-gray-100 rounded-xl p-4">
+      <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">Math</h2>
+      <% for(let i=1;i<61;i++) { %>
+        <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden mr-3">
+            <div class="w-1/12 mr-3">
+              <span class="fw-bold">Q<%= i %></span>
+            </div>
+            <div class="w-1/2">
+              <div class="d-inline">
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>A" name="questions[math][<%= i %>][answer]"
+                    value="A" checked required />
+                  <label class="mx-2" for="q<%= i %>A">
+                    <% if(i % 2==0) { %> F <% } else { %> A <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>B" name="questions[math][<%= i %>][answer]"
+                    value="B" required />
+                  <label class="mx-2" for="q<%= i %>B">
+                    <% if(i % 2==0) { %> G <% } else { %> B <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>C" name="questions[math][<%= i %>][answer]"
+                    value="C" required />
+                  <label class="mx-2" for="q<%= i %>C">
+                    <% if(i % 2==0) { %> H <% } else { %> C <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>D" name="questions[math][<%= i %>][answer]"
+                    value="D" required />
+                  <label class="mx-2" for="q<%= i %>D">
+                    <% if(i % 2==0) { %> J <% } else { %> D <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>D" name="questions[math][<%= i %>][answer]"
+                    value="D" required />
+                  <label class="mx-2" for="q<%= i %>D">
+                    <% if(i % 2==0) { %> K <% } else { %> E <% } %>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="w-full<% if(i % 2 == 0) {  %> bg-gray-200 <% } %> grid grid-cols-1 lg:grid-cols-2">
+              <select id="mathTopicSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-2
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Topic">
+                <option value="" selected disabled>Select topic</option>
+                <% for(let topic of topics.math) { %>
+                  <option value="<%= topic %>">
+                    <%= topic %>
+                  </option>
+                  <% } %>
+              </select>
+              <select id="mathTypeSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Type"
+                name="questions[math][<%= i %>][type]">
+                <option value="" selected disabled>Select question type</option>
+                <% for(let type of types.filter(type=> type.section === 'Math')) { %>
+                  <option value="<%= type._id %>">
+                    <%= type.name %>
+                  </option>
+                  <% } %>
+              </select>
+            </div>
+          </div>
 
-  <h3>Reading</h3>
-  <% for(let i=1;i<41;i++) { %>
-  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-    <span class="fw-bold">Q<%= i %></span>
 
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>A"
-        name="questions[reading][<%= i %>][answer]"
-        value="A"
-        checked
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>A"
-        ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %></label
-      >
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>B"
-        name="questions[reading][<%= i %>][answer]"
-        value="B"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>B"
-        ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
-      >
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>C"
-        name="questions[reading][<%= i %>][answer]"
-        value="C"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>C"
-        ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
-      >
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>D"
-        name="questions[reading][<%= i %>][answer]"
-        value="D"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>D"
-        ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
-      >
-    </div>
-  </div>
-  <div>
-    <select
-      id="readingTopicSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Topic"
-    >
-      <option value="" selected disabled>Select topic</option>
-
-      <% for(let topic of topics.reading) { %>
-      <option value="<%= topic %>"><%= topic %></option>
-      <% } %>
-    </select>
-    <select
-      id="readingTypeSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Type"
-      name="questions[reading][<%= i %>][type]"
-    >
-      <option value="" selected disabled>Select question type</option>
-
-      <% for(let type of types.filter(type => type.section === 'Reading')) { %>
-      <option value="<%= type._id %>"><%= type.name %></option>
-      <% } %>
-    </select>
-  </div>
-  <% } %>
-
-  <h3>Science</h3>
-  <% for(let i=1;i<41;i++) { %>
-  <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-    <span class="fw-bold">Q<%= i %></span>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>A"
-        name="questions[science][<%= i %>][answer]"
-        value="A"
-        checked
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>A"
-        ><% if(i % 2 == 0) { %> F <% } else { %> A <% } %></label
-      >
-    </div>
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>B"
-        name="questions[science][<%= i %>][answer]"
-        value="B"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>B"
-        ><% if(i % 2 == 0) { %> G <% } else { %> B <% } %></label
-      >
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>C"
-        name="questions[science][<%= i %>][answer]"
-        value="C"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>C"
-        ><% if(i % 2 == 0) { %> H <% } else { %> C <% } %></label
-      >
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="q<%= i %>D"
-        name="questions[science][<%= i %>][answer]"
-        value="D"
-        required
-      />
-      <label class="form-check-label" for="q<%= i %>D"
-        ><% if(i % 2 == 0) { %> J <% } else { %> D <% } %></label
-      >
+        </div>
+        <% } %>
     </div>
   </div>
-  <div>
-    <select
-      id="scienceTopicSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Topic"
-    >
-      <option value="" selected disabled>Select topic</option>
+</div>
+  
+<div class="flex mb-3 justify-center">
+  <div class="w-1/2">
+    <div class="bg-gray-100 rounded-xl p-4">
+      <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">Reading</h2>
+      <% for(let i=1;i<41;i++) { %>
+        <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden mr-3">
+            <div class="w-1/12 mr-3">
+              <span class="fw-bold">Q<%= i %></span>
+            </div>
+            <div class="w-1/2">
+              <div class="d-inline">
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>A" name="questions[reading][<%= i %>][answer]"
+                    value="A" checked required />
+                  <label class="mx-2" for="q<%= i %>A">
+                    <% if(i % 2==0) { %> F <% } else { %> A <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>B" name="questions[reading][<%= i %>][answer]"
+                    value="B" required />
+                  <label class="mx-2" for="q<%= i %>B">
+                    <% if(i % 2==0) { %> G <% } else { %> B <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>C" name="questions[reading][<%= i %>][answer]"
+                    value="C" required />
+                  <label class="mx-2" for="q<%= i %>C">
+                    <% if(i % 2==0) { %> H <% } else { %> C <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>D" name="questions[reading][<%= i %>][answer]"
+                    value="D" required />
+                  <label class="mx-2" for="q<%= i %>D">
+                    <% if(i % 2==0) { %> J <% } else { %> D <% } %>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="w-full<% if(i % 2 == 0) {  %> bg-gray-200 <% } %> grid grid-cols-1 lg:grid-cols-2">
+              <select id="readingTopicSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-2
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Topic">
+                <option value="" selected disabled>Select topic</option>
+                <% for(let topic of topics.reading) { %>
+                  <option value="<%= topic %>">
+                    <%= topic %>
+                  </option>
+                  <% } %>
+              </select>
+              <select id="readingTypeSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Type"
+                name="questions[reading][<%= i %>][type]">
+                <option value="" selected disabled>Select question type</option>
+                <% for(let type of types.filter(type=> type.section === 'Reading')) { %>
+                  <option value="<%= type._id %>">
+                    <%= type.name %>
+                  </option>
+                  <% } %>
+              </select>
+            </div>
+          </div>
 
-      <% for(let topic of topics.science) { %>
-      <option value="<%= topic %>"><%= topic %></option>
-      <% } %>
-    </select>
-    <select
-      id="scienceTypeSelector<%= i %>"
-      class="form-select"
-      aria-label="Question Type"
-      name="questions[science][<%= i %>][type]"
-    >
-      <option value="" selected disabled>Select question type</option>
 
-      <% for(let type of types.filter(type => type.section === 'Science')) { %>
-      <option value="<%= type._id %>"><%= type.name %></option>
-      <% } %>
-    </select>
+        </div>
+        <% } %>
+    </div>
   </div>
-  <% } %>
+</div>
+
+<div class="flex mb-3 justify-center">
+  <div class="w-1/2">
+    <div class="bg-gray-100 rounded-xl p-4">
+      <h2 class="bg-secondary text-light text-center rounded-pill py-3 mb-3">Science</h2>
+      <% for(let i=1;i<41;i++) { %>
+        <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+          <div class="inline-flex overflow-hidden mr-3">
+            <div class="w-1/12 mr-3">
+              <span class="fw-bold">Q<%= i %></span>
+            </div>
+            <div class="w-1/2">
+              <div class="d-inline">
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>A" name="questions[science][<%= i %>][answer]"
+                    value="A" checked required />
+                  <label class="mx-2" for="q<%= i %>A">
+                    <% if(i % 2==0) { %> F <% } else { %> A <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>B" name="questions[science][<%= i %>][answer]"
+                    value="B" required />
+                  <label class="mx-2" for="q<%= i %>B">
+                    <% if(i % 2==0) { %> G <% } else { %> B <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>C" name="questions[science][<%= i %>][answer]"
+                    value="C" required />
+                  <label class="mx-2" for="q<%= i %>C">
+                    <% if(i % 2==0) { %> H <% } else { %> C <% } %>
+                  </label>
+                </div>
+                <div class="inline-flex items-center">
+                  <input type="radio" class="form-radio" id="q<%= i %>D" name="questions[science][<%= i %>][answer]"
+                    value="D" required />
+                  <label class="mx-2" for="q<%= i %>D">
+                    <% if(i % 2==0) { %> J <% } else { %> D <% } %>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="w-full<% if(i % 2 == 0) {  %> bg-gray-200 <% } %> grid grid-cols-1 lg:grid-cols-2">
+              <select id="scienceTopicSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-2
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Topic">
+                <option value="" selected disabled>Select topic</option>
+                <% for(let topic of topics.science) { %>
+                  <option value="<%= topic %>">
+                    <%= topic %>
+                  </option>
+                  <% } %>
+              </select>
+              <select id="scienceTypeSelector<%= i %>" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Question Type"
+                name="questions[science][<%= i %>][type]">
+                <option value="" selected disabled>Select question type</option>
+                <% for(let type of types.filter(type=> type.section === 'Science')) { %>
+                  <option value="<%= type._id %>">
+                    <%= type.name %>
+                  </option>
+                  <% } %>
+              </select>
+            </div>
+          </div>
+
+
+        </div>
+        <% } %>
+    </div>
+  </div>
+</div>
+
+  
   <!-- TODO: Come up with new way to input scale -->
-  <h2 class="text-center">Scale</h2>
-  <div class="row">
-    <div class="col">
+  <h2 class="text-center font-medium leading-tight text-2xl mt-0 mb-2 text-blue-900 underline">Scale</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-gray-100 rounded-xl p-4">
+    <div class="">
+      <h3 class="font-medium leading-tight text-xl mt-0 mb-2 ml-2 text-blue-900">English</h3>
       <% for(let i =0;i<76;i++) {%>
-      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-        <label for="scaleEng<%= i %>"><%= i %>/75</label>
+      <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+        <label class="form-label inline-block mb-2 text-gray-700" for="scaleEng<%= i %>"><%= i %>/75</label>
         <input
           type="text"
           placeholder="__/36"
           id="scaleEng<%= i %>"
-          class="form-control"
+          class="form-control
+        
+        
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0 ml-4
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           name="test[scales][english][<%= i %>][scaled]"
           value="1"
           required
@@ -415,15 +487,30 @@
       </div>
       <% } %>
     </div>
-    <div class="col">
+    <div class="">
+      <h3 class="font-medium leading-tight text-xl mt-0 mb-2 ml-2 text-blue-900">Math</h3>
       <% for(let i =0;i<61;i++) {%>
-      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-        <label for="scaleMath<%= i %>"><%= i %>/60</label>
+      <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+        <label class="form-label inline-block mb-2 text-gray-700" for="scaleMath<%= i %>"><%= i %>/60</label>
         <input
           type="text"
           placeholder="__/36"
           id="scaleMath<%= i %>"
-          class="form-control"
+          class="form-control
+        
+        
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0 ml-4
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           name="test[scales][math][<%= i %>][scaled]"
           value="1"
           required
@@ -431,15 +518,30 @@
       </div>
       <% } %>
     </div>
-    <div class="col">
+    <div class="">
+      <h3 class="font-medium leading-tight text-xl mt-0 mb-2 ml-2 text-blue-900">Reading</h3>
       <% for(let i =0;i<41;i++) {%>
-      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-        <label for="scaleRead<%= i %>"><%= i %>/40</label>
+      <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+        <label class="form-label inline-block mb-2 text-gray-700" for="scaleRead<%= i %>"><%= i %>/40</label>
         <input
           type="text"
           placeholder="__/36"
           id="scaleRead<%= i %>"
-          class="form-control"
+          class="form-control
+        
+        
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out 
+        m-0 ml-4
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           name="test[scales][reading][<%= i %>][scaled]"
           value="1"
           required
@@ -447,15 +549,30 @@
       </div>
       <% } %>
     </div>
-    <div class="col">
+    <div class="">
+      <h3 class="font-medium leading-tight text-xl mt-0 mb-2 ml-2 text-blue-900">Science</h3>
       <% for(let i =0;i<41;i++) {%>
-      <div class="<% if(i % 2 == 0) { %> bg-light <% } %>">
-        <label for="scaleSci<%= i %>"><%= i %>/40</label>
+      <div class="<% if(i % 2 == 0) { %> bg-gray-200 <% } %>">
+        <label class="form-label inline-block mb-2 text-gray-700" for="scaleSci<%= i %>"><%= i %>/40</label>
         <input
           type="text"
           placeholder="__/36"
           id="scaleSci<%= i %>"
-          class="form-control"
+          class="form-control
+        
+        
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0 ml-4
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           name="test[scales][science][<%= i %>][scaled]"
           value="1"
           required
@@ -481,7 +598,6 @@
     Submit
   </button>
 </form>
-<a href="/tests">All Tests</a>
 
 <script>
   const types = <%- JSON.stringify(types) %>;
