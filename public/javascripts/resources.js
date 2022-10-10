@@ -5,13 +5,72 @@ counter.addEventListener("change", (e) => {
   if (e.target.value > value) {
     value += 1;
     const resourceInput = `<div class='form-group resourceInput'>
-    <label for="resource${value}Name">Name</label>
-    <input type="text" id="resource${value}Name" name="questionType[resources][${value}][name]" class="form-control mb-3" required>
-    <label for="resource${value}Link">Link</label>
-    <input type="text" id="resource${value}Link" name="questionType[resources][${value}][link]" class="form-control mb-3" required>
-    <label for="resource${value}Description">Description</label>
-    <input type="text" id="resource${value}Description" name="questionType[resources][${value}][description]" class="form-control mb-3" required>
-    <select name="questionType[resources][${value}][format]" id="resource${value}Format" class="form-select" required>
+    <label class="form-label inline-block mb-2 text-gray-700" for="resource${value}Name">Name</label>
+    <input type="text" id="resource${value}Name" name="questionType[resources][${value}][name]" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      " required>
+    <label class="form-label inline-block mb-2 text-gray-700" for="resource${value}Link">Link</label>
+    <input type="text" id="resource${value}Link" name="questionType[resources][${value}][link]" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      " required>
+    <label class="form-label inline-block mb-2 text-gray-700" for="resource${value}Description">Description</label>
+    <input type="text" id="resource${value}Description" name="questionType[resources][${value}][description]" class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0 mb-3
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      " required>
+    <select name="questionType[resources][${value}][format]" id="resource${value}Format" class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      ml-0.5 mb-3
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
         <option value="" selected disabled>Select section</option>
         <option value="Video">Video</option>
         <option value="Article">Article</option>

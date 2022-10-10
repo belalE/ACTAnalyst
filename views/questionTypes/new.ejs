@@ -1,24 +1,58 @@
 <% layout('layouts/boilerplate') %>
 
 <!-- Admin action, add question type -->
-<h1 class="mb-3 text-center">Add Question Type</h1>
+<h1 class="mt-3 text-2xl
+    font-bold
+    leading-7
+    text-gray-900
+    sm:text-3xl sm:truncate
+    text-center">Add Question Type</h1>
 <form action="/types" method="POST" novalidate class="validated-form">
   <div class="mb-3">
-    <label for="name">Name</label>
+    <label for="name" class="form-label inline-block mb-2 text-gray-700">Name</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
       id="name"
       name="questionType[name]"
       required
     />
   </div>
-  <div class="row mb-3">
-    <div class="col">
+  <div class="grid grid-cols-2 mb-3">
+    <div class="">
       <select
         name="questionType[section]"
         id="section"
-        class="form-select"
+        class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         required
       >
         <option value="" selected disabled>Select section</option>
@@ -28,11 +62,25 @@
         <option value="Science">Science</option>
       </select>
     </div>
-    <div class="col">
+    <div class="">
       <select
         name="questionType[general]"
         id="general"
-        class="form-select"
+        class="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      ml-0.5
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         required
       >
         <option value="" selected disabled>Select general topic</option>
@@ -42,12 +90,13 @@
       </select>
     </div>
   </div>
-  <h2 class="mb-3">Add Resources</h2>
+  <h2 class="mb-3 font-medium leading-tight text-2xl mt-0 text-blue-900 underline">Add Resources</h2>
   <div class="mb-3">
     <input
       type="number"
-      class="form-control"
+      class="border p-1 rounded outline-none"
       min="0"
+      value="0"
       step="1"
       id="resourceCount"
     />
