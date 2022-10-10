@@ -12,162 +12,104 @@
   <% if (currentUser && currentUser.isAdmin) { %>
   <a
     class="
-      px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80 m-4 mb-8 p-4
+      ml-36 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80 m-4 mb-8 p-4
     "
     href="/types/new"
     >Add Question Type</a
   >
   <% } %>
-  <div
-    class="bg-white mx-auto border border-gray-200 mt-3"
-    x-data="{selected:null}"
-  >
-    <ul class="shadow-box">
-      <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selected !== 1 ? selected = 1 : selected = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> English </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="container1"
-          x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
-        >
+  <div class="w-4/5 mx-auto mt-4  rounded">
+    <!-- Tabs -->
+    <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
+      <li class="px-4 py-2 -mb-px font-semibold text-gray-800 border-b-2 border-blue-400 rounded-t opacity-50"><a
+          id="default-tab" href="#first">English</a></li>
+      <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Math</a></li>
+      <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Reading</a></li>
+      <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#fourth">Science</a></li>
+    </ul>
+  
+    <!-- Tab Contents -->
+    <div id="tab-contents">
+      <div id="first" class="p-4">
+        <div class="">
           <div class="p-6">
-                <div
-      class="bg-white max-w-6xl mx-auto border border-gray-200"
-      x-data="{selectedEng:null}"
-    >
-      <ul class="shadow-box">
-        <% for(let i = 0; i < topics.english.length; i++) { %>
-          <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selectedEng !== <%= i %>  ? selectedEng = <%= i %>  : selectedEng = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> <%= topics.english[i] %>  </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="containerE<%= i %>"
-          x-bind:style="selectedEng == <%= i %> ? 'max-height: ' + $refs.containerE<%= i %>.scrollHeight + 'px' : ''"
-        >
-          <div class="p-6">
-            <ul>
-              <% for(let type of types.filter((type) => type.section ==
-                    "English" && type.general == topics.english[i])) { %>
-                    <li>
-                      <a class="text-dark" href="/types/<%= type._id %>"
-                        ><%= type.name %>
-                      </a>
-                    </li>
-                    <% } %>
-            </ul>
+            <div class="bg-white max-w-6xl mx-auto border border-gray-200" x-data="{selectedEng:null}">
+              <ul class="shadow-box">
+                <% for(let i=0; i < topics.english.length; i++) { %>
+                  <li class="relative border-b border-gray-200">
+                    <button type="button" class="w-full px-8 py-6 text-left"
+                      @click="selectedEng !== <%= i %>  ? selectedEng = <%= i %>  : selectedEng = null">
+                      <div class="flex items-center justify-between">
+                        <span class="font-medium leading-tight text-l mt-0 mb-2 text-blue-900 underline">
+                          <%= topics.english[i] %>
+                        </span>
+                        <span class="ico-plus"></span>
+                      </div>
+                    </button>
+          
+                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="containerE<%= i %>"
+                      x-bind:style="selectedEng == <%= i %> ? 'max-height: ' + $refs.containerE<%= i %>.scrollHeight + 'px' : ''">
+                      <div class="p-6">
+                        <ul class="list-disc ml-6 ">
+                          <% for(let type of types.filter((type)=> type.section ==
+                            "English" && type.general == topics.english[i])) { %>
+                            <li>
+                              <a class="text-dark" href="/types/<%= type._id %>">
+                                <%= type.name %>
+                              </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <% } %>
+              </ul>
+            </div>
           </div>
         </div>
-      </li>
-        <% } %>
-      </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selected !== 2 ? selected = 2 : selected = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> Math </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="container2"
-          x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''"
-        >
+      </div>
+      <div id="second" class="hidden p-4">
+        <div class="">
           <div class="p-6">
-            <div
-      class="bg-white max-w-6xl mx-auto border border-gray-200"
-      x-data="{selectedMath:null}"
-    >
-      <ul class="shadow-box">
-        <% for(let i = 0; i < topics.math.length; i++) { %>
-          <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selectedMath !== <%= i %>  ? selectedMath = <%= i %>  : selectedMath = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> <%= topics.math[i] %>  </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="containerM<%= i %>"
-          x-bind:style="selectedMath == <%= i %> ? 'max-height: ' + $refs.containerM<%= i %>.scrollHeight + 'px' : ''"
-        >
-          <div class="p-6">
-            <ul>
-              <% for(let type of types.filter((type) => type.section ==
-                    "Math" && type.general == topics.math[i])) { %>
-                    <li>
-                      <a class="text-dark" href="/types/<%= type._id %>"
-                        ><%= type.name %>
-                      </a>
-                    </li>
-                    <% } %>
-            </ul>
+            <div class="bg-white max-w-6xl mx-auto border border-gray-200" x-data="{selectedMath:null}">
+              <ul class="shadow-box">
+                <% for(let i=0; i < topics.math.length; i++) { %>
+                  <li class="relative border-b border-gray-200">
+                    <button type="button" class="w-full px-8 py-6 text-left"
+                      @click="selectedMath !== <%= i %>  ? selectedMath = <%= i %>  : selectedMath = null">
+                      <div class="flex items-center justify-between">
+                        <span class="font-medium leading-tight text-l mt-0 mb-2 text-blue-900 underline">
+                          <%= topics.math[i] %>
+                        </span>
+                        <span class="ico-plus"></span>
+                      </div>
+                    </button>
+          
+                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="containerM<%= i %>"
+                      x-bind:style="selectedMath == <%= i %> ? 'max-height: ' + $refs.containerM<%= i %>.scrollHeight + 'px' : ''">
+                      <div class="p-6">
+                        <ul class="list-disc ml-6 ">
+                          <% for(let type of types.filter((type)=> type.section ==
+                            "Math" && type.general == topics.math[i])) { %>
+                            <li>
+                              <a class="text-dark" href="/types/<%= type._id %>">
+                                <%= type.name %>
+                              </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <% } %>
+              </ul>
+            </div>
           </div>
         </div>
-      </li>
-        <% } %>
-      </ul>
-          </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selected !== 3 ? selected = 3 : selected = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> Reading </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="container3"
-          x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''"
-        >
+      </div>
+      <div id="third" class="hidden p-4">
+        <div class="">
           <div class="p-6">
             <div
       class="bg-white max-w-6xl mx-auto border border-gray-200"
@@ -182,7 +124,7 @@
           @click="selectedRead !== <%= i %>  ? selectedRead = <%= i %>  : selectedRead = null"
         >
           <div class="flex items-center justify-between">
-            <span> <%= topics.reading[i] %>  </span>
+            <span class="font-medium leading-tight text-l mt-0 mb-2 text-blue-900 underline"> <%= topics.reading[i] %>  </span>
             <span class="ico-plus"></span>
           </div>
         </button>
@@ -194,7 +136,7 @@
           x-bind:style="selectedRead == <%= i %> ? 'max-height: ' + $refs.containerR<%= i %>.scrollHeight + 'px' : ''"
         >
           <div class="p-6">
-            <ul>
+            <ul class="list-disc ml-6 ">
               <% for(let type of types.filter((type) => type.section ==
                     "Reading" && type.general == topics.reading[i])) { %>
                     <li>
@@ -212,69 +154,45 @@
           </div>
           </div>
         </div>
-      </li>
-      <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selected !== 4 ? selected = 4 : selected = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> Science </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="container4"
-          x-bind:style="selected == 4 ? 'max-height: ' + $refs.container4.scrollHeight + 'px' : ''"
-        >
+      </div>
+      <div id="fourth" class="hidden p-4">
+        <div class="">
           <div class="p-6">
-            <div
-      class="bg-white max-w-6xl mx-auto border border-gray-200"
-      x-data="{selectedSci:null}"
-    >
-      <ul class="shadow-box">
-        <% for(let i = 0; i < topics.english.length; i++) { %>
-          <li class="relative border-b border-gray-200">
-        <button
-          type="button"
-          class="w-full px-8 py-6 text-left"
-          @click="selectedSci !== <%= i %>  ? selectedSci = <%= i %>  : selectedSci = null"
-        >
-          <div class="flex items-center justify-between">
-            <span> <%= topics.english[i] %>  </span>
-            <span class="ico-plus"></span>
-          </div>
-        </button>
-
-        <div
-          class="relative overflow-hidden transition-all max-h-0 duration-700"
-          style=""
-          x-ref="containerS<%= i %>"
-          x-bind:style="selectedSci == <%= i %> ? 'max-height: ' + $refs.containerS<%= i %>.scrollHeight + 'px' : ''"
-        >
-          <div class="p-6">
-            <ul>
-              <% for(let type of types.filter((type) => type.section ==
-                    "Science" && type.general == topics.science[i])) { %>
-                    <li>
-                      <a class="text-dark" href="/types/<%= type._id %>"
-                        ><%= type.name %>
-                      </a>
-                    </li>
-                    <% } %>
-            </ul>
+            <div class="bg-white max-w-6xl mx-auto border border-gray-200" x-data="{selectedSci:null}">
+              <ul class="shadow-box">
+                <% for(let i=0; i < topics.english.length; i++) { %>
+                  <li class="relative border-b border-gray-200">
+                    <button type="button" class="w-full px-8 py-6 text-left"
+                      @click="selectedSci !== <%= i %>  ? selectedSci = <%= i %>  : selectedSci = null">
+                      <div class="flex items-center justify-between">
+                        <span class="font-medium leading-tight text-l mt-0 mb-2 text-blue-900 underline">
+                          <%= topics.english[i] %>
+                        </span>
+                        <span class="ico-plus"></span>
+                      </div>
+                    </button>
+          
+                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="containerS<%= i %>"
+                      x-bind:style="selectedSci == <%= i %> ? 'max-height: ' + $refs.containerS<%= i %>.scrollHeight + 'px' : ''">
+                      <div class="p-6">
+                        <ul class="list-disc ml-6 ">
+                          <% for(let type of types.filter((type)=> type.section ==
+                            "Science" && type.general == topics.science[i])) { %>
+                            <li>
+                              <a class="text-dark" href="/types/<%= type._id %>">
+                                <%= type.name %>
+                              </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <% } %>
+              </ul>
+            </div>
           </div>
         </div>
-      </li>
-        <% } %>
-      </ul>
-          </div>
-          </div>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
